@@ -6,7 +6,7 @@ Description=my flask server
 After=network-online.target
 
 [Service]
-ExecStart=$dir/index.py
+ExecStart=/usr/bin/python3 $dir/index.py
 
 [Install]
 WantedBy=multi-user.target
