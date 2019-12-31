@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<head>
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="../static/style.css/">
+</head>
+<body>
+    <h1>Flask Server.</h1>
+    <blockquote>
+        <ul>
+            <li><label for="ssid">Select your WiFi network</label></li>
+
+            <li class="wifiNetwork">
+                <select id="ssid" name="ssid" , class="wifiNetworkInputs">
+                    {% for ssid in wifioutput %}
+                    <option value='{{ ssid }}'>{{ ssid }}</option>
+                    {% endfor %}
+                </select>
+            </li>
+        </ul>
+
+
+        <ul>
+            <li><label for="ssid">Select your Chromecast</label></li>
+
+            <li class="wifiNetwork">
+                <select id="ssid" name="ssid" , class="wifiNetworkInputs">
+                    {% for chrome in chromecasts %}
+                    <option value='{{ chrome.device.friendly_name }}'>{{ chrome.device.friendly_name }}</option>
+                    {% endfor %}
+                </select>
+            </li>
+        </ul>
+
+
+    </blockquote>
+    <h2>...The date and time on the server is: {{ time }}</h2>
+</body>
+</html>

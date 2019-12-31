@@ -1,0 +1,16 @@
+dir=${PWD%/*}
+
+echo "
+[Unit]
+Description=my flask server
+After=network-online.target
+
+[Service]
+ExecStart=$dir/index.py
+
+[Install]
+WantedBy=multi-user.target
+" >> /etc/systemd/system/flask_server1.service
+
+systemctl enable flask_server1
+
