@@ -1,18 +1,18 @@
 apt-get install samba samba-common-bin
-echo "
-[share]
-Comment = Pi shared folder
-Path = /home/pi/RasoBerryPiAdhan
-Browseable = yes
-Writeable = Yes
-only guest = no
-create mask = 0777
-directory mask = 0777
-Public = yes
-Guest ok = yes
-" >> /etc/samba/smb.conf
+echo '[share]' >> /etc/samba/smb.conf 
+echo 'Comment = Pi shared folder' >> /etc/samba/smb.conf
+echo 'Path = /home/pi/RasoBerryPiAdhan' >> /etc/samba/smb.conf
+echo 'Browseable = yes' >> /etc/samba/smb.conf
+echo 'Writeable = Yes' >> /etc/samba/smb.conf
+echo 'only guest = no' >> /etc/samba/smb.conf
+echo 'create mask = 0777' >> /etc/samba/smb.conf
+echo 'directory mask = 0777' >> /etc/samba/smb.conf
+echo 'Public = yes' >> /etc/samba/smb.conf
+echo 'Guest ok = yes' >> /etc/samba/smb.conf
+
 
 smbpasswd -a pi
 
-systemctl restart smbd
 
+
+systemctl restart smbd
