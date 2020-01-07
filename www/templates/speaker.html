@@ -1,0 +1,25 @@
+﻿{% extends "shared/layout.html" %}
+
+{% block content %}
+
+<div class="text-center">
+    <form action="/address" method="post">
+        <div>
+            <h2>Please Choose your Speaker</h2>
+        </div>
+        <div>
+            <select id="speaker" name="speaker"  class="form-control">
+                {% for chrome in chromecasts %}
+                <option value='{{ chrome.device.friendly_name }}'>{{ chrome.device.friendly_name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div>
+            <br />
+            <button type="submit" class="btn btn-primary btn-lg btn-block">Next</button>
+            <button type="button" class="btn btn-primary btn-lg btn-block" id="previous">Previous</button>
+        </div>
+    </form>
+</div>
+
+    {% endblock %}

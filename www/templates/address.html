@@ -1,0 +1,20 @@
+{% extends "shared/layout.html" %}
+
+{% block content %}
+
+<div class="text-center">
+    <form action="/address" method="post">
+        <div>
+            <h2>Please enter your full Address below.</h2>
+        </div>
+        <div>
+            <input type="text" class="form-control" id="address" name="address" placeholder="Enter Full Address">
+        </div>
+        <div>
+            <br />
+            <button type="submit" class="btn btn-primary btn-lg btn-block">Next</button>
+        </div>
+    </form>
+</div>
+
+    {% endblock %}
