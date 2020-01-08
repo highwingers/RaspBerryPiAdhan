@@ -1,5 +1,6 @@
 from __future__ import print_function
-from flask import Flask, render_template,request,redirect
+from flask import Flask, render_template,request,redirect,jsonify,Response
+from lib.GeoPy import GeoData
 import time
 import pychromecast
 import datetime
@@ -40,7 +41,14 @@ def address():
         'title': 'Enter your full address'
         }
     if request.method == 'POST':
-        return redirect("speaker", code=302)
+        _add = GeoData(request.form["address"], "adhan_player")
+        coords = _add.getCoords()
+        return {
+            "address": _add.address,
+            "lat": _add.lat,
+            "lng": _add.lng
+            }
+        #return redirect("speaker", code=302)
 
     return render_template('address.html', **data)
 
@@ -48,12 +56,32 @@ def address():
 def speaker():
     data= {
         'title': 'Choose Speaker',
-        'chromecasts': pychromecast.get_chromecasts()
         }
+
     if request.method == 'POST':
-        a=1
+        _spk = request.form["speaker"]
+        return Response(_spk, mimetype="text/text")
 
     return render_template('speaker.html', **data)
+
+@app.route("/speakerlist",methods=['GET'])
+def speakerlist():
+    _chromecast_devices  = pychromecast.get_chromecasts()
+    chromecasts = []
+    for cast in _chromecast_devices:
+        device = {
+            'name': cast.name,
+            'cast_type': cast.cast_type,
+            'model_name': cast.model_name,
+            'uuid': str(cast.uuid),
+            'manufacturer': cast.device.manufacturer
+        }
+        chromecasts.append(device)
+     
+    data= {
+        'chromecasts': chromecasts
+        }
+    return jsonify(chromecasts)
 
 
 
