@@ -1,0 +1,33 @@
+﻿{% extends "shared/layout.html" %}
+
+{% block content %}
+<h3>We will use below Address for prayer time calcluations</h3>
+
+<div class="p-2">
+   
+    {% if address["status"] == 1 %}
+       <h3 class="red"><span class="green"> {{ address["address"] }}</h3>
+    <hr />
+    <blockquote>
+        <b><i>Your Current Time</i>: </b> {{now}}<br />
+        <div class="bg-light rounded p-4">
+        <b>Fajar: </b> {{pTimes["fajr"]}}<br />
+        <b>Zuhr: </b> {{pTimes["zuhr"]}}<br />
+        <b>Asr: </b> {{pTimes["asr"]}}<br />
+        <b>Maghrib: </b> {{pTimes["maghrib"]}}<br />
+        <b>Isha: </b> {{pTimes["isha"]}}<br />
+            </div>
+    </blockquote>         
+
+    {% else %}
+       <h3 class="red"> <span class="red">An error occured, Please Edit Address.</span></h3>
+    {% endif %}
+
+</div>
+<div><hr /></div>
+<div>
+    <button type="button" href="/address" class="btn btn-primary btn-lg btn-block btnClick">Edit Address & TimeZone</button>
+    <button type="button" href="/speaker" class="btn btn-success btn-lg btn-block btnClick">Next</button>
+</div>
+
+{% endblock %}

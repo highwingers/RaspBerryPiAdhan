@@ -7,8 +7,15 @@ class GeoData:
         self.agent = agent
 
     def getCoords(self):
-        geolocator = Nominatim(user_agent=self.agent)
-        location = geolocator.geocode(self.address)
-        self.lat = location.latitude
-        self.lng = location.longitude
-        self.address = location.address
+        try:
+            geolocator = Nominatim(user_agent=self.agent)
+            location = geolocator.geocode(self.address)
+            self.lat = location.latitude
+            self.lng = location.longitude
+            self.address = location.address
+            self.status=1
+        except :
+            self.lat = 0
+            self.lng = 0
+            self.address = ""
+            self.status=0

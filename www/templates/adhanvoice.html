@@ -1,0 +1,15 @@
+﻿{% extends "shared/layout.html" %}
+
+{% block content %}
+<h3>Choose Adhan</h3>
+
+<div>
+    {{ ses["speaker"] }}
+</div>
+<div>&nbsp;</div>
+<div>
+    <button type="button" href="/speaker" class="btn btn-primary btn-lg btn-block btnClick">Previous</button>
+    <button type="button" href="/speaker" class="btn btn-success btn-lg btn-block btnClick">Next</button>
+</div>
+
+{% endblock %}

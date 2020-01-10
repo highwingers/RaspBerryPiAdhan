@@ -1,11 +1,12 @@
 ﻿$().ready(function () {
-    document.getElementById("previous").addEventListener("click", goBack);
+    $(".btnClick").click(function () {
+        document.location.href = $(this).attr("href");
+    });
+
 })
 
 
-function goBack() {  
-    document.location.href = $(this).attr("href");
-}
+
 
 var s = (function () {
 

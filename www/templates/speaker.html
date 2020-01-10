@@ -10,27 +10,49 @@
         <div>
             <div>
                 <img src="/static/images/loading.gif" id="loading" />
-                <select id="speaker" name="speaker" class="form-control" style="display:none">
-                </select>
+                <div id="controls" style="display:none">
+                    <select id="speaker" name="speaker" class="form-control"></select>
+                    <button type="button" id="rescan"  class="btn btn-primary m-2">Re-Scan</button>
+                    <button type="button" id="testMedia" class="btn btn-success m-2">Test Speaker</button>
+                </div>
+
             </div>
         </div>
         <div>
             <br />
             <button type="submit" id="submit" disabled class="btn btn-primary btn-lg btn-block">Next</button>
-            <button type="button" href="/address" class="btn btn-primary btn-lg btn-block" id="previous">Previous</button>
+            <button type="button" href="/address" class="btn btn-primary btn-lg btn-block btnClick" >Previous</button>
         </div>
     </form>
 </div>
 
 <script>
-    var c = s.getSpeakers('/speakerlist', function result(d) {
-        $('#submit').attr("disabled", false);;
-        $('#speaker').show();
-        $('#loading').hide();
-        $('#speaker').append(`<option value="${d.name}"> 
+
+    function scanSpeakers() {
+
+        var c = s.getSpeakers('/speakerlist', function result(d) {
+            $('#submit').attr("disabled", false);;
+            $('#controls').show();
+            $('#loading').hide();
+            $('#speaker').append(`<option value="${d.name}"> 
                                        ${d.name} 
-                                  </option>`); 
-    });
+                                  </option>`);
+        });
+    }
+
+    $().ready(function () {
+        scanSpeakers();
+
+        $("#rescan").click(function () {
+            $('#speaker').empty();
+            $('#loading').show();
+            $('#controls').hide();
+    
+            scanSpeakers();
+        });
+    })
+
+
 </script>
 
     {% endblock %}

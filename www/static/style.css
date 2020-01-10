@@ -2,3 +2,9 @@ html,
 body {
     padding:10px;
 }
+.red{
+    color:red;
+}
+.green {
+    color: green;
+}
