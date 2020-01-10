@@ -9,7 +9,8 @@ echo 'create mask = 0777' >> /etc/samba/smb.conf
 echo 'directory mask = 0777' >> /etc/samba/smb.conf
 echo 'Public = yes' >> /etc/samba/smb.conf
 echo 'Guest ok = yes' >> /etc/samba/smb.conf
-
+echo 'valid users = pi' >>/etc/samba/smb.conf
+echo 'force group = pi' >> /etc/samba/smb.conf
 
 smbpasswd -a pi
 
