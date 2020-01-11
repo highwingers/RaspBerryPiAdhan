@@ -8,10 +8,9 @@ adhanvoice_blueprint = Blueprint('adhanvoice', __name__, template_folder='../tem
 
 @adhanvoice_blueprint.route("/adhanvoice",methods=['GET', 'POST'])
 def address():
-    sesData =  session['adhan']['speaker']
+    speaker =  session['speaker']
     data= {
-        'title': 'Choose Adhan',
-        'ses': sesData
+        'title': 'Choose Adhan'
         }
     return render_template('adhanvoice.html', **data)
 

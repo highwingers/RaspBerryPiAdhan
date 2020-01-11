@@ -12,7 +12,7 @@ def speaker():
 
     if request.method == 'POST':
         _spk = request.form["speaker"]
-        session['adhan']['speaker'] = { "speaker": _spk}
+        session['speaker'] = _spk
         return redirect("adhanvoice")
 
     return render_template('speaker.html', **data)
@@ -22,8 +22,12 @@ def speaker():
 @speaker_blueprint.route("/speakerlist",methods=['GET'])
 def speakerlist():
     chromecasts = chromecast().chromecastQuery()
-     
-    data= {
-        'chromecasts': chromecasts
-        }
+
     return jsonify(chromecasts)
+
+@speaker_blueprint.route("/playMedia",methods=['GET'])
+def playMedia():
+    device = request.args.get('device')
+    media = request.args.get('media')
+    mediaStatus = chromecast().chromecastPlay(device, media)     
+    return mediaStatus

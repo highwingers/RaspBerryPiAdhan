@@ -22,6 +22,12 @@ var s = (function () {
 
             });
 
+        },
+        playMedia: function (url,device, mediaUrl, result) {
+            $.getJSON(url, {'device': device, 'media': mediaUrl} ,function (data) {
+                    result(val)
+            });
+
         }
     }
 
