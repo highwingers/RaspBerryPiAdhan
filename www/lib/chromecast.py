@@ -30,6 +30,3 @@ class chromecast:
         mc.play()
 
         return "Playing"
-
-
-
