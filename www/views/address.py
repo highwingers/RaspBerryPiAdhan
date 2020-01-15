@@ -19,10 +19,13 @@ def address():
 
 
     if request.method == 'POST':
+
         timezone = request.form["timezone"]
+        shellcmd().setTimeZone(timezone)
+
         _add = GeoData(request.form["address"], "adhan_player")
         coords = _add.getCoords()
-        shellcmd().setTimeZone(timezone)
+        
         session['adhan'] = {"address": {"address": _add.address, "lat": _add.lat, "lng": _add.lng, "status":_add.status}}
         return redirect("address_confirm")
 
@@ -32,10 +35,11 @@ def address():
 def address_confirm():        
 
         sesData = session['adhan']['address']
+        currentTime = shellcmd().command("date")
         if sesData["status"] == 1 :
             timezoneOffset =  shellcmd().getZoneOffset()
-            print(timezoneOffset)
             pTimes = PrayerData(sesData["lat"],sesData["lng"], timezoneOffset).getTimes()
+            session['pTimes'] = pTimes
         else:
             pTimes = None
 
@@ -43,6 +47,6 @@ def address_confirm():
         'title': "Confirm Address",
         'address': sesData,
         "pTimes": pTimes,
-        "now": datetime.datetime.now()
+        "deviceTime": currentTime
         }
         return render_template('address_confirm.html', **data)

@@ -23,10 +23,24 @@ var s = (function () {
             });
 
         },
-        playMedia: function (url,device, mediaUrl, result) {
-            $.getJSON(url, {'device': device, 'media': mediaUrl} ,function (data) {
-                    result(val)
-            });
+        playMedia: function (url, device, mediaUrl, result) {
+
+                $.ajax({
+                    url: url,
+                    dataType: 'text',
+                    method: 'GET',
+                    data: { 'deviceName': device, 'mediaUrl': mediaUrl},
+                    success: function (d) {
+                        result(d);
+                    },
+                    error: function (request, textStatus, errorThrown) {
+                       // alert(textStatus);
+                    },
+                    complete: function (request, textStatus) { //for additional info
+                        //alert(request.responseText);
+                        //alert(textStatus);
+                    }
+                });
 
         }
     }

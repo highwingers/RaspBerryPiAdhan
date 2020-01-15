@@ -5,7 +5,8 @@ class shellcmd:
     def command(self, cmd):
         result = subprocess.run([cmd], stdout=subprocess.PIPE, shell=True)
         r =  result.stdout
-        return r.decode("utf-8")
+        r = r.decode("utf-8").replace('\n',' ').strip()
+        return r
 
     def setTimeZone(self,timezone):
         cmd = "timedatectl set-timezone " + timezone

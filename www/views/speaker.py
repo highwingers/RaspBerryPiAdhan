@@ -1,6 +1,4 @@
-﻿import sys
-sys.path.append('../')
-from flask import Flask, render_template,request,redirect,jsonify,Response,Blueprint,session
+﻿from flask import Flask, render_template,request,redirect,jsonify,Response,Blueprint,session
 from lib.chromecast import chromecast
 
 speaker_blueprint = Blueprint('speaker', __name__, template_folder='../templates')
@@ -27,7 +25,7 @@ def speakerlist():
 
 @speaker_blueprint.route("/playMedia",methods=['GET'])
 def playMedia():
-    device = request.args.get('device')
-    media = request.args.get('media')
-    mediaStatus = chromecast().chromecastPlay(device, media)     
+    device = request.args.get('deviceName')
+    media = request.args.get('mediaUrl')
+    mediaStatus = chromecast().play(device, media)     
     return mediaStatus

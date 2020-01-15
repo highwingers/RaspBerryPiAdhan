@@ -13,7 +13,9 @@
                 <div id="controls" style="display:none">
                     <select id="speaker" name="speaker" class="form-control"></select>
                     <button type="button" id="rescan"  class="btn btn-primary m-2">Re-Scan</button>
-                    <button type="button" id="testMedia" class="btn btn-success m-2">Test Speaker</button>
+                    <button type="button" id="testMedia" class="btn btn-success m-2">Test Speaker</button> <div id="testMediaSpinner" style="display:none" class="spinner-border" role="status">
+    <span class="sr-only">Loading...</span>
+</div>
                 </div>
 
             </div>
@@ -40,11 +42,19 @@
         });
     }
 
-    function playMedia() {
-        c = s.playMedia('/playMedia','Home Group', 'http://raspberrypi.local/static/media/demo.mp3', function (d) { alert(d) })
-    }
 
     $().ready(function () {
+
+
+        /** Test Player  **/
+         
+        //var selectedDisplay = "Office Ustairs speaker"
+        //var media = '/static/media/demo.mp3'
+        ////media = 'http://praytimes.org/audio/adhan/Shia/Rowhani-Nejad.mp3'
+        ////media = 'https://www.youtube.com/watch?v=nwq249Me9Yk'
+        //s.playMedia('/playMedia', selectedDisplay, media, function (d) { alert(d) })
+        // End Test
+
         scanSpeakers();
 
         $("#rescan").click(function () {
@@ -56,7 +66,12 @@
         });
 
         $("#testMedia").click(function () {
-            playMedia()
+            $('#testMediaSpinner').show();
+            var selectedDisplay = $("#speaker option:selected").val()
+            var media = 'http://praytimes.org/audio/adhan/Shia/Rowhani-Nejad.mp3'
+            s.playMedia('/playMedia', selectedDisplay, media, function (d) {
+                $('#testMediaSpinner').hide();
+            })
         })
     })
 

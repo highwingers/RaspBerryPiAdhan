@@ -1,14 +1,11 @@
-﻿import pychromecast
+﻿import sys
+sys.path.append('../')
+from lib.shellcmds import shellcmd
+from lib.chromecast import chromecast
+
+ip = shellcmd().command("hostname -I")
+url = 'http://'+ip+'/static/media/demo.mp3'
+chromecast().chromecastPlay('Office Ustairs speaker', url)
 
 
-chromecasts = pychromecast.get_chromecasts()
-cast = next(cc for cc in chromecasts if cc.device.friendly_name == "Kitchen display")
-cast.wait()
-print(cast.device)
-print(cast.status)
-mc = cast.media_controller
-mc.play_media('http://remote.khanzone.com:8181/audio/demo.mp3', 'audio/mp4')
-mc.block_until_active()
-print(mc.status)
-mc.play()
 

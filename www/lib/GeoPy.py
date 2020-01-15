@@ -14,8 +14,9 @@ class GeoData:
             self.lng = location.longitude
             self.address = location.address
             self.status=1
-        except :
+        except Exception as e:
             self.lat = 0
             self.lng = 0
             self.address = ""
             self.status=0
+            print(e)

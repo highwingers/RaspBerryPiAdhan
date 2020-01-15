@@ -9,14 +9,14 @@
        <h3 class="red"><span class="green"> {{ address["address"] }}</h3>
     <hr />
     <blockquote>
-        <b><i>Your Current Time</i>: </b> {{now}}<br />
+        <b><i>Your Current Time</i>: </b> {{deviceTime}}<br />
         <div class="bg-light rounded p-4">
-        <b>Fajar: </b> {{pTimes["fajr"]}}<br />
-        <b>Zuhr: </b> {{pTimes["zuhr"]}}<br />
-        <b>Asr: </b> {{pTimes["asr"]}}<br />
-        <b>Maghrib: </b> {{pTimes["maghrib"]}}<br />
-        <b>Isha: </b> {{pTimes["isha"]}}<br />
-            </div>
+            <b>Fajar: </b> {{pTimes["fajr"]}}<br />
+            <b>Zuhr: </b> {{pTimes["zuhr"]}}<br />
+            <b>Asr: </b> {{pTimes["asr"]}}<br />
+            <b>Maghrib: </b> {{pTimes["maghrib"]}}<br />
+            <b>Isha: </b> {{pTimes["isha"]}}<br />
+        </div>
     </blockquote>         
 
     {% else %}
