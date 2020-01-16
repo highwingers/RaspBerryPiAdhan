@@ -8,10 +8,24 @@
     <br />
     {{pTimes["fajr"]}}
 </div>
+<div>
+    <select id="surah" class="form-control"></select><br />
+    <button type="button" id="play" class="btn btn-primary btn-sm">Play on {{speaker}}</button>
+</div>
 <div>&nbsp;</div>
 <div>
     <button type="button" href="/speaker" class="btn btn-primary btn-lg btn-block btnClick">Previous</button>
     <button type="button" href="/speaker" class="btn btn-success btn-lg btn-block btnClick">Next</button>
 </div>
+<script>
+    $().ready(function () {
+        s.populateSurahs("akdr", "surah");
 
+        $("#play").click(function () {
+            s.playMedia('/playMedia', '{{speaker}}', $("#surah option:selected").val(), function (d) {
+            })
+        })
+    })
+
+</script>
 {% endblock %}
