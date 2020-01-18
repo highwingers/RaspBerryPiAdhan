@@ -26,7 +26,7 @@ class PrayerData:
                 )
             return adhan_times
 
-        except :
-            return None
+        except Exception as e: 
+            return str(e)
 
 

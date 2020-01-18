@@ -1,5 +1,7 @@
-﻿from flask import Flask, render_template,request,redirect,jsonify,Response,Blueprint,session
-from lib.chromecast import chromecast
+﻿import sys
+sys.path.append('/home/pi/RaspBerryPiAdhan/www/lib')
+from flask import Flask, render_template,request,redirect,jsonify,Response,Blueprint,session
+from chromecast import chromecast
 
 speaker_blueprint = Blueprint('speaker', __name__, template_folder='../templates')
 @speaker_blueprint.route("/speaker",methods=['GET', 'POST'])

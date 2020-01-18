@@ -1,11 +1,12 @@
 ﻿import sys
-sys.path.append('../')
+sys.path.append('/home/pi/RaspBerryPiAdhan/www/lib')
 
 from flask import Flask, render_template,request,redirect,jsonify,Response,Blueprint,session
 import datetime
-from lib.GeoPy import GeoData
-from lib.PrayerPy import PrayerData
-from lib.shellcmds import shellcmd
+from GeoPy import GeoData
+from PrayerPy import PrayerData
+from shellcmds import shellcmd
+from schedule import schedule
 
 address_blueprint = Blueprint('address', __name__, template_folder='../templates')
 
@@ -16,7 +17,7 @@ def address():
         'title': 'Enter your full address'
         }
 
-
+    schedule.adhan(40.726116, -73.520770,"https://staticcrate.com/content/audio-pro/wwstrxylo-note-3.mp3", "https://staticcrate.com/content/audio-pro/wwstrxylo-note-3.mp3", "Office Ustairs speaker")
 
     if request.method == 'POST':
 

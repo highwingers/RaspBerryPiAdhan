@@ -1,7 +1,4 @@
-﻿import sys
-sys.path.append('../')
-
-from flask import Flask, render_template,request,redirect,jsonify,Response,Blueprint,session
+﻿from flask import Flask, render_template,request,redirect,jsonify,Response,Blueprint,session
 
 
 adhanvoice_blueprint = Blueprint('adhanvoice', __name__, template_folder='../templates')

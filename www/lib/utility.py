@@ -12,3 +12,4 @@ class utility:
             struct.pack('256s', ifname[:15])
         )[20:24])
 
+

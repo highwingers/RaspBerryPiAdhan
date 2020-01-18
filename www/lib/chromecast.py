@@ -1,7 +1,7 @@
 ﻿import pychromecast
 from pychromecast.controllers.youtube import YouTubeController
 from urllib.parse import urlparse,parse_qs
-from lib.shellcmds import shellcmd
+from shellcmds import shellcmd
 
 class chromecast:
         
