@@ -7,11 +7,14 @@ conn = sqlite3.connect('/home/pi/RaspBerryPiAdhan/www/data/adhan.db')
 
 
 conn.execute('''CREATE TABLE SETTINGS
-         (ID INT PRIMARY KEY     NOT NULL,
+         (ID INTEGER PRIMARY KEY ,
          SPEAKER           TEXT    NOT NULL,
-         LAT            TEXT     NOT NULL,
-         LNT        TEXT,
+         LAT            FLOAT     NOT NULL,
+         LNT        FLOAT,
          ADDRESS TEXT);''')
+
+
+conn.execute("INSERT INTO SETTINGS (ID, SPEAKER,LAT,LNT,ADDRESS)  VALUES (NULL, '','','','' )");
 
 ##conn.execute("INSERT INTO COMPANY (ID,NAME,AGE,ADDRESS,SALARY) \
 ##      VALUES (1, 'Paul', 32, 'California', 20000.00 )");
@@ -40,7 +43,7 @@ print ("Records created successfully")
 ##
 ##
 ##	
-##conn.execute('drop table if exists company;')
+#conn.execute('drop table if exists company;')
 
 
 

@@ -3,6 +3,8 @@ sys.path.append('/home/pi/RaspBerryPiAdhan/www/lib')
 from flask import Flask, render_template,request,redirect,jsonify,Response,Blueprint,session
 from chromecast import chromecast
 
+
+
 speaker_blueprint = Blueprint('speaker', __name__, template_folder='../templates')
 @speaker_blueprint.route("/speaker",methods=['GET', 'POST'])
 def speaker():
@@ -12,6 +14,8 @@ def speaker():
 
     if request.method == 'POST':
         _spk = request.form["speaker"]
+
+
         session['speaker'] = _spk
         return redirect("adhanvoice")
 

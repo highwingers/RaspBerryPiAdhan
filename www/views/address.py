@@ -7,6 +7,7 @@ from GeoPy import GeoData
 from PrayerPy import PrayerData
 from shellcmds import shellcmd
 from schedule import schedule
+from Dal import Dal
 
 address_blueprint = Blueprint('address', __name__, template_folder='../templates')
 
@@ -17,7 +18,8 @@ def address():
         'title': 'Enter your full address'
         }
 
-    schedule.adhan(40.726116, -73.520770,"https://staticcrate.com/content/audio-pro/wwstrxylo-note-3.mp3", "https://staticcrate.com/content/audio-pro/wwstrxylo-note-3.mp3", "Office Ustairs speaker")
+    sqldata = Dal().GetSettings()
+    schedule.adhan(sqldata[2], sqldata[3],"https://staticcrate.com/content/audio/Nanas-Brunch-Opening_Gerardo-Garcia-Jr.mp3", "https://staticcrate.com/content/audio/PeaceAndSerenity.mp3", sqldata[1])
 
     if request.method == 'POST':
 
@@ -28,6 +30,7 @@ def address():
         coords = _add.getCoords()
         
         session['adhan'] = {"address": {"address": _add.address, "lat": _add.lat, "lng": _add.lng, "status":_add.status}}
+    
         return redirect("address_confirm")
 
     return render_template('address.html', **data)
