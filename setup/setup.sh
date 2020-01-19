@@ -1,5 +1,7 @@
 bash ./flaskserver.service
 
+sh ./avahi.sh
+
 sh ./db.sh
 
 apt-get  install  python3-pip 
