@@ -1,38 +1,14 @@
-<!DOCTYPE html>
-<head>
-    <title>{{ title }}</title>
-    <link rel="stylesheet" href="../static/style.css/">
-</head>
-<body>
-    <h1>Flask Server.</h1>
-    <blockquote>
-        <ul>
-            <li><label for="ssid">Select your WiFi network</label></li>
+﻿{% extends "shared/layout.html" %}
 
-            <li class="wifiNetwork">
-                <select id="ssid" name="ssid" , class="wifiNetworkInputs">
-                    {% for ssid in wifioutput %}
-                    <option value='{{ ssid }}'>{{ ssid }}</option>
-                    {% endfor %}
-                </select>
-            </li>
-        </ul>
+{% block content %}
 
 
-        <ul>
-            <li><label for="ssid">Select your Chromecast</label></li>
+<div>
+    <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab"></div>
+        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab"></div>
+        <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab"></div>
+    </div>
+</div>
 
-            <li class="wifiNetwork">
-                <select id="ssid" name="ssid" , class="wifiNetworkInputs">
-                    {% for chrome in chromecasts %}
-                    <option value='{{ chrome.device.friendly_name }}'>{{ chrome.device.friendly_name }}</option>
-                    {% endfor %}
-                </select>
-            </li>
-        </ul>
-
-
-    </blockquote>
-    <h2>...The date and time on the server is: {{ time }}</h2>
-</body>
-</html>
+{% endblock %}

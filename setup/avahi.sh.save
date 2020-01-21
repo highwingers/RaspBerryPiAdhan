@@ -1,0 +1,11 @@
+cd /etc/avahi/services
+
+eecho "cho "<?xml version="1.0" standalone='no'?><!--*-nxml-*-->
+<!DOCTYPE service-group SYSTEM "avahi-service.dtd">
+<service-group>
+<name replace-wildcards="yes">%h <YOUR_HTTP_SERVICE></name>
+<service>
+<type>_http._tcp</type>
+<port><YOUR_PORT></port>
+</service>
+</service-group>

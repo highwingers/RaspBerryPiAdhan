@@ -3,9 +3,11 @@ from flask import Flask, render_template,request,redirect,jsonify,Response,Bluep
 import time
 import datetime
 import subprocess
+from views.index import index_blueprint
 from views.address import address_blueprint
 from views.speaker import speaker_blueprint
 from views.adhanvoice import adhanvoice_blueprint
+
 
 
 app = Flask(__name__)
@@ -13,11 +15,14 @@ app.secret_key = 'abc123$'
 app.config['SESSION_TYPE'] = 'filesystem'
 app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
 
-
 app.register_blueprint(address_blueprint)
 app.register_blueprint(speaker_blueprint)
 app.register_blueprint(adhanvoice_blueprint)
+app.register_blueprint(index_blueprint)
 
+@app.route('/settings')
+def send_js():
+    return render_template('tabs/settings.html')
 
 
 
