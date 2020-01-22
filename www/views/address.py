@@ -1,13 +1,13 @@
 ﻿import sys
-sys.path.append('/home/pi/RaspBerryPiAdhan/www/lib')
+sys.path.append('../')
 
 from flask import Flask, render_template,request,redirect,jsonify,Response,Blueprint,session
 import datetime
-from GeoPy import GeoData
-from PrayerPy import PrayerData
-from shellcmds import shellcmd
-from schedule import schedule
-from Dal import Dal
+from lib.GeoPy import GeoData
+from lib.PrayerPy import PrayerData
+from lib.shellcmds import shellcmd
+from lib.schedule import schedule
+from lib.Dal import Dal
 
 address_blueprint = Blueprint('address', __name__, template_folder='../templates')
 

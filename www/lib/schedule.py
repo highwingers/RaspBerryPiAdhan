@@ -1,6 +1,6 @@
 ﻿import datetime
-from PrayerPy import PrayerData
-from shellcmds import shellcmd
+from lib.PrayerPy import PrayerData
+from lib.shellcmds import shellcmd
 from crontab import CronTab
 
 class schedule:
