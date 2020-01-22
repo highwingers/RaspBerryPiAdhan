@@ -1,4 +1,4 @@
-bash ./flaskserver.service
+# bash ./flaskserver.service
 
 sh ./avahi.sh
 
