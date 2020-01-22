@@ -164,3 +164,50 @@ AH00558: apache2: Could not reliably determine the server's fully qualified doma
 [Tue Jan 21 21:39:22.877600 2020] [core:notice] [pid 422:tid 3070201568] AH00094: Command line: '/usr/sbin/apache2'
 [Tue Jan 21 21:40:22.184009 2020] [wsgi:error] [pid 427:tid 3039560736] (1, 'Home group', 47.6038321, -122.3300624, 'Seattle, King County, Washington, United States of America')
 [Tue Jan 21 21:40:49.356927 2020] [wsgi:error] [pid 427:tid 3039560736] (1, 'Home group', 47.6038321, -122.3300624, 'Seattle, King County, Washington, United States of America')
+[Wed Jan 22 00:00:50.122284 2020] [mpm_event:notice] [pid 422:tid 3070201568] AH00493: SIGUSR1 received.  Doing graceful restart
+AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 127.0.1.1. Set the 'ServerName' directive globally to suppress this message
+[Wed Jan 22 00:00:54.992737 2020] [mpm_event:notice] [pid 422:tid 3070201568] AH00489: Apache/2.4.38 (Raspbian) mod_wsgi/4.6.5 Python/3.7 configured -- resuming normal operations
+[Wed Jan 22 00:00:54.992972 2020] [core:notice] [pid 422:tid 3070201568] AH00094: Command line: '/usr/sbin/apache2'
+[Wed Jan 22 13:06:23.112781 2020] [wsgi:error] [pid 1325:tid 3039560736] (1, 'Home group', 47.6038321, -122.3300624, 'Seattle, King County, Washington, United States of America')
+[Wed Jan 22 13:06:32.351086 2020] [wsgi:error] [pid 1325:tid 3039560736] (1, 'Home group', 47.6038321, -122.3300624, 'Seattle, King County, Washington, United States of America')
+[Wed Jan 22 13:07:05.447160 2020] [mpm_event:notice] [pid 422:tid 3070201568] AH00491: caught SIGTERM, shutting down
+[Wed Jan 22 13:08:30.674131 2020] [mpm_event:notice] [pid 2637:tid 3070025440] AH00489: Apache/2.4.38 (Raspbian) mod_wsgi/4.6.5 Python/3.7 configured -- resuming normal operations
+[Wed Jan 22 13:08:30.675135 2020] [core:notice] [pid 2637:tid 3070025440] AH00094: Command line: '/usr/sbin/apache2'
+[Wed Jan 22 13:08:32.613135 2020] [mpm_event:notice] [pid 2637:tid 3070025440] AH00493: SIGUSR1 received.  Doing graceful restart
+AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 127.0.1.1. Set the 'ServerName' directive globally to suppress this message
+[Wed Jan 22 13:08:34.246496 2020] [mpm_event:notice] [pid 2637:tid 3070025440] AH00489: Apache/2.4.38 (Raspbian) mod_wsgi/4.6.5 Python/3.7 configured -- resuming normal operations
+[Wed Jan 22 13:08:34.246781 2020] [core:notice] [pid 2637:tid 3070025440] AH00094: Command line: '/usr/sbin/apache2'
+[Wed Jan 22 13:11:47.867607 2020] [mpm_event:notice] [pid 2637:tid 3070025440] AH00491: caught SIGTERM, shutting down
+[Wed Jan 22 13:11:48.664344 2020] [mpm_event:notice] [pid 2934:tid 3069726432] AH00489: Apache/2.4.38 (Raspbian) mod_wsgi/4.6.5 Python/3.7 configured -- resuming normal operations
+[Wed Jan 22 13:11:48.665464 2020] [core:notice] [pid 2934:tid 3069726432] AH00094: Command line: '/usr/sbin/apache2'
+[Wed Jan 22 13:11:51.413713 2020] [mpm_event:notice] [pid 2934:tid 3069726432] AH00491: caught SIGTERM, shutting down
+[Wed Jan 22 13:15:06.022346 2020] [mpm_event:notice] [pid 3087:tid 3069259488] AH00489: Apache/2.4.38 (Raspbian) mod_wsgi/4.6.5 Python/3.7 configured -- resuming normal operations
+[Wed Jan 22 13:15:06.022996 2020] [core:notice] [pid 3087:tid 3069259488] AH00094: Command line: '/usr/sbin/apache2'
+[Wed Jan 22 13:15:07.943133 2020] [mpm_event:notice] [pid 3087:tid 3069259488] AH00493: SIGUSR1 received.  Doing graceful restart
+AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 127.0.1.1. Set the 'ServerName' directive globally to suppress this message
+[Wed Jan 22 13:15:09.568964 2020] [mpm_event:notice] [pid 3087:tid 3069259488] AH00489: Apache/2.4.38 (Raspbian) mod_wsgi/4.6.5 Python/3.7 configured -- resuming normal operations
+[Wed Jan 22 13:15:09.569250 2020] [core:notice] [pid 3087:tid 3069259488] AH00094: Command line: '/usr/sbin/apache2'
+[Wed Jan 22 13:15:52.083730 2020] [mpm_event:notice] [pid 3087:tid 3069259488] AH00491: caught SIGTERM, shutting down
+[Wed Jan 22 13:16:26.674369 2020] [mpm_event:notice] [pid 3390:tid 3070164704] AH00489: Apache/2.4.38 (Raspbian) mod_wsgi/4.6.5 Python/3.7 configured -- resuming normal operations
+[Wed Jan 22 13:16:26.703788 2020] [core:notice] [pid 3390:tid 3070164704] AH00094: Command line: '/usr/sbin/apache2'
+[Wed Jan 22 13:16:28.633181 2020] [mpm_event:notice] [pid 3390:tid 3070164704] AH00493: SIGUSR1 received.  Doing graceful restart
+AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 127.0.1.1. Set the 'ServerName' directive globally to suppress this message
+[Wed Jan 22 13:16:30.250316 2020] [mpm_event:notice] [pid 3390:tid 3070164704] AH00489: Apache/2.4.38 (Raspbian) mod_wsgi/4.6.5 Python/3.7 configured -- resuming normal operations
+[Wed Jan 22 13:16:30.250592 2020] [core:notice] [pid 3390:tid 3070164704] AH00094: Command line: '/usr/sbin/apache2'
+[Wed Jan 22 13:32:46.613912 2020] [mpm_event:notice] [pid 3390:tid 3070164704] AH00491: caught SIGTERM, shutting down
+[Wed Jan 22 13:56:43.417437 2020] [mpm_event:notice] [pid 4235:tid 3069632224] AH00489: Apache/2.4.38 (Raspbian) mod_wsgi/4.6.5 Python/3.7 configured -- resuming normal operations
+[Wed Jan 22 13:56:43.418110 2020] [core:notice] [pid 4235:tid 3069632224] AH00094: Command line: '/usr/sbin/apache2'
+[Wed Jan 22 13:56:45.355066 2020] [mpm_event:notice] [pid 4235:tid 3069632224] AH00493: SIGUSR1 received.  Doing graceful restart
+AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 127.0.1.1. Set the 'ServerName' directive globally to suppress this message
+[Wed Jan 22 13:56:46.987659 2020] [mpm_event:notice] [pid 4235:tid 3069632224] AH00489: Apache/2.4.38 (Raspbian) mod_wsgi/4.6.5 Python/3.7 configured -- resuming normal operations
+[Wed Jan 22 13:56:46.987949 2020] [core:notice] [pid 4235:tid 3069632224] AH00094: Command line: '/usr/sbin/apache2'
+[Wed Jan 22 13:57:59.101115 2020] [mpm_event:notice] [pid 4235:tid 3069632224] AH00491: caught SIGTERM, shutting down
+[Wed Jan 22 13:59:04.047725 2020] [mpm_event:notice] [pid 4611:tid 3069599456] AH00489: Apache/2.4.38 (Raspbian) mod_wsgi/4.6.5 Python/3.7 configured -- resuming normal operations
+[Wed Jan 22 13:59:04.048357 2020] [core:notice] [pid 4611:tid 3069599456] AH00094: Command line: '/usr/sbin/apache2'
+[Wed Jan 22 13:59:12.023372 2020] [mpm_event:notice] [pid 4611:tid 3069599456] AH00493: SIGUSR1 received.  Doing graceful restart
+AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 127.0.1.1. Set the 'ServerName' directive globally to suppress this message
+[Wed Jan 22 13:59:13.749091 2020] [mpm_event:notice] [pid 4611:tid 3069599456] AH00489: Apache/2.4.38 (Raspbian) mod_wsgi/4.6.5 Python/3.7 configured -- resuming normal operations
+[Wed Jan 22 13:59:13.749370 2020] [core:notice] [pid 4611:tid 3069599456] AH00094: Command line: '/usr/sbin/apache2'
+[Wed Jan 22 13:59:20.125422 2020] [wsgi:error] [pid 4737:tid 3038958624] (1, 'Home group', 47.6038321, -122.3300624, 'Seattle, King County, Washington, United States of America')
+[Wed Jan 22 13:59:27.409479 2020] [wsgi:error] [pid 4737:tid 3038958624] (1, 'Home group', 47.6038321, -122.3300624, 'Seattle, King County, Washington, United States of America')
+Failed to set time zone: Interactive authentication required.
