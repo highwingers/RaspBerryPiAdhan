@@ -1,0 +1,50 @@
+
+
+apt-get install apache2
+sudo apt-get install libapache2-mod-wsgi-py3
+
+in WWW 
+
+adhan.wsgi
+
+import sys
+sys.path.insert(0, '/home/pi/RaspBerryPiAdhan/www')
+from index import app as application
+
+
+
+
+sudo nano /etc/apache2/sites-available/adhan.conf
+
+ WSGIDaemonProcess adhan user=pi group=www-data threads=5
+ WSGIScriptAlias / /home/pi/RaspBerryPiAdhan/www/adhan.wsgi
+ <Directory "/home/pi/RaspBerryPiAdhan/www">
+        WSGIProcessGroup adhan
+        WSGIScriptReloading On
+        WSGIApplicationGroup %{GLOBAL}
+        Require all granted
+ </Directory>
+ ErrorLog /home/pi/RaspBerryPiAdhan/www/logs/error.log
+
+
+
+
+Bind it
+sudo /usr/sbin/a2ensite adhan.conf
+
+
+start service
+
+apachectl stop
+/etc/init.d/apache2 start
+/etc/init.d/apache2 reload
+
+
+
+
+
+
+
+
+
+cat /var/log/apache2/error.log
