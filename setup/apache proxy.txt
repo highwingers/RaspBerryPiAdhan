@@ -16,6 +16,7 @@ from index import app as application
 
 sudo nano /etc/apache2/sites-available/adhan.conf
 
+cat << EOF > /etc/apache2/sites-available/adhan.conf
  WSGIDaemonProcess adhan user=pi group=www-data threads=5
  WSGIScriptAlias / /home/pi/RaspBerryPiAdhan/www/adhan.wsgi
  <Directory "/home/pi/RaspBerryPiAdhan/www">
