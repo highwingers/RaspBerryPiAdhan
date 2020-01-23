@@ -19,7 +19,7 @@ def address():
         }
 
     sqldata = Dal().GetSettings()
-    schedule.adhan(sqldata[2], sqldata[3],"https://staticcrate.com/content/audio/Nanas-Brunch-Opening_Gerardo-Garcia-Jr.mp3", "https://staticcrate.com/content/audio/PeaceAndSerenity.mp3", sqldata[1])
+#    schedule.adhan(sqldata[2], sqldata[3],"https://staticcrate.com/content/audio/Nanas-Brunch-Opening_Gerardo-Garcia-Jr.mp3", "https://staticcrate.com/content/audio/PeaceAndSerenity.mp3", sqldata[1])
 
     if request.method == 'POST':
 
