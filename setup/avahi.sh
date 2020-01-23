@@ -1,5 +1,7 @@
 cd /etc/avahi/services
 
+rm avahi.service
+
 echo "<?xml version='1.0' standalone='no'?>" >> avahi.service
 echo "<!DOCTYPE service-group SYSTEM 'avahi-service.dtd'>" >> avahi.service
 echo "<service-group>" >> avahi.service
