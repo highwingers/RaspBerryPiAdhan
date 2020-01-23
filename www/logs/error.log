@@ -225,3 +225,12 @@ AH00558: apache2: Could not reliably determine the server's fully qualified doma
 [Wed Jan 22 23:55:03.038577 2020] [wsgi:error] [pid 4326:tid 3038839840] (1, '', '', '', '')
 [Wed Jan 22 23:55:24.804756 2020] [wsgi:error] [pid 4326:tid 3038839840] (1, '', '', '', '')
 Failed to set time zone: Interactive authentication required.
+[Thu Jan 23 18:35:10.657310 2020] [mpm_event:notice] [pid 4324:tid 3069447904] AH00491: caught SIGTERM, shutting down
+[Thu Jan 23 18:37:17.195464 2020] [mpm_event:notice] [pid 6738:tid 3069685472] AH00489: Apache/2.4.38 (Raspbian) mod_wsgi/4.6.5 Python/3.7 configured -- resuming normal operations
+[Thu Jan 23 18:37:17.196449 2020] [core:notice] [pid 6738:tid 3069685472] AH00094: Command line: '/usr/sbin/apache2'
+[Thu Jan 23 18:37:22.084712 2020] [mpm_event:notice] [pid 6738:tid 3069685472] AH00493: SIGUSR1 received.  Doing graceful restart
+AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 127.0.1.1. Set the 'ServerName' directive globally to suppress this message
+[Thu Jan 23 18:37:23.797180 2020] [mpm_event:notice] [pid 6738:tid 3069685472] AH00489: Apache/2.4.38 (Raspbian) mod_wsgi/4.6.5 Python/3.7 configured -- resuming normal operations
+[Thu Jan 23 18:37:23.797463 2020] [core:notice] [pid 6738:tid 3069685472] AH00094: Command line: '/usr/sbin/apache2'
+[Thu Jan 23 18:37:35.155165 2020] [wsgi:error] [pid 6864:tid 3039138848] (1, '', '', '', '')
+[Thu Jan 23 18:37:39.318694 2020] [wsgi:error] [pid 6864:tid 3039138848] (1, '', '', '', '')

@@ -35,7 +35,13 @@ echo "$_conf"
 sudo /usr/sbin/a2dissite adhan.conf
 sudo /usr/sbin/a2ensite adhan.conf
 
-apachectl stop
 /etc/init.d/apache2 start
+
 /etc/init.d/apache2 reload
+
+service apache2 restart
+
+/etc/init.d/apache2 reload
+
+
 
