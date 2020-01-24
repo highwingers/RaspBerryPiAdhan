@@ -8,3 +8,6 @@ body {
 .green {
     color: green;
 }
+.field-label{
+    font-weight:bold;
+}

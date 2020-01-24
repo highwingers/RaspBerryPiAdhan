@@ -234,3 +234,33 @@ AH00558: apache2: Could not reliably determine the server's fully qualified doma
 [Thu Jan 23 18:37:23.797463 2020] [core:notice] [pid 6738:tid 3069685472] AH00094: Command line: '/usr/sbin/apache2'
 [Thu Jan 23 18:37:35.155165 2020] [wsgi:error] [pid 6864:tid 3039138848] (1, '', '', '', '')
 [Thu Jan 23 18:37:39.318694 2020] [wsgi:error] [pid 6864:tid 3039138848] (1, '', '', '', '')
+[Thu Jan 23 19:04:32.066022 2020] [mpm_event:notice] [pid 3053:tid 3070062304] AH00489: Apache/2.4.38 (Raspbian) mod_wsgi/4.6.5 Python/3.7 configured -- resuming normal operations
+[Thu Jan 23 19:04:32.096918 2020] [core:notice] [pid 3053:tid 3070062304] AH00094: Command line: '/usr/sbin/apache2'
+[Thu Jan 23 19:04:33.064392 2020] [mpm_event:notice] [pid 3053:tid 3070062304] AH00491: caught SIGTERM, shutting down
+[Thu Jan 23 19:04:33.965764 2020] [mpm_event:notice] [pid 3232:tid 3069791968] AH00489: Apache/2.4.38 (Raspbian) mod_wsgi/4.6.5 Python/3.7 configured -- resuming normal operations
+[Thu Jan 23 19:04:33.966384 2020] [core:notice] [pid 3232:tid 3069791968] AH00094: Command line: '/usr/sbin/apache2'
+[Thu Jan 23 19:04:35.581449 2020] [mpm_event:notice] [pid 3232:tid 3069791968] AH00493: SIGUSR1 received.  Doing graceful restart
+AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 127.0.1.1. Set the 'ServerName' directive globally to suppress this message
+[Thu Jan 23 19:04:38.751554 2020] [mpm_event:notice] [pid 3232:tid 3069791968] AH00489: Apache/2.4.38 (Raspbian) mod_wsgi/4.6.5 Python/3.7 configured -- resuming normal operations
+[Thu Jan 23 19:04:38.751934 2020] [core:notice] [pid 3232:tid 3069791968] AH00094: Command line: '/usr/sbin/apache2'
+[Thu Jan 23 19:04:48.358649 2020] [wsgi:error] [pid 3333:tid 3039183904] (1, '', '', '', '')
+[Thu Jan 23 19:04:52.729225 2020] [wsgi:error] [pid 3333:tid 3039183904] (1, '', '', '', '')
+[Thu Jan 23 19:17:31.798470 2020] [mpm_event:notice] [pid 489:tid 3069513440] AH00489: Apache/2.4.38 (Raspbian) mod_wsgi/4.6.5 Python/3.7 configured -- resuming normal operations
+[Thu Jan 23 19:17:31.844932 2020] [core:notice] [pid 489:tid 3069513440] AH00094: Command line: '/usr/sbin/apache2'
+[Thu Jan 23 19:23:35.527620 2020] [wsgi:error] [pid 490:tid 3038905376] (1, '', '', '', '')
+[Thu Jan 23 19:23:40.087947 2020] [wsgi:error] [pid 490:tid 3038905376] (1, '', '', '', '')
+[Thu Jan 23 19:27:44.265471 2020] [mpm_event:notice] [pid 493:tid 3069279968] AH00489: Apache/2.4.38 (Raspbian) mod_wsgi/4.6.5 Python/3.7 configured -- resuming normal operations
+[Thu Jan 23 19:27:44.276977 2020] [core:notice] [pid 493:tid 3069279968] AH00094: Command line: '/usr/sbin/apache2'
+[Thu Jan 23 19:47:09.055912 2020] [wsgi:error] [pid 494:tid 3038671904] (1, '', '', '', '')
+[Thu Jan 23 19:47:13.604321 2020] [wsgi:error] [pid 494:tid 3038671904] (1, '', '', '', '')
+[Thu Jan 23 20:07:30.039146 2020] [mpm_event:notice] [pid 493:tid 3069279968] AH00493: SIGUSR1 received.  Doing graceful restart
+AH00558: apache2: Could not reliably determine the server's fully qualified domain name, using 127.0.1.1. Set the 'ServerName' directive globally to suppress this message
+[Thu Jan 23 20:07:31.757389 2020] [mpm_event:notice] [pid 493:tid 3069279968] AH00489: Apache/2.4.38 (Raspbian) mod_wsgi/4.6.5 Python/3.7 configured -- resuming normal operations
+[Thu Jan 23 20:07:31.757667 2020] [core:notice] [pid 493:tid 3069279968] AH00094: Command line: '/usr/sbin/apache2'
+[Thu Jan 23 20:07:40.221767 2020] [wsgi:error] [pid 2193:tid 3038671904] (1, '', '', '', '')
+[Thu Jan 23 20:07:44.572491 2020] [wsgi:error] [pid 2193:tid 3038671904] (1, '', '', '', '')
+[Thu Jan 23 20:10:16.271494 2020] [wsgi:error] [pid 2300:tid 3030279200] (1, '', '', '', '')
+[Thu Jan 23 20:10:20.592195 2020] [wsgi:error] [pid 2300:tid 3030279200] (1, '', '', '', '')
+[Thu Jan 23 20:10:51.354921 2020] [wsgi:error] [pid 2322:tid 3030279200] (1, '', '', '', '')
+[Thu Jan 23 20:10:55.447004 2020] [wsgi:error] [pid 2322:tid 3030279200] (1, '', '', '', '')
+[Thu Jan 23 20:17:12.403722 2020] [mpm_event:notice] [pid 493:tid 3069279968] AH00491: caught SIGTERM, shutting down
