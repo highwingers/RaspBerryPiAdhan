@@ -1,5 +1,7 @@
 bash ./flaskserver.service
 
+sh ./dailycron.sh
+
 sh ./avahi.sh
 
 sh ./db.sh
@@ -13,6 +15,8 @@ pip3 uninstall zeroconf
 pip3 install zeroconf==0.24.3
 
 #sh ./apache.sh
+
+
 
 
 

@@ -11,7 +11,7 @@ from lib.Dal import Dal
 from lib.shellcmds import shellcmd
 from lib.PrayerPy import PrayerData
 from lib.GeoPy import GeoData
-import getpass
+from lib.schedule import schedule
 
 
 app = Flask(__name__)
@@ -31,7 +31,6 @@ def index():
     data= {
         'title': 'Smart Adhan Player'
         }
-    print(getpass.getuser())
     return render_template('index.html', **data)
 @app.route('/settings')
 def settings():
@@ -71,6 +70,10 @@ def configureDevice():
         result = Dal().UpdateSettings(1, speaker,_add.lat, _add.lng, _add.address, method, timezoneOffset, timezone)
         if result is not True:
              return result
+        #Below Call with Schedule Adhans for Today
+        scheduleAdhan = schedule().scheduleAdhans(1)
+        if not scheduleAdhan:
+            return "Could not schedule Adhans " + scheduleAdhan
 
         return "Success"
     except Exception as e:
@@ -82,6 +85,7 @@ def configureDevice():
 
 if __name__ == "__main__":
    app.run(host='0.0.0.0', port=80, debug=True)
+
 
    
    
