@@ -1,4 +1,4 @@
-# bash ./flaskserver.service
+bash ./flaskserver.service
 
 sh ./avahi.sh
 
@@ -12,7 +12,7 @@ pip3 install -r ../requirements.txt
 pip3 uninstall zeroconf
 pip3 install zeroconf==0.24.3
 
-sh ./apache.sh
+#sh ./apache.sh
 
 
 

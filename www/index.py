@@ -11,7 +11,7 @@ from lib.Dal import Dal
 from lib.shellcmds import shellcmd
 from lib.PrayerPy import PrayerData
 from lib.GeoPy import GeoData
-
+import getpass
 
 
 app = Flask(__name__)
@@ -31,6 +31,7 @@ def index():
     data= {
         'title': 'Smart Adhan Player'
         }
+    print(getpass.getuser())
     return render_template('index.html', **data)
 @app.route('/settings')
 def settings():

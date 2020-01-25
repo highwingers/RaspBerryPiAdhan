@@ -264,3 +264,9 @@ AH00558: apache2: Could not reliably determine the server's fully qualified doma
 [Thu Jan 23 20:10:51.354921 2020] [wsgi:error] [pid 2322:tid 3030279200] (1, '', '', '', '')
 [Thu Jan 23 20:10:55.447004 2020] [wsgi:error] [pid 2322:tid 3030279200] (1, '', '', '', '')
 [Thu Jan 23 20:17:12.403722 2020] [mpm_event:notice] [pid 493:tid 3069279968] AH00491: caught SIGTERM, shutting down
+[Sat Jan 25 16:01:06.206456 2020] [mpm_event:notice] [pid 488:tid 3069304544] AH00489: Apache/2.4.38 (Raspbian) mod_wsgi/4.6.5 Python/3.7 configured -- resuming normal operations
+[Sat Jan 25 16:01:06.219532 2020] [core:notice] [pid 488:tid 3069304544] AH00094: Command line: '/usr/sbin/apache2'
+Failed to set time zone: Interactive authentication required.
+Failed to set time zone: Interactive authentication required.
+Failed to set time zone: Interactive authentication required.
+[Sat Jan 25 16:15:44.324141 2020] [mpm_event:notice] [pid 488:tid 3069304544] AH00491: caught SIGTERM, shutting down
