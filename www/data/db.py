@@ -13,10 +13,11 @@ conn.execute('''CREATE TABLE SETTINGS
          LNT        FLOAT,
          METHOD TEXT,
          OFFSET INTEGER,
+         TIMEZONE TEXT,
          ADDRESS TEXT);''')
 
 
-conn.execute("INSERT INTO SETTINGS (ID, SPEAKER,LAT,LNT,ADDRESS, METHOD, OFFSET)  VALUES (NULL, '','','','','',0 )");
+conn.execute("INSERT INTO SETTINGS (ID, SPEAKER,LAT,LNT,ADDRESS, METHOD, OFFSET,TIMEZONE)  VALUES (NULL, '','','','','', 0,'' )");
 
 ##conn.execute("INSERT INTO COMPANY (ID,NAME,AGE,ADDRESS,SALARY) \
 ##      VALUES (1, 'Paul', 32, 'California', 20000.00 )");

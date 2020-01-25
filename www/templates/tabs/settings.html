@@ -4,7 +4,7 @@
 </div>
 
 
-<form>
+<form action="/api/configureDevice" method="post">
     <div class="field-label">
         <div>Enter Address: </div>
         <input type="text" class="form-control" id="address" name="address" placeholder="Enter Full Address">
@@ -96,13 +96,15 @@
             <option value="Pacific/Fiji">(GMT+12:00) Fiji, Kamchatka, Marshall Is.</option>
             <option value="Pacific/Tongatapu">(GMT+13:00) Nuku'alofa</option>
         </select>
-    </div>
+        <div id="offset"></div>
+    </span>
     <br />
     <div>
         <div class="field-label">Choose Speaker:</div>
         <select id="speaker" name="speaker" class="form-control">
-            <option>Loading Speakers...</option>
+            <option value="">Loading Speakers...</option>
         </select>
+        <span id="speaker_label"></span>
     </div>
     <br />
     <div>
@@ -128,24 +130,44 @@
 </form>
 
 
-    <script>
 
-    function scanSpeakers() {
-        var found = false;
-        var c = s.getSpeakers('/speakerlist', function result(d) {
-            if (!found) {
-                $('#speaker').empty();
-            }
-            found = true;
-            $('#speaker').append(`<option value="${d.name}">
-                                       ${d.name}
-                                  </option>`);
-        });
-    }
+<!-- Modal -->
+<div class="modal fade" id="infoModal" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">header</h4>
+            </div>
+            <div class="modal-body">
+                <p>Content</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+<script>
+
+
 
 
     $().ready(function () {
 
+        loadData()
+        scanSpeakers();
+        $("#save").click(function (e) {
+            s.updateSettings('/api/configureDevice', $("#address").val(), $("#speaker").val(), $("#method").val(), $("#timezone").val(), this.id, function () {
+                loadData();
+            });
+        })
 
         /** Test Player  **/
 
@@ -156,7 +178,7 @@
         //s.playMedia('/playMedia', selectedDisplay, media, function (d) { alert(d) })
         // End Test
 
-        scanSpeakers();
+
 
         $("#rescan").click(function () {
             $('#speaker').empty();
@@ -177,6 +199,34 @@
     })
 
 
+    function scanSpeakers() {
+        var found = false;
+        var c = s.getSpeakers('/speakerlist', function result(d) {
+            if (!found) {
+                $('#speaker').empty();
+            }
+            found = true;
+            $('#speaker').append(`<option value="${d.name}">
+                                       ${d.name}
+                                  </option>`);
+        });
+    }
 
-    </script>
+    function loadData() {
+        s.getSettings('/api/getData', 1, function (d) {
+            d = jQuery.parseJSON(d)
+            //console.log(d)
+            if (d[7].length > 0) {
+                $("#address").val(d[7])
+                $("#method").val(d[4]);
+                $("#timezone").val(d[6]);
+                $("#speaker_label").html('Currently Selected: ' + d[1]);
+                $("#offset").html('Offset: ' + d[5]);
+            }
+
+        })
+    }
+
+
+</script>
 

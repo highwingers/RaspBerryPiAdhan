@@ -9,6 +9,7 @@
 
     <link rel="stylesheet" href="../../static/bootstrap.min.css/">
     <script src="/static/bootstrap.min.js"></script>
+    <script src="/static/bootbox.js"></script>
 
     <script src="/static/common.js"></script>
 
@@ -43,11 +44,9 @@
             var url = $(this).attr("href"); // the remote url for content
             var target = $(this).data("target"); // the target pane
             var tab = $(this); // this tab
-            console.log(1)
             // ajax load from data-url
             $(target).load(url, function (result) {
                 tab.tab('show');
-                console.log(1)
             });
         });
 
