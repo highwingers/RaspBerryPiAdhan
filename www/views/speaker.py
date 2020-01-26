@@ -1,7 +1,8 @@
-﻿import sys
-sys.path.append('/home/pi/RaspBerryPiAdhan/www/lib')
+﻿import sys,os
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname( __file__ ), '..')))
+
 from flask import Flask, render_template,request,redirect,jsonify,Response,Blueprint,session
-from chromecast import chromecast
+from lib.chromecast import chromecast
 
 
 

@@ -1,8 +1,8 @@
 ﻿import datetime
-from lib.PrayerPy import PrayerData
-from lib.shellcmds import shellcmd
+from .PrayerPy import PrayerData
+from .shellcmds import shellcmd
 from crontab import CronTab
-from lib.Dal import Dal
+from .Dal import Dal
 
 class schedule:
 
@@ -30,7 +30,7 @@ class schedule:
 
         timezoneOffset =  shellcmd().getZoneOffset()
         pTimes = PrayerData(lat, lng, method, timezoneOffset).getTimes()
-        print(pTimes)
+        #print(pTimes)
         cron = CronTab(user='pi')
 
         for prayer in pTimes:

@@ -1,9 +1,9 @@
 ﻿#!/usr/bin/python3
 
-import sys
-sys.path.append('/home/pi/RaspBerryPiAdhan/www/lib')
+import os, sys
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname( __file__ ), '..')))
 from datetime import datetime
-from chromecast import chromecast
+from lib.chromecast import chromecast
 
 
 
