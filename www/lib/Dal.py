@@ -14,9 +14,13 @@ class Dal:
         self.conn.close()
 
     def GetSettings(self, id):
-        cursor = self.conn.execute("SELECT * from SETTINGS Where ID = '"+ str(id) +"'")
-        # get data by index d[0], d[1] etc etc
-        return cursor.fetchone()
+        try:
+            cursor = self.conn.execute("SELECT * from SETTINGS Where ID = '"+ str(id) +"'")
+            # get data by index d[0], d[1] etc etc
+            return cursor.fetchone()
+        except :
+            return None
+
 
     def UpdateSettings(self, ID, SPEAKER,LAT,LNT,ADDRESS, METHOD, OFFSET, TIMEZONE):
         try:

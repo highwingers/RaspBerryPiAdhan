@@ -1,232 +1,110 @@
-﻿
-<div class="row justify-content-center m-3 green">
-    <h3>Configure Your Device..</h3>
+﻿<div class="row justify-content-center m-3 green">
+    <h3>Settings</h3>
 </div>
-
-
-<form action="/api/configureDevice" method="post">
-    <div class="field-label">
-        <div>Enter Address: </div>
-        <input type="text" class="form-control" id="address" name="address" placeholder="Enter Full Address">
-    </div>
-    <br />
-    <div>
-        <div class="field-label">Select TimeZone: </div>
-        <select name="timezone" id="timezone" class="form-control">
-            <option value="Etc/GMT+12">(GMT-12:00) International Date Line West</option>
-            <option value="Pacific/Midway">(GMT-11:00) Midway Island, Samoa</option>
-            <option value="Pacific/Honolulu">(GMT-10:00) Hawaii</option>
-            <option value="US/Alaska">(GMT-09:00) Alaska</option>
-            <option value="America/Los_Angeles">(GMT-08:00) Pacific Time (US & Canada)</option>
-            <option value="America/Tijuana">(GMT-08:00) Tijuana, Baja California</option>
-            <option value="US/Arizona">(GMT-07:00) Arizona</option>
-            <option value="America/Chihuahua">(GMT-07:00) Chihuahua, La Paz, Mazatlan</option>
-            <option value="US/Mountain">(GMT-07:00) Mountain Time (US & Canada)</option>
-            <option value="America/Managua">(GMT-06:00) Central America</option>
-            <option value="US/Central">(GMT-06:00) Central Time (US & Canada)</option>
-            <option value="America/Mexico_City">(GMT-06:00) Guadalajara, Mexico City, Monterrey</option>
-            <option value="Canada/Saskatchewan">(GMT-06:00) Saskatchewan</option>
-            <option value="America/Bogota">(GMT-05:00) Bogota, Lima, Quito, Rio Branco</option>
-            <option value="US/Eastern" selected>(GMT-05:00) Eastern Time (US & Canada)</option>
-            <option value="US/East-Indiana">(GMT-05:00) Indiana (East)</option>
-            <option value="Canada/Atlantic">(GMT-04:00) Atlantic Time (Canada)</option>
-            <option value="America/Caracas">(GMT-04:00) Caracas, La Paz</option>
-            <option value="America/Manaus">(GMT-04:00) Manaus</option>
-            <option value="America/Santiago">(GMT-04:00) Santiago</option>
-            <option value="Canada/Newfoundland">(GMT-03:30) Newfoundland</option>
-            <option value="America/Sao_Paulo">(GMT-03:00) Brasilia</option>
-            <option value="America/Argentina/Buenos_Aires">(GMT-03:00) Buenos Aires, Georgetown</option>
-            <option value="America/Godthab">(GMT-03:00) Greenland</option>
-            <option value="America/Montevideo">(GMT-03:00) Montevideo</option>
-            <option value="America/Noronha">(GMT-02:00) Mid-Atlantic</option>
-            <option value="Atlantic/Cape_Verde">(GMT-01:00) Cape Verde Is.</option>
-            <option value="Atlantic/Azores">(GMT-01:00) Azores</option>
-            <option value="Africa/Casablanca">(GMT+00:00) Casablanca, Monrovia, Reykjavik</option>
-            <option value="Etc/Greenwich">(GMT+00:00) Greenwich Mean Time : Dublin, Edinburgh, Lisbon, London</option>
-            <option value="Europe/Amsterdam">(GMT+01:00) Amsterdam, Berlin, Bern, Rome, Stockholm, Vienna</option>
-            <option value="Europe/Belgrade">(GMT+01:00) Belgrade, Bratislava, Budapest, Ljubljana, Prague</option>
-            <option value="Europe/Brussels">(GMT+01:00) Brussels, Copenhagen, Madrid, Paris</option>
-            <option value="Europe/Sarajevo">(GMT+01:00) Sarajevo, Skopje, Warsaw, Zagreb</option>
-            <option value="Africa/Lagos">(GMT+01:00) West Central Africa</option>
-            <option value="Asia/Amman">(GMT+02:00) Amman</option>
-            <option value="Europe/Athens">(GMT+02:00) Athens, Bucharest, Istanbul</option>
-            <option value="Asia/Beirut">(GMT+02:00) Beirut</option>
-            <option value="Africa/Cairo">(GMT+02:00) Cairo</option>
-            <option value="Africa/Harare">(GMT+02:00) Harare, Pretoria</option>
-            <option value="Europe/Helsinki">(GMT+02:00) Helsinki, Kyiv, Riga, Sofia, Tallinn, Vilnius</option>
-            <option value="Asia/Jerusalem">(GMT+02:00) Jerusalem</option>
-            <option value="Europe/Minsk">(GMT+02:00) Minsk</option>
-            <option value="Africa/Windhoek">(GMT+02:00) Windhoek</option>
-            <option value="Asia/Kuwait">(GMT+03:00) Kuwait, Riyadh, Baghdad</option>
-            <option value="Europe/Moscow">(GMT+03:00) Moscow, St. Petersburg, Volgograd</option>
-            <option value="Africa/Nairobi">(GMT+03:00) Nairobi</option>
-            <option value="Asia/Tbilisi">(GMT+03:00) Tbilisi</option>
-            <option value="Asia/Tehran">(GMT+03:30) Tehran</option>
-            <option value="Asia/Muscat">(GMT+04:00) Abu Dhabi, Muscat</option>
-            <option value="Asia/Baku">(GMT+04:00) Baku</option>
-            <option value="Asia/Yerevan">(GMT+04:00) Yerevan</option>
-            <option value="Asia/Kabul">(GMT+04:30) Kabul</option>
-            <option value="Asia/Yekaterinburg">(GMT+05:00) Yekaterinburg</option>
-            <option value="Asia/Karachi">(GMT+05:00) Islamabad, Karachi, Tashkent</option>
-            <option value="Asia/Calcutta">(GMT+05:30) Chennai, Kolkata, Mumbai, New Delhi</option>
-            <option value="Asia/Calcutta">(GMT+05:30) Sri Jayawardenapura</option>
-            <option value="Asia/Katmandu">(GMT+05:45) Kathmandu</option>
-            <option value="Asia/Almaty">(GMT+06:00) Almaty, Novosibirsk</option>
-            <option value="Asia/Dhaka">(GMT+06:00) Astana, Dhaka</option>
-            <option value="Asia/Rangoon">(GMT+06:30) Yangon (Rangoon)</option>
-            <option value="Asia/Bangkok">(GMT+07:00) Bangkok, Hanoi, Jakarta</option>
-            <option value="Asia/Krasnoyarsk">(GMT+07:00) Krasnoyarsk</option>
-            <option value="Asia/Hong_Kong">(GMT+08:00) Beijing, Chongqing, Hong Kong, Urumqi</option>
-            <option value="Asia/Kuala_Lumpur">(GMT+08:00) Kuala Lumpur, Singapore</option>
-            <option value="Asia/Irkutsk">(GMT+08:00) Irkutsk, Ulaan Bataar</option>
-            <option value="Australia/Perth">(GMT+08:00) Perth</option>
-            <option value="Asia/Taipei">(GMT+08:00) Taipei</option>
-            <option value="Asia/Tokyo">(GMT+09:00) Osaka, Sapporo, Tokyo</option>
-            <option value="Asia/Seoul">(GMT+09:00) Seoul</option>
-            <option value="Asia/Yakutsk">(GMT+09:00) Yakutsk</option>
-            <option value="Australia/Adelaide">(GMT+09:30) Adelaide</option>
-            <option value="Australia/Darwin">(GMT+09:30) Darwin</option>
-            <option value="Australia/Brisbane">(GMT+10:00) Brisbane</option>
-            <option value="Australia/Canberra">(GMT+10:00) Canberra, Melbourne, Sydney</option>
-            <option value="Australia/Hobart">(GMT+10:00) Hobart</option>
-            <option value="Pacific/Guam">(GMT+10:00) Guam, Port Moresby</option>
-            <option value="Asia/Vladivostok">(GMT+10:00) Vladivostok</option>
-            <option value="Asia/Magadan">(GMT+11:00) Magadan, Solomon Is., New Caledonia</option>
-            <option value="Pacific/Auckland">(GMT+12:00) Auckland, Wellington</option>
-            <option value="Pacific/Fiji">(GMT+12:00) Fiji, Kamchatka, Marshall Is.</option>
-            <option value="Pacific/Tongatapu">(GMT+13:00) Nuku'alofa</option>
+<div>Fajr Adhan: </div>
+<div class="input-group">
+    <span class="input-group-btn">
+        <select name="fajr" id="fajr" class="form-control">
+            <option selected value="/static/media/fajr1.mp3">Adhan 1</option>
+            <option value="/static/media/fajr2.mp3">Adhan 2</option>
         </select>
-        <div id="offset"></div>
     </span>
-    <br />
-    <div>
-        <div class="field-label">Choose Speaker:</div>
-        <select id="speaker" name="speaker" class="form-control">
-            <option value="">Loading Speakers...</option>
-        </select>
-        <span id="speaker_label"></span>
-    </div>
-    <br />
-    <div>
-        <div class="field-label">Choose Method</div>
-        <select id="method" name="method" class="form-control">
-            <option value="ISNA">Islamic Society of North America</option>
-            <option value="MUSLIM_WORLD_LEAGUE">Muslim World League</option>
-            <option value="EGYPT">Egyptian General Authority of Survey</option>
-            <option value="MAKKAH">Umm al-Qura University, Makkah</option>
-            <option value="KARACHI">University of Islamic Sciences, Karachi</option>
-            <option value="TEHRAN">Institude of Geophysics, University of Tehran</option>
-            <option value="SHIA">Shia Ithna Ashari, Leva Research Institute, Qum</option>
-            <!--<option value="ASR_STANDARD">Shafi'i, Maliki, Ja'fari, and Hanbali</option>
-            <option value="ASR_HANAFI">Hanafi</option>-->
-        </select>
-    </div>
-    <br />
-    <button type="button" id="save" class="btn btn-primary btn-lg btn-block">Save Settings</button>
-
-
-
-
-</form>
-
-
-
-<!-- Modal -->
-<div class="modal fade" id="infoModal" role="dialog">
-    <div class="modal-dialog">
-
-        <!-- Modal content-->
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">header</h4>
-            </div>
-            <div class="modal-body">
-                <p>Content</p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            </div>
-        </div>
-
-    </div>
+    &nbsp; <button data-target="fajr" class="playBtn btn btn-primary btn-md">Play</button>
 </div>
+<div>Dhuhr Adhan: </div>
+<div class="input-group">
+    <span class="input-group-btn">
+        <select name="Dhuhr" id="Dhuhr" class="form-control">
+            <option value="/static/media/azan1.mp3">Adhan 1</option>
+            <option selected value="/static/media/azan2.mp3">Adhan 2</option>
+            <option value="/static/media/azan3.mp3">Adhan 3</option>
+            <option value="/static/media/azan4.mp3">Adhan 4</option>
+            <option value="/static/media/azan5.mp3">Adhan 5</option>
+            <option value="/static/media/azan6.mp3">Adhan 6</option>
+            <option value="/static/media/azan7.mp3">Adhan 7</option>
+            <option value="/static/media/azan8.mp3">Adhan 8</option>
+        </select>
+    </span>
+    &nbsp; <button data-target="Dhuhr" class="playBtn btn btn-primary btn-md">Play</button>
+</div>
+
+
+
+<div>Asr Adhan: </div>
+<div class="input-group">
+    <span class="input-group-btn">
+        <select name="Asr" id="Asr" class="form-control">
+            <option value="/static/media/azan1.mp3">Adhan 1</option>
+            <option value="/static/media/azan2.mp3">Adhan 2</option>
+            <option selected value="/static/media/azan3.mp3">Adhan 3</option>
+            <option value="/static/media/azan4.mp3">Adhan 4</option>
+            <option value="/static/media/azan5.mp3">Adhan 5</option>
+            <option value="/static/media/azan6.mp3">Adhan 6</option>
+            <option value="/static/media/azan7.mp3">Adhan 7</option>
+            <option value="/static/media/azan8.mp3">Adhan 8</option>
+        </select>
+    </span>
+    &nbsp; <button data-target="Asr" class="playBtn btn btn-primary btn-md">Play</button>
+</div>
+
+<div>Magrib Adhan: </div>
+<div class="input-group">
+    <span class="input-group-btn">
+        <select name="Magrib" id="Magrib" class="form-control">
+            <option value="/static/media/azan1.mp3">Adhan 1</option>
+            <option selected value="/static/media/azan2.mp3">Adhan 2</option>
+            <option value="/static/media/azan3.mp3">Adhan 3</option>
+            <option selected value="/static/media/azan4.mp3">Adhan 4</option>
+            <option value="/static/media/azan5.mp3">Adhan 5</option>
+            <option value="/static/media/azan6.mp3">Adhan 6</option>
+            <option value="/static/media/azan7.mp3">Adhan 7</option>
+            <option value="/static/media/azan8.mp3">Adhan 8</option>
+        </select>
+    </span>
+    &nbsp; <button data-target="Magrib" class="playBtn btn btn-primary btn-md">Play</button>
+</div>
+
+<div>Isha Adhan: </div>
+<div class="input-group">
+    <span class="input-group-btn">
+        <select name="Isha" id="Isha" class="form-control">
+            <option value="/static/media/azan1.mp3">Adhan 1</option>
+            <option selected value="/static/media/azan2.mp3">Adhan 2</option>
+            <option value="/static/media/azan3.mp3">Adhan 3</option>
+            <option value="/static/media/azan4.mp3">Adhan 4</option>
+            <option selected value="/static/media/azan5.mp3">Adhan 5</option>
+            <option value="/static/media/azan6.mp3">Adhan 6</option>
+            <option value="/static/media/azan7.mp3">Adhan 7</option>
+            <option value="/static/media/azan8.mp3">Adhan 8</option>
+        </select>
+    </span>
+    &nbsp; <button data-target="Isha" class="playBtn btn btn-primary btn-md">Play</button>
+</div>
+
+
 
 
 
 <script>
 
-
-
-
     $().ready(function () {
+       
+        s.dbConfigCheck('{{settings[1]}}')
 
-        loadData()
-        scanSpeakers();
-        $("#save").click(function (e) {
-            s.updateSettings('/api/configureDevice', $("#address").val(), $("#speaker").val(), $("#method").val(), $("#timezone").val(), this.id, function () {
-                loadData();
-            });
-        })
-
-        /** Test Player  **/
-
-        //var selectedDisplay = "Office Ustairs speaker"
-        //var media = '/static/media/demo.mp3'
-        ////media = 'http://praytimes.org/audio/adhan/Shia/Rowhani-Nejad.mp3'
-        ////media = 'https://www.youtube.com/watch?v=nwq249Me9Yk'
-        //s.playMedia('/playMedia', selectedDisplay, media, function (d) { alert(d) })
-        // End Test
-
-
-
-        $("#rescan").click(function () {
-            $('#speaker').empty();
-            $('#loading').show();
-            $('#controls').hide();
-
-            scanSpeakers();
-        });
-
-        $("#testMedia").click(function () {
-            $('#testMediaSpinner').show();
-            var selectedDisplay = $("#speaker option:selected").val()
-            var media = 'http://praytimes.org/audio/adhan/Shia/Rowhani-Nejad.mp3'
-            s.playMedia('/playMedia', selectedDisplay, media, function (d) {
-                $('#testMediaSpinner').hide();
+        $(".playBtn").click(function () {
+            targetid = $(this).attr("data-target")
+            targetOptionValue = $('#' + targetid).val();
+            alert(targetOptionValue)
+            var selectedDisplay = '{{settings[1]}}'
+            var media = targetOptionValue
+                s.playMedia('/playMedia', selectedDisplay, media, function (d) {
+                    alert("Done Playing")
+                })
             })
         })
+
+
+
     })
 
-
-    function scanSpeakers() {
-        var found = false;
-        var c = s.getSpeakers('/speakerlist', function result(d) {
-            if (!found) {
-                $('#speaker').empty();
-            }
-            found = true;
-            $('#speaker').append(`<option value="${d.name}">
-                                       ${d.name}
-                                  </option>`);
-        });
-    }
-
-    function loadData() {
-        s.getSettings('/api/getData', 1, function (d) {
-            d = jQuery.parseJSON(d)
-            //console.log(d)
-            if (d[7].length > 0) {
-                $("#address").val(d[7])
-                $("#method").val(d[4]);
-                $("#timezone").val(d[6]);
-                $("#speaker_label").html('Currently Selected: ' + d[1]);
-                $("#offset").html('Offset: ' + d[5]);
-            }
-
-        })
-    }
-
-
 </script>
-

@@ -12,7 +12,7 @@ from lib.shellcmds import shellcmd
 from lib.PrayerPy import PrayerData
 from lib.GeoPy import GeoData
 from lib.schedule import schedule
-
+import http
 
 app = Flask(__name__)
 
@@ -25,6 +25,13 @@ app.register_blueprint(speaker_blueprint)
 #app.register_blueprint(adhanvoice_blueprint)
 #app.register_blueprint(index_blueprint)
 
+def getConfigSettings(id):
+        _settings = Dal().GetSettings(id)
+        if _settings is None:
+            return '0'
+        else:
+            return _settings
+
 
 @app.route("/",methods=['GET', 'POST'])
 def index():
@@ -32,20 +39,21 @@ def index():
         'title': 'Smart Adhan Player'
         }
     return render_template('index.html', **data)
+@app.route('/config')
+def config():
+    return render_template('tabs/config.html')
 @app.route('/settings')
 def settings():
-    return render_template('tabs/settings.html')
+    _settings = getConfigSettings(1) 
+    data= {
+    'settings': _settings
+    }
+    return render_template('tabs/settings.html', **data)
 
 @app.route('/api/getData')
 def getSettings():
-    try:
         id = request.args.get("id")
-        data = Dal().GetSettings(id)
-        return jsonify(data)
-    except :
-        return jsonify(0)
-
-    
+        return jsonify(getConfigSettings(1)  )
 
 @app.route('/api/configureDevice',methods=['POST'])
 def configureDevice():
@@ -84,7 +92,7 @@ def configureDevice():
 
 
 if __name__ == "__main__":
-   app.run(host='0.0.0.0', port=80, debug=True)
+    app.run(host='0.0.0.0', port=80, debug=True)
 
 
    

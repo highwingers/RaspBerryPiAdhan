@@ -121,6 +121,9 @@ var s = (function () {
                 data: { 'id': id },
                 success: function (d) {
                     result(d);
+                },
+                error: function (jqXHR, exception) {
+                    //alert(jqXHR.status)
                 }
             });
         },
@@ -136,9 +139,19 @@ var s = (function () {
                 });
 
             });
+        },
+        dbConfigCheck: function (dbVal) {
+     
+            if ( dbVal=='') {
 
-
-
+                bootbox.alert({
+                    size: "small",
+                    title: 'No Speaker Selected',
+                    message: 'Please select a speaker from configuration tab.',
+                    callback: function () { $('#home-tab').tab('show'); }
+                });
+                
+            }
         }
 
     }
