@@ -1,3 +1,5 @@
+rm /etc/systemd/system/flask_server1.service
+
 dir=${PWD%/*}
 
 echo "
