@@ -6,4 +6,4 @@ from lib.schedule import schedule
 
 #print(os.path.abspath(os.path.join(os.path.dirname( __file__ ), '..')))
 
-scheduleAdhan = schedule().scheduleAdhans(1)
+scheduleAdhan = schedule().scheduleAdhans(1,os.path.abspath('player.py'))

@@ -7,7 +7,7 @@ from .Dal import Dal
 class schedule:
 
 
-    def scheduleAdhans(self, id):
+    def scheduleAdhans(self, id, playerPath):
         try:
             data = Dal().GetSettings(id)
             speaker = data[1]
@@ -18,14 +18,14 @@ class schedule:
 
 
             if len(speaker) > 0 :
-                self.__adhan(lat, lng, method,  speaker )
+                self.__adhan(lat, lng, method,  speaker, playerPath )
         
             return True
         except Exception as e:
             return str(e)
 
 
-    def __adhan(self, lat, lng, method, mediaPlayer ):
+    def __adhan(self, lat, lng, method, mediaPlayer, playerPath ):
 
         timezoneOffset =  shellcmd().getZoneOffset()
         pTimes = PrayerData(lat, lng, method, timezoneOffset).getTimes()
@@ -70,7 +70,7 @@ class schedule:
                 if _prayDb["ISHA"]["status"]==0:
                     continue
 
-            job = cron.new(command='/usr/bin/python3 /home/pi/RaspBerryPiAdhan/www/commands/player.py "'+ media_url +'" "'+ mediaPlayer +'"  >> /home/pi/RaspBerryPiAdhan/www/commands/logs/myjob.log 2>&1 ', comment=job_id)
+            job = cron.new(command='/usr/bin/python3 '+ playerPath +' "'+ media_url +'" "'+ mediaPlayer +'"', comment=job_id)
             job.minute.on(pTime.minute)
             job.hour.on(pTime.hour)
             job.month.on(pTime.month)

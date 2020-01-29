@@ -1,6 +1,7 @@
 from __future__ import print_function
 from flask import Flask, render_template,request,redirect,jsonify,Response,Blueprint,session
 import http
+import os, sys
 import time
 import datetime
 import subprocess
@@ -68,7 +69,7 @@ def updateAdhanSettings():
     try:
         _settings = json.loads(request.form["AdhanSettings"])
         _update = Dal().updateAdhanSettings(_settings)
-        schedule().scheduleAdhans(1)
+        schedule().scheduleAdhans(1,os.path.abspath('commands/player.py'))
         return jsonify(1)
     except Exception as e :
         return 'Error: ' + print(str(e))
@@ -98,7 +99,7 @@ def configureDevice():
         if result is not True:
              return result
         #Below Call with Schedule Adhans for Today
-        scheduleAdhan = schedule().scheduleAdhans(1)
+        scheduleAdhan = schedule().scheduleAdhans(1,os.path.abspath('commands/player.py'))
         if not scheduleAdhan:
             return "Could not schedule Adhans " + scheduleAdhan
 
