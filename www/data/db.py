@@ -3,8 +3,8 @@
 import sqlite3, os
 
 dir = os.path.abspath(os.path.join('', '..'))
-
-conn = sqlite3.connect(dir + '/data/adhan.db')
+print(dir)
+conn = sqlite3.connect(dir + '/www/data/adhan.db')
 #print "Opened database successfully";
 
 
