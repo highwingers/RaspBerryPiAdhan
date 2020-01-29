@@ -1,9 +1,9 @@
-﻿import sqlite3
+﻿import sqlite3,os
 
 class Dal:
 
-    connectionString = "/home/pi/RaspBerryPiAdhan/www/data/adhan.db"
-
+    connectionString =  os.path.abspath(os.path.join('', '..')) + "/www/data/adhan.db"
+    print(connectionString)
     def __init__(self):
         self.conn = sqlite3.connect(Dal.connectionString)
 

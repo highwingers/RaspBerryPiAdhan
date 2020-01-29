@@ -1,8 +1,10 @@
 #!/usr/bin/python3
 
-import sqlite3
+import sqlite3, os
 
-conn = sqlite3.connect('/home/pi/RaspBerryPiAdhan/www/data/adhan.db')
+dir = os.path.abspath(os.path.join('', '..'))
+
+conn = sqlite3.connect(dir + '/data/adhan.db')
 #print "Opened database successfully";
 
 

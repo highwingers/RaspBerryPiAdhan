@@ -1,3 +1,4 @@
+
 bash ./flaskserver.service
 
 sh ./dailycron.sh
@@ -16,6 +17,8 @@ pip3 install zeroconf==0.24.3
 
 #sh ./apache.sh
 
+
+python3 ${PWD%/*}/www/index.py
 
 
 
