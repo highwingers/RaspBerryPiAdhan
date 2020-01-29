@@ -1,8 +1,10 @@
 from __future__ import print_function
 from flask import Flask, render_template,request,redirect,jsonify,Response,Blueprint,session
+import http
 import time
 import datetime
 import subprocess
+import json
 #from views.index import index_blueprint
 #from views.address import address_blueprint
 from views.speaker import speaker_blueprint
@@ -12,7 +14,7 @@ from lib.shellcmds import shellcmd
 from lib.PrayerPy import PrayerData
 from lib.GeoPy import GeoData
 from lib.schedule import schedule
-import http
+
 
 app = Flask(__name__)
 
@@ -54,6 +56,23 @@ def settings():
 def getSettings():
         id = request.args.get("id")
         return jsonify(getConfigSettings(1)  )
+
+@app.route('/api/getAdhanSettings')
+def getAdhanSettings():
+        id = request.args.get("id")
+        _data = Dal().GetAdhanSettings(id)
+        return jsonify( _data )
+
+@app.route('/api/updateAdhanSettings',methods=['POST'])
+def updateAdhanSettings():
+    try:
+        _settings = json.loads(request.form["AdhanSettings"])
+        _update = Dal().updateAdhanSettings(_settings)
+        schedule().scheduleAdhans(1)
+        return jsonify(1)
+    except Exception as e :
+        return 'Error: ' + print(str(e))
+
 
 @app.route('/api/configureDevice',methods=['POST'])
 def configureDevice():

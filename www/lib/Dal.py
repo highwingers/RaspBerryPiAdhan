@@ -21,6 +21,29 @@ class Dal:
         except :
             return None
 
+    def GetAdhanSettings(self, id):
+        try:
+            cursor = self.conn.execute("SELECT * from ADHANSETTINGS Where ConfigID = '"+ str(id) +"'")
+            # get data by index d[0], d[1] etc etc
+            return cursor.fetchall()
+        except :
+            return None
+
+    def updateAdhanSettings(self,lst):
+        for adhan in lst:
+            AdhanMedia = adhan["AdhanMedia"]
+            AdhanID= adhan["AdhanID"]
+            AdhanStatus= adhan["AdhanStatus"]
+            sql = "UPDATE ADHANSETTINGS Set AdhanStatus='"+ str(AdhanStatus) +"', AdhanMedia='"+ AdhanMedia +"' where AdhanID='"+ str(AdhanID) +"'"
+            self.conn.execute(sql)
+            self.conn.commit()
+            
+        self.conn.close()
+        return True
+
+
+
+
 
     def UpdateSettings(self, ID, SPEAKER,LAT,LNT,ADDRESS, METHOD, OFFSET, TIMEZONE):
         try:

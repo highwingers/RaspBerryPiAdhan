@@ -201,7 +201,7 @@
 
     function scanSpeakers() {
         var found = false;
-        var c = s.getSpeakers('/speakerlist', function result(d) {
+        var c = s.getSpeakers('/speaker/api/speakerlist', function result(d) {
             if (!found) {
                 $('#speaker').empty();
             }

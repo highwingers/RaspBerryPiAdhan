@@ -1,110 +1,173 @@
 ﻿<div class="row justify-content-center m-3 green">
     <h3>Settings</h3>
 </div>
-<div>Fajr Adhan: </div>
-<div class="input-group">
-    <span class="input-group-btn">
-        <select name="fajr" id="fajr" class="form-control">
-            <option selected value="/static/media/fajr1.mp3">Adhan 1</option>
-            <option value="/static/media/fajr2.mp3">Adhan 2</option>
-        </select>
-    </span>
-    &nbsp; <button data-target="fajr" class="playBtn btn btn-primary btn-md">Play</button>
+
+<div class="container">
+
+    <div class="row justify-content-center align-items-center">
+        <div class="col-xs-6">
+            <div class="custom-control custom-checkbox text-center">
+                <input type="checkbox" class="custom-control-input" id="chk_FAJR">
+                <label class="custom-control-label" for="chk_FAJR">Fajr Adhan</label>
+            </div>
+            <div class="input-group">
+                <span class="input-group-btn">
+                    <select name="fajr" id="FAJR" class="form-control">
+                        <option selected value="/static/media/fajr1.mp3">Adhan 1</option>
+                        <option value="/static/media/fajr2.mp3">Adhan 2</option>
+                    </select>
+                </span>
+                &nbsp; <button data-target="FAJR" class="playBtn btn btn-primary btn-md">Play</button>&nbsp;
+            </div>
+        </div>
+        <div class="col-xs-6">
+            <div class="custom-control custom-checkbox text-center">
+                <input type="checkbox" class="custom-control-input" id="chk_DUHUR" name="chduhur">
+                <label class="custom-control-label" for="chk_DUHUR">Duhur Adhan</label>
+            </div>
+            <div class="input-group">
+                <span class="input-group-btn">
+                    <select name="Dhuhr" id="DUHUR" class="form-control">
+                        <option value="/static/media/azan1.mp3">Adhan 1</option>
+                        <option value="/static/media/azan2.mp3">Adhan 2</option>
+                        <option value="/static/media/azan3.mp3">Adhan 3</option>
+                        <option value="/static/media/azan4.mp3">Adhan 4</option>
+                        <option value="/static/media/azan5.mp3">Adhan 5</option>
+                        <option value="/static/media/azan6.mp3">Adhan 6</option>
+                        <option value="/static/media/azan7.mp3">Adhan 7</option>
+                        <option value="/static/media/azan8.mp3">Adhan 8</option>
+                    </select>
+                </span>
+                &nbsp; <button data-target="DUHUR" class="playBtn btn btn-primary btn-md">Play</button>&nbsp;
+            </div>
+        </div>
+
+        <div class="col-xs-6">
+            <div class="custom-control custom-checkbox text-center">
+                <input type="checkbox" class="custom-control-input" id="chk_ASR" name="chkasr">
+                <label class="custom-control-label" for="chk_ASR">Asr Adhan</label>
+            </div>
+            <div class="input-group">
+                <span class="input-group-btn">
+                    <select name="Asr" id="ASR" class="form-control">
+                        <option value="/static/media/azan1.mp3">Adhan 1</option>
+                        <option value="/static/media/azan2.mp3">Adhan 2</option>
+                        <option value="/static/media/azan3.mp3">Adhan 3</option>
+                        <option value="/static/media/azan4.mp3">Adhan 4</option>
+                        <option value="/static/media/azan5.mp3">Adhan 5</option>
+                        <option value="/static/media/azan6.mp3">Adhan 6</option>
+                        <option value="/static/media/azan7.mp3">Adhan 7</option>
+                        <option value="/static/media/azan8.mp3">Adhan 8</option>
+                    </select>
+                </span>
+                &nbsp; <button data-target="ASR" class="playBtn btn btn-primary btn-md">Play</button>&nbsp;
+            </div>
+        </div>
+        <div class="col-xs-6">
+            <div class="custom-control custom-checkbox text-center">
+                <input type="checkbox" class="custom-control-input" id="chk_MAGRIB" name="chmagrib">
+                <label class="custom-control-label" for="chk_MAGRIB">Magrib Adhan</label>
+            </div>
+            <div class="input-group">
+                <span class="input-group-btn">
+                    <select name="Magrib" id="MAGRIB" class="form-control">
+                        <option value="/static/media/azan1.mp3">Adhan 1</option>
+                        <option selected value="/static/media/azan2.mp3">Adhan 2</option>
+                        <option value="/static/media/azan3.mp3">Adhan 3</option>
+                        <option value="/static/media/azan4.mp3">Adhan 4</option>
+                        <option value="/static/media/azan5.mp3">Adhan 5</option>
+                        <option value="/static/media/azan6.mp3">Adhan 6</option>
+                        <option value="/static/media/azan7.mp3">Adhan 7</option>
+                        <option value="/static/media/azan8.mp3">Adhan 8</option>
+                    </select>
+                </span>
+                &nbsp; <button data-target="MAGRIB" class="playBtn btn btn-primary btn-md">Play</button>
+            </div>
+        </div>
+        <div class="col-xs-6">
+            <div class="custom-control custom-checkbox text-center">
+                <input type="checkbox" class="custom-control-input" id="chk_ISHA" name="chkIsha">
+                <label class="custom-control-label" for="chk_ISHA">Isha Adhan</label>
+            </div>
+            <div class="input-group">
+                <span class="input-group-btn">
+                    <select name="Isha" id="ISHA" class="form-control">
+                        <option value="/static/media/azan1.mp3">Adhan 1</option>
+                        <option value="/static/media/azan2.mp3">Adhan 2</option>
+                        <option value="/static/media/azan3.mp3">Adhan 3</option>
+                        <option value="/static/media/azan4.mp3">Adhan 4</option>
+                        <option value="/static/media/azan5.mp3">Adhan 5</option>
+                        <option value="/static/media/azan6.mp3">Adhan 6</option>
+                        <option value="/static/media/azan7.mp3">Adhan 7</option>
+                        <option value="/static/media/azan8.mp3">Adhan 8</option>
+                    </select>
+                </span>
+                &nbsp; <button data-target="ISHA" class="playBtn btn btn-primary btn-md">Play</button>
+            </div>
+        </div>
+    </div>
 </div>
-<div>Dhuhr Adhan: </div>
-<div class="input-group">
-    <span class="input-group-btn">
-        <select name="Dhuhr" id="Dhuhr" class="form-control">
-            <option value="/static/media/azan1.mp3">Adhan 1</option>
-            <option selected value="/static/media/azan2.mp3">Adhan 2</option>
-            <option value="/static/media/azan3.mp3">Adhan 3</option>
-            <option value="/static/media/azan4.mp3">Adhan 4</option>
-            <option value="/static/media/azan5.mp3">Adhan 5</option>
-            <option value="/static/media/azan6.mp3">Adhan 6</option>
-            <option value="/static/media/azan7.mp3">Adhan 7</option>
-            <option value="/static/media/azan8.mp3">Adhan 8</option>
-        </select>
-    </span>
-    &nbsp; <button data-target="Dhuhr" class="playBtn btn btn-primary btn-md">Play</button>
+<div class="row p-2">
+    <button id="btnSaveSettings" class="btn btn-success btn-lg btn-block">Save Adhan Settings</button>
 </div>
 
 
-
-<div>Asr Adhan: </div>
-<div class="input-group">
-    <span class="input-group-btn">
-        <select name="Asr" id="Asr" class="form-control">
-            <option value="/static/media/azan1.mp3">Adhan 1</option>
-            <option value="/static/media/azan2.mp3">Adhan 2</option>
-            <option selected value="/static/media/azan3.mp3">Adhan 3</option>
-            <option value="/static/media/azan4.mp3">Adhan 4</option>
-            <option value="/static/media/azan5.mp3">Adhan 5</option>
-            <option value="/static/media/azan6.mp3">Adhan 6</option>
-            <option value="/static/media/azan7.mp3">Adhan 7</option>
-            <option value="/static/media/azan8.mp3">Adhan 8</option>
-        </select>
-    </span>
-    &nbsp; <button data-target="Asr" class="playBtn btn btn-primary btn-md">Play</button>
-</div>
-
-<div>Magrib Adhan: </div>
-<div class="input-group">
-    <span class="input-group-btn">
-        <select name="Magrib" id="Magrib" class="form-control">
-            <option value="/static/media/azan1.mp3">Adhan 1</option>
-            <option selected value="/static/media/azan2.mp3">Adhan 2</option>
-            <option value="/static/media/azan3.mp3">Adhan 3</option>
-            <option selected value="/static/media/azan4.mp3">Adhan 4</option>
-            <option value="/static/media/azan5.mp3">Adhan 5</option>
-            <option value="/static/media/azan6.mp3">Adhan 6</option>
-            <option value="/static/media/azan7.mp3">Adhan 7</option>
-            <option value="/static/media/azan8.mp3">Adhan 8</option>
-        </select>
-    </span>
-    &nbsp; <button data-target="Magrib" class="playBtn btn btn-primary btn-md">Play</button>
-</div>
-
-<div>Isha Adhan: </div>
-<div class="input-group">
-    <span class="input-group-btn">
-        <select name="Isha" id="Isha" class="form-control">
-            <option value="/static/media/azan1.mp3">Adhan 1</option>
-            <option selected value="/static/media/azan2.mp3">Adhan 2</option>
-            <option value="/static/media/azan3.mp3">Adhan 3</option>
-            <option value="/static/media/azan4.mp3">Adhan 4</option>
-            <option selected value="/static/media/azan5.mp3">Adhan 5</option>
-            <option value="/static/media/azan6.mp3">Adhan 6</option>
-            <option value="/static/media/azan7.mp3">Adhan 7</option>
-            <option value="/static/media/azan8.mp3">Adhan 8</option>
-        </select>
-    </span>
-    &nbsp; <button data-target="Isha" class="playBtn btn btn-primary btn-md">Play</button>
-</div>
-
-
+<hr />
 
 
 
 <script>
 
     $().ready(function () {
-       
+
         s.dbConfigCheck('{{settings[1]}}')
+        loadData()
 
         $(".playBtn").click(function () {
+            btn = $(this);
+            btn.text('Loading..');
             targetid = $(this).attr("data-target")
             targetOptionValue = $('#' + targetid).val();
-            alert(targetOptionValue)
             var selectedDisplay = '{{settings[1]}}'
             var media = targetOptionValue
-                s.playMedia('/playMedia', selectedDisplay, media, function (d) {
-                    alert("Done Playing")
+            s.playMedia('/speaker/api/playMedia', selectedDisplay, media, function (d) {
+                btn.text('Play');
                 })
             })
-        })
-
-
-
     })
+
+    $("#btnSaveSettings").click(function () {
+        var settings = []
+         settings.push({ 'AdhanID': 1, 'AdhanMedia': $("#FAJR").val(), 'AdhanStatus': $("#chk_FAJR").is(':checked')?1:0 })
+         settings.push({ 'AdhanID': 2, 'AdhanMedia': $("#DUHUR").val(), 'AdhanStatus': $("#chk_DUHUR").is(':checked')?1:0 })
+         settings.push({ 'AdhanID': 3, 'AdhanMedia': $("#ASR").val(), 'AdhanStatus': $("#chk_ASR").is(':checked')?1:0 })
+         settings.push({ 'AdhanID': 4, 'AdhanMedia': $("#MAGRIB").val(), 'AdhanStatus': $("#chk_MAGRIB").is(':checked')?1:0 })
+         settings.push({ 'AdhanID': 5, 'AdhanMedia': $("#ISHA").val(), 'AdhanStatus': $("#chk_ISHA").is(':checked')?1:0 })
+
+        s.updateAdhanSettings('/api/updateAdhanSettings',settings)
+    })
+
+    function loadData() {
+        s.getSettings('/api/getAdhanSettings', 1, function (d) {
+            if (d == 'False') {
+                return;
+            }
+            d = jQuery.parseJSON(d)
+            for (var i = 0; i < d.length; i++) {
+                _adhan = d[i][3].toUpperCase()
+                $('#' + _adhan).val(d[i][4])
+                $('#chk_' + _adhan).prop('checked',d[i][5])
+            }
+
+            })
+
+        }
+
+
+
+
+
+
+
 
 </script>

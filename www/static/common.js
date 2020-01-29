@@ -40,6 +40,7 @@ var s = (function () {
     }
 
     return {
+
         getSpeakers: function getChromeCastSpeakers(url, result) {
             $.getJSON(url, function (data) {
 
@@ -112,6 +113,30 @@ var s = (function () {
                 }
             });
 
+        },
+        updateAdhanSettings: function(url,s) {
+
+            $.ajax({
+                url: url,
+                //dataType: 'application/json; charset=utf-8',
+                method: 'POST',
+                data: { 'AdhanSettings': JSON.stringify(s) },
+                success: function (d) {
+                    bootbox.alert({
+                    size: "small",
+                    title: 'Adhan Settings',
+                    message: 'Settings Updated.',
+                    callback: function () {  }
+                        });
+                },
+                error: function (request, textStatus, errorThrown) {
+                     alert(textStatus);
+                },
+                complete: function (request, textStatus) { //for additional info
+                    //alert(request.responseText);
+                    //alert(textStatus);
+                }
+            });
         },
         getSettings: function (url, id, result) {
             $.ajax({

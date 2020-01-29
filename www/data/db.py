@@ -16,22 +16,24 @@ conn.execute('''CREATE TABLE SETTINGS
          TIMEZONE TEXT,
          ADDRESS TEXT);''')
 
+conn.execute('''CREATE TABLE ADHANSETTINGS
+         (ID INTEGER PRIMARY KEY ,
+         ConfigID INTEGER NOT NULL,
+         AdhanID           INTEGER    NOT NULL,
+         AdhanName            TEXT     NOT NULL,
+         AdhanMedia TEXT     NOT NULL,
+         AdhanStatus        INTEGER
+         );''')
+
 
 conn.execute("INSERT INTO SETTINGS (ID, SPEAKER,LAT,LNT,ADDRESS, METHOD, OFFSET,TIMEZONE)  VALUES (NULL, '','','','','', 0,'' )");
 
-##conn.execute("INSERT INTO COMPANY (ID,NAME,AGE,ADDRESS,SALARY) \
-##      VALUES (1, 'Paul', 32, 'California', 20000.00 )");
-##
-##conn.execute("INSERT INTO COMPANY (ID,NAME,AGE,ADDRESS,SALARY) \
-##      VALUES (2, 'Allen', 25, 'Texas', 15000.00 )");
-##
-##conn.execute("INSERT INTO COMPANY (ID,NAME,AGE,ADDRESS,SALARY) \
-##      VALUES (3, 'Teddy', 23, 'Norway', 20000.00 )");
-##
-##conn.execute("INSERT INTO COMPANY (ID,NAME,AGE,ADDRESS,SALARY) \
-##      VALUES (4, 'Mark', 25, 'Rich-Mond ', 65000.00 )");
 
-
+conn.execute("INSERT INTO ADHANSETTINGS (ID, ConfigID,AdhanID,AdhanName,AdhanMedia, AdhanStatus)  VALUES (NULL,1,1,'FAJR','/static/media/fajr1.mp3',1)");
+conn.execute("INSERT INTO ADHANSETTINGS (ID, ConfigID,AdhanID,AdhanName,AdhanMedia, AdhanStatus)  VALUES (NULL,1,2,'DUHUR','/static/media/azan2.mp3',1)");
+conn.execute("INSERT INTO ADHANSETTINGS (ID, ConfigID,AdhanID,AdhanName,AdhanMedia, AdhanStatus)  VALUES (NULL,1,3,'ASR','/static/media/azan3.mp3',1)");
+conn.execute("INSERT INTO ADHANSETTINGS (ID, ConfigID,AdhanID,AdhanName,AdhanMedia, AdhanStatus)  VALUES (NULL,1,4,'MAGRIB','/static/media/azan4.mp3',1)");
+conn.execute("INSERT INTO ADHANSETTINGS (ID, ConfigID,AdhanID,AdhanName,AdhanMedia, AdhanStatus)  VALUES (NULL,1,5,'ISHA','/static/media/azan5.mp3',1)");
 
 conn.commit()
 print ("Records created successfully")
