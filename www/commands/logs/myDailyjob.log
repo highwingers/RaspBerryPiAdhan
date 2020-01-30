@@ -1,1 +1,2 @@
 {'FAJR': {'prayer': 'FAJR', 'status': 1, 'media': '/static/media/fajr2.mp3'}, 'DUHUR': {'prayer': 'DUHUR', 'status': 1, 'media': '/static/media/azan2.mp3'}, 'ASR': {'prayer': 'ASR', 'status': 1, 'media': '/static/media/azan3.mp3'}, 'MAGRIB': {'prayer': 'MAGRIB', 'status': 1, 'media': '/static/media/azan4.mp3'}, 'ISHA': {'prayer': 'ISHA', 'status': 1, 'media': '/static/media/azan5.mp3'}}
+//www/data/adhan.db
