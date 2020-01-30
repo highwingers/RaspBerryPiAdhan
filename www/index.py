@@ -6,6 +6,7 @@ import time
 import datetime
 import subprocess
 import json
+from datetime import datetime
 #from views.index import index_blueprint
 #from views.address import address_blueprint
 from views.speaker import speaker_blueprint
@@ -100,6 +101,7 @@ def configureDevice():
              return result
         #Below Call with Schedule Adhans for Today
         scheduleAdhan = schedule().scheduleAdhans(1,os.path.abspath('commands/player.py'))
+        #schedule().AddSchedule( datetime.strptime("01/16/2020 6:02 PM","%m/%d/%Y %I:%M %p") ,'my_custom_job',os.path.abspath('commands/player.py'),'https://server6.mp3quran.net/akdr/003.mp3','Office Ustairs speaker', 0)
         if not scheduleAdhan:
             return "Could not schedule Adhans " + scheduleAdhan
 

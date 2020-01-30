@@ -24,6 +24,28 @@ class schedule:
         except Exception as e:
             return str(e)
 
+        # frequen 0 = Once
+        # frequency 1 = Daily
+    def AddSchedule(self, _date, title,playerPath, media_url, mediaPlayer, frequency):
+            
+            cron = CronTab(user='pi')
+            job = cron.new(command='/usr/bin/python3 '+ playerPath +' "'+ media_url +'" "'+ mediaPlayer +'"', comment=title)
+
+            if frequency==0:
+                job.minute.on(_date.minute)
+                job.hour.on(_date.hour)
+                job.month.on(_date.month)
+                job.day.on(_date.day)
+            else: 
+                job.minute.every(_date.minute)
+                job.hour.every(_date.hour)
+
+            cron.write()
+
+            #DB Write
+            #print("============================" + str(pTime))
+            Dal().AddSchedule(title,str(_date),2)
+
 
     def __adhan(self, lat, lng, method, mediaPlayer, playerPath ):
 
@@ -38,7 +60,7 @@ class schedule:
             _prayDb[x[3]] = {"prayer": x[3], "status": x[5], "media": x[4]}
 
 
-        print(_prayDb)
+        #print(_prayDb)
 
         for prayer in pTimes:
             
@@ -76,7 +98,16 @@ class schedule:
             job.month.on(pTime.month)
             job.day.on(pTime.day)
 
+            #DB Write
+            #print("============================" + str(pTime))
+            Dal().DeleteSchedule(job_id)
+            Dal().AddSchedule(job_id,str(pTime),1)
+
+
         cron.write()
+
+
+
         
         return "Scheduled"
         

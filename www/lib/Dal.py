@@ -13,6 +13,25 @@ class Dal:
         self.conn.commit()
         self.conn.close()
 
+    def AddSchedule(self, TITLE, RUNAT, CATEGORY):
+        try:
+            self.conn.execute("INSERT INTO SCHEDULE (ID,TITLE, RUNAT, CATEGORY)  VALUES (NULL, '" + TITLE + "', '" + RUNAT + "', '"+ str(CATEGORY) +"')");
+            #print("Record Added")
+            self.conn.commit()
+            self.conn.close()
+        except Exception as e :
+            print(str(e))
+
+    def DeleteSchedule(self, TITLE):
+        try:
+            self.conn.execute("DELETE FROM SCHEDULE WHERE TITLE='"+ TITLE + "'");
+            #print("Record deleted")
+            self.conn.commit()
+            self.conn.close()
+        except Exception as e :
+            print(str(e))
+
+
     def GetSettings(self, id):
         try:
             cursor = self.conn.execute("SELECT * from SETTINGS Where ID = '"+ str(id) +"'")

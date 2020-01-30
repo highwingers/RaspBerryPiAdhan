@@ -11,7 +11,7 @@ mediaUrl = sys.argv[1]
 caster = sys.argv[2]
 
 
-myFile = open('/home/pi/RaspBerryPiAdhan/www/append3.txt', 'a') 
-myFile.write(mediaUrl + ' ' + caster + '/n')
+#myFile = open('/home/pi/RaspBerryPiAdhan/www/append3.txt', 'a') 
+#myFile.write(mediaUrl + ' ' + caster + '/n')
 
 mediaStatus = chromecast().play(caster, mediaUrl)
