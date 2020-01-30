@@ -4,7 +4,7 @@
 
 <div class="container">
 
-    <div class="row justify-content-center align-items-center">
+    <div class="row">
         <div class="col-xs-6">
             <div class="custom-control custom-checkbox text-center">
                 <input type="checkbox" class="custom-control-input" id="chk_FAJR">
@@ -115,25 +115,46 @@
 <hr />
 
 
-<div class="container">
-    <div class="row">
-        <div class="col-sm-6">
-            <div class="form-group">
-                <div class="input-group date" id="datetimepicker1" data-target-input="nearest">
-                    <input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker1" />
-                    <div class="input-group-append" data-target="#datetimepicker1" data-toggle="datetimepicker">
-                        <div class="input-group-text"><i class="fa fa-calendar"></i></div>
-                    </div>
+<div class="row">
+    <div class="col-xs-8">
+        <b>Choose Surah: </b>
+        <select id="surah" class="form-control"></select>
+    </div>
+    <div class="col-xs-4 p-4">
+        <button data-target="surah" class="playBtn btn btn-primary btn-md">Play Now</button>
+    </div>
+</div>
+
+
+
+<div class="row">
+    <div class="col-xs-12">
+        <div class="form-group">
+            <b>Choose Schedule: </b>
+            <div class="input-group date" id="datetimepicker1" data-target-input="nearest">
+                <input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker1" />
+                <div class="input-group-append" data-target="#datetimepicker1" data-toggle="datetimepicker">
+                    <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                 </div>
             </div>
         </div>
-        <script type="text/javascript">
-            $(function () {
-                $('#datetimepicker1').datetimepicker();
-            });
-        </script>
     </div>
 </div>
+
+<div class="row">
+    <div class="col-xs-12">
+        <b>Frequency</b><br />
+        <label class="radio-inline">
+            <input class="form-control" type="radio" name="optradio">Once
+        </label>
+        &nbsp;
+        <label class="radio-inline">
+            <input class="form-control" type="radio" name="optradio">Daily
+        </label>
+
+    </div>
+</div>
+
 
 
 
@@ -143,6 +164,9 @@
 
         s.dbConfigCheck('{{settings[1]}}')
         loadData()
+
+        $('#datetimepicker1').datetimepicker();
+        s.populateSurahs("akdr", "surah");
 
 
         $(".playBtn").click(function () {
