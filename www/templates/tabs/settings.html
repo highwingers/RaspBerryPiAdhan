@@ -145,7 +145,7 @@
         <div class="form-group">
             <b>Choose Schedule: </b>
             <div class="input-group date" id="datetimepicker1" data-target-input="nearest">
-                <input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker1" />
+                <input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker1" id="txtSchedule" />
                 <div class="input-group-append" data-target="#datetimepicker1" data-toggle="datetimepicker">
                     <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                 </div>
@@ -158,18 +158,18 @@
     <div class="col-xs-12">
         <b>Frequency</b><br />
         <label class="radio-inline">
-            <input class="form-control" type="radio" name="optradio">Once
+            <input checked class="form-control" type="radio" value="0" name="optradio" id="optradio">Once
         </label>
         &nbsp;
         <label class="radio-inline">
-            <input class="form-control" type="radio" name="optradio">Daily
+            <input class="form-control" type="radio" value="1" name="optradio" id="optradio">Daily
         </label>
 
     </div>
 </div>
 
 <div class="row p-2">
-    <button id="btnSaveSchedule" class="btn btn-success btn-lg btn-block">Save Schedule Settings</button>
+    <button id="btnSaveSurahSchedule" class="btn btn-success btn-lg btn-block">Save Surah Settings</button>
 </div>
 <hr />
 
@@ -209,6 +209,23 @@
 
         s.updateAdhanSettings('/api/updateAdhanSettings',settings)
     })
+
+    
+    $("#btnSaveSurahSchedule").click(function () {
+        if ($("#txtSchedule").val()=='') {
+            bootbox.alert({
+                size: "small",
+                title: "Schedule",
+                message: "Please specify Schedule!",
+                callback: function () { }
+            })
+            return false;
+        }
+        var settings = { 'surah': $("#surah").val(), 'title': $("#surah option:selected").text(), 'datetime': $("#txtSchedule").val(), 'frequency': $("input[name='optradio']:checked").val()}
+        s.updateAdhanSettings('/api/addCustomSchedule', settings)
+    })
+
+
 
     function loadData() {
         s.getSettings('/api/getAdhanSettings', 1, function (d) {

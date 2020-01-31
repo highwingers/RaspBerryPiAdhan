@@ -130,7 +130,7 @@ var s = (function () {
                         });
                 },
                 error: function (request, textStatus, errorThrown) {
-                     alert(textStatus);
+                     //alert(textStatus);
                 },
                 complete: function (request, textStatus) { //for additional info
                     //alert(request.responseText);

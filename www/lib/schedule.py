@@ -24,14 +24,17 @@ class schedule:
         except Exception as e:
             return str(e)
 
-        # frequen 0 = Once
-        # frequency 1 = Daily
-    def AddSchedule(self, _date, title,playerPath, media_url, mediaPlayer, frequency):
+        # frequen '0' = Once
+        # frequency '1' = Daily
+    def AddSchedule(self, id,  _date, title,playerPath, media_url, frequency):
             
-            cron = CronTab(user='pi')
-            job = cron.new(command='/usr/bin/python3 '+ playerPath +' "'+ media_url +'" "'+ mediaPlayer +'"', comment=title)
+            data = Dal().GetSettings(id)
+            speaker = data[1]
 
-            if frequency==0:
+            cron = CronTab(user='pi')
+            job = cron.new(command='/usr/bin/python3 '+ playerPath +' "'+ media_url +'" "'+ speaker +'"', comment=title)
+
+            if frequency=='0':
                 job.minute.on(_date.minute)
                 job.hour.on(_date.hour)
                 job.month.on(_date.month)

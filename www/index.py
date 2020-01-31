@@ -75,6 +75,16 @@ def updateAdhanSettings():
     except Exception as e :
         return 'Error: ' + print(str(e))
 
+@app.route('/api/addCustomSchedule',methods=['POST'])
+def addCustomSchedule():
+    try:
+        _settings = json.loads(request.form["AdhanSettings"])
+        print(_settings)
+        schedule().AddSchedule(1, datetime.strptime(_settings["datetime"],"%m/%d/%Y %I:%M %p") ,_settings["title"],os.path.abspath('commands/player.py'),_settings["surah"], _settings["frequency"])
+        return jsonify(1)
+    except Exception as e :
+            return 'Error: ' + str(e)
+
 
 @app.route('/api/configureDevice',methods=['POST'])
 def configureDevice():
@@ -101,7 +111,7 @@ def configureDevice():
              return result
         #Below Call with Schedule Adhans for Today
         scheduleAdhan = schedule().scheduleAdhans(1,os.path.abspath('commands/player.py'))
-        #schedule().AddSchedule( datetime.strptime("01/16/2020 6:02 PM","%m/%d/%Y %I:%M %p") ,'my_custom_job',os.path.abspath('commands/player.py'),'https://server6.mp3quran.net/akdr/003.mp3','Office Ustairs speaker', 0)
+        
         if not scheduleAdhan:
             return "Could not schedule Adhans " + scheduleAdhan
 
