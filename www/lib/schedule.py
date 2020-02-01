@@ -24,21 +24,54 @@ class schedule:
         except Exception as e:
             return str(e)
 
-        # frequen '0' = Once
-        # frequency '1' = Daily
-    def AddSchedule(self, id,  _date, title,playerPath, media_url, frequency):
-            
-            data = Dal().GetSettings(id)
-            speaker = data[1]
+        # ONCE      8
+        # DAILY     7
+        #    0 - Sun      Sunday
+        #    1 - Mon      Monday
+        #    2 - Tue      Tuesday
+        #    3 - Wed      Wednesday
+        #    4 - Thu      Thursday
+        #    5 - Fri      Friday
+        #    6 - Sat      Saturday
+        #    7 - Sun      Sunday
+    def AddSchedule(self, id,  _date, title,playerPath, media_url, frequency, speaker):
 
             cron = CronTab(user='pi')
-            job = cron.new(command='/usr/bin/python3 '+ playerPath +' "'+ media_url +'" "'+ speaker +'"', comment=title)
+            job = cron.new(command='/usr/bin/python3 '+ playerPath +' "'+ media_url +'" "'+ speaker +'" >> .error.log  2>&1', comment=title)
 
-            if frequency=='0':
+            if frequency=='8':
                 job.minute.on(_date.minute)
                 job.hour.on(_date.hour)
                 job.month.on(_date.month)
                 job.day.on(_date.day)
+            elif frequency=='0':
+                job.minute.every(_date.minute)
+                job.hour.every(_date.hour)
+                job.dow.on('SUN')
+            elif frequency=='1':
+                job.minute.every(_date.minute)
+                job.hour.every(_date.hour)
+                job.dow.on('MON')
+            elif frequency=='2':
+                job.minute.every(_date.minute)
+                job.hour.every(_date.hour)
+                job.dow.on('TUE')
+            elif frequency=='3':
+                job.minute.every(_date.minute)
+                job.hour.every(_date.hour)
+                job.dow.on('WED')
+            elif frequency=='4':
+                job.minute.every(_date.minute)
+                job.hour.every(_date.hour)
+                job.dow.on('THU')
+            elif frequency=='5':
+                job.minute.every(_date.minute)
+                job.hour.every(_date.hour)
+                job.dow.on('FRI')
+            elif frequency=='6':
+                job.minute.every(_date.minute)
+                job.hour.every(_date.hour)
+                job.dow.on('SAT')
             else: 
                 job.minute.every(_date.minute)
                 job.hour.every(_date.hour)
@@ -46,8 +79,8 @@ class schedule:
             cron.write()
 
             #DB Write
-            #print("============================" + str(pTime))
-            Dal().AddSchedule(title,str(_date),2)
+            #print("============================" + speaker)
+            Dal().AddSchedule(title,str(_date),frequency,speaker)
 
 
     def __adhan(self, lat, lng, method, mediaPlayer, playerPath ):
@@ -104,7 +137,7 @@ class schedule:
             #DB Write
             #print("============================" + str(pTime))
             Dal().DeleteSchedule(job_id)
-            Dal().AddSchedule(job_id,str(pTime),1)
+            Dal().AddSchedule(job_id,str(pTime),7,mediaPlayer)
 
 
         cron.write()

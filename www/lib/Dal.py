@@ -13,9 +13,11 @@ class Dal:
         self.conn.commit()
         self.conn.close()
 
-    def AddSchedule(self, TITLE, RUNAT, CATEGORY):
+    def AddSchedule(self, TITLE, RUNAT, CATEGORY, SPEAKER):
         try:
-            self.conn.execute("INSERT INTO SCHEDULE (ID,TITLE, RUNAT, CATEGORY)  VALUES (NULL, '" + TITLE + "', '" + RUNAT + "', '"+ str(CATEGORY) +"')");
+            TITLE = TITLE.replace("'","''")
+            SPEAKER = SPEAKER.replace("'","''")
+            self.conn.execute("INSERT INTO SCHEDULE (ID,TITLE, RUNAT, CATEGORY, SPEAKER)  VALUES (NULL, '" + TITLE + "', '" + RUNAT + "', '"+ str(CATEGORY) +"',  '"+ SPEAKER +"' )");
             #print("Record Added")
             self.conn.commit()
             self.conn.close()

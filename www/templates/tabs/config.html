@@ -122,7 +122,7 @@
         </select>
     </div>
     <br />
-    <button type="button" id="save" class="btn btn-primary btn-lg btn-block">Save Settings</button>
+    <button type="button" id="save" class="btn btn-primary btn-lg btn-block" data-title="Save Settings" data-loading-title="Saving...">Save Settings</button>
 
 
 
@@ -162,12 +162,15 @@
     $().ready(function () {
 
         loadData()
-        scanSpeakers();
-        $("#save").click(function (e) {
+        s.scanSpeakers("speaker");
+
+        $("#save").click(function (e) {           
             s.updateSettings('/api/configureDevice', $("#address").val(), $("#speaker").val(), $("#method").val(), $("#timezone").val(), this.id, function () {
-                loadData();
+                loadData();                
             });
         })
+
+
 
         /** Test Player  **/
 
@@ -185,7 +188,7 @@
             $('#loading').show();
             $('#controls').hide();
 
-            scanSpeakers();
+            s.scanSpeakers("speaker");
         });
 
         $("#testMedia").click(function () {
@@ -199,20 +202,10 @@
     })
 
 
-    function scanSpeakers() {
-        var found = false;
-        var c = s.getSpeakers('/speaker/api/speakerlist', function result(d) {
-            if (!found) {
-                $('#speaker').empty();
-            }
-            found = true;
-            $('#speaker').append(`<option value="${d.name}">
-                                       ${d.name}
-                                  </option>`);
-        });
-    }
 
-    function loadData() {
+
+    function loadData() {      
+
         s.getSettings('/api/getData', 1, function (d) {
             if (d=='') {
                 return;

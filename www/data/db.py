@@ -33,6 +33,7 @@ conn.execute('''CREATE TABLE SCHEDULE
          RUNAT           TEXT    NOT NULL,
          STAMP  DATETIME DEFAULT (datetime('now','localtime')),
          CATEGORY INTEGER,
+         SPEAKER TEXT,
          STATUS TEXT     TEXT
          );''')
 

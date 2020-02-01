@@ -39,6 +39,28 @@ var s = (function () {
 
     }
 
+    function setBtnValue(element, title) {
+        element = '#' + element
+        title = $(element).data(title)
+        $(element).text(title)
+    }
+
+    function scanSpeakers(element) {
+        var found = false;
+        var c = s.getSpeakers('/speaker/api/speakerlist', function result(d) {
+            if (!found) {
+                $('#' + element).empty();
+            }
+            found = true;
+            $('#' + element).append(`<option value="${d.name}">
+                                       ${d.name}
+                                  </option>`);
+        });
+    }
+
+
+
+
     return {
 
         getSpeakers: function getChromeCastSpeakers(url, result) {
@@ -74,9 +96,10 @@ var s = (function () {
         },
         updateSettings: function (url, address, speaker, method, timezone, btn, callback) {
             //$('#' + btn).prop('disabled', true)
-
+            setBtnValue(btn, "loading-title")
             var r = validation(address, speaker)
             if (!r) {
+                setBtnValue(btn, "title")
                 return false; // Validation Error Occured
             }
 
@@ -93,8 +116,10 @@ var s = (function () {
                             message: "Configured Successfully",
                             callback: function () { }
                         })
+                        setBtnValue(btn, "title")
                         callback();
                     } else { // API error Occured
+                        setBtnValue(btn, "title")
                         bootbox.alert({
                             size: "small",
                             title: "Error Occured",
@@ -114,14 +139,17 @@ var s = (function () {
             });
 
         },
-        updateAdhanSettings: function(url,s) {
-
+        updateAdhanSettings: function(url,s, btn) {            
+            setBtnValue(btn, "loading-title")
             $.ajax({
                 url: url,
                 //dataType: 'application/json; charset=utf-8',
                 method: 'POST',
                 data: { 'AdhanSettings': JSON.stringify(s) },
                 success: function (d) {
+
+                    setBtnValue(btn, "title")
+
                     bootbox.alert({
                     size: "small",
                     title: 'Adhan Settings',
@@ -130,6 +158,7 @@ var s = (function () {
                         });
                 },
                 error: function (request, textStatus, errorThrown) {
+                    setBtnValue(btn, "title")
                      //alert(textStatus);
                 },
                 complete: function (request, textStatus) { //for additional info
@@ -177,6 +206,9 @@ var s = (function () {
                 });
                 
             }
+        },
+        scanSpeakers: function (ele) {
+            scanSpeakers(ele);
         }
 
     }

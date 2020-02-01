@@ -79,8 +79,8 @@ def updateAdhanSettings():
 def addCustomSchedule():
     try:
         _settings = json.loads(request.form["AdhanSettings"])
-        print(_settings)
-        schedule().AddSchedule(1, datetime.strptime(_settings["datetime"],"%m/%d/%Y %I:%M %p") ,_settings["title"],os.path.abspath('commands/player.py'),_settings["surah"], _settings["frequency"])
+        #print(_settings)
+        schedule().AddSchedule(1, datetime.strptime(_settings["datetime"],"%m/%d/%Y %I:%M %p") ,_settings["title"],os.path.abspath('commands/player.py'),_settings["surah"], _settings["frequency"],_settings["speaker"])
         return jsonify(1)
     except Exception as e :
             return 'Error: ' + str(e)
