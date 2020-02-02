@@ -209,7 +209,12 @@ var s = (function () {
         },
         scanSpeakers: function (ele) {
             scanSpeakers(ele);
-        }
+        },
+        is_date:  function(input) {
+          if ( Object.prototype.toString.call(input) === "[object Date]" ) 
+            return true;
+          return false;   
+            }
 
     }
 

@@ -143,11 +143,13 @@
 <div class="row p-3">
     <div class="col-xs-12">
         <div class="form-group">
-            <b>Choose Schedule: </b>
-            <div class="input-group date" id="datetimepicker1" data-target-input="nearest">
-                <input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker1" id="txtSchedule" />
-                <div class="input-group-append" data-target="#datetimepicker1" data-toggle="datetimepicker">
-                    <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+            <label for="id_start_datetime"><b>Choose Schedule:</b></label>
+            <div class="input-group date" id="id_0">
+                <input type="text" value="" class="form-control" id="txtSchedule" required />
+                <div class="input-group-addon input-group-append">
+                    <div class="input-group-text">
+                        <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>
+                    </div>
                 </div>
             </div>
         </div>
@@ -169,7 +171,7 @@
             <input checked class="form-control" type="radio" value="7" name="optradio">Daily
         </label><br />
         <label class="radio-inline">
-            <input class="form-control" type="radio" value="8" data-format="LT" name="optradio">Once
+            <input class="form-control" type="radio" value="8" data-format="MM/DD/YYYY hh:mm A" name="optradio">Once
         </label><br />
         <label class="radio-inline">
             <input class="form-control" type="radio" value="6" name="optradio">SAT
@@ -213,14 +215,29 @@
 <script>
 
     $().ready(function () {
+
+
         s.scanSpeakers("speaker2");
         s.dbConfigCheck('{{settings[1]}}')
         loadData()
- 
 
 
+        $('#id_0').datetimepicker({
+            "allowInputToggle": true,
+            "showClose": true,
+            "showClear": true,
+            "showTodayButton": true,
+            "format": "hh:mm A",
+        });
 
-        $("input[name='optradio']").change(function () {          
+        $("input[name='optradio']").change(function () {
+
+            if($(this).val()==8){
+                    $('#id_0').datetimepicker( "format", "MM/DD/YYYY hh:mm A")
+                } else {
+                    $('#id_0').datetimepicker( "format", "hh:mm A")
+                }
+
         });
 
         s.populateSurahs("akdr", "surah");
@@ -261,6 +278,9 @@
             })
             return false;
         }
+ 
+
+
         var settings = { 'surah': $("#surah").val(), 'title': $("#surah option:selected").text(), 'datetime': $("#txtSchedule").val(), 'frequency': $("input[name='optradio']:checked").val(), 'speaker': $('#speaker2').val() }
         s.updateAdhanSettings('/api/addCustomSchedule', settings, this.id)
     })

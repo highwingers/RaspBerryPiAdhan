@@ -7,6 +7,7 @@ import datetime
 import subprocess
 import json
 from datetime import datetime
+from dateutil.parser import parse
 #from views.index import index_blueprint
 #from views.address import address_blueprint
 from views.speaker import speaker_blueprint
@@ -79,8 +80,15 @@ def updateAdhanSettings():
 def addCustomSchedule():
     try:
         _settings = json.loads(request.form["AdhanSettings"])
-        #print(_settings)
-        schedule().AddSchedule(1, datetime.strptime(_settings["datetime"],"%m/%d/%Y %I:%M %p") ,_settings["title"],os.path.abspath('commands/player.py'),_settings["surah"], _settings["frequency"],_settings["speaker"])
+        _date = _settings["datetime"]
+        if _date.find("/") == -1:
+            _datetime = parse(str(datetime.now().date()) + " " + _date)
+        else:
+            _datetime = parse(_date)
+
+        #print(_datetime)
+
+        schedule().AddSchedule(1, _datetime ,_settings["title"],os.path.abspath('commands/player.py'),_settings["surah"], _settings["frequency"],_settings["speaker"])
         return jsonify(1)
     except Exception as e :
             return 'Error: ' + str(e)
