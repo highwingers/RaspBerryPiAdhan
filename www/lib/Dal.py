@@ -66,9 +66,9 @@ class Dal:
 
 
 
-    def UpdateSettings(self, ID, SPEAKER,LAT,LNT,ADDRESS, METHOD, OFFSET, TIMEZONE):
+    def UpdateSettings(self, ID, SPEAKER,LAT,LNT,ADDRESS, METHOD, ASR, OFFSET, TIMEZONE):
         try:
-            sql = "Update SETTINGS SET speaker='"+ SPEAKER.replace("'", "''") +"', LAT='"+ str(LAT)+ "', LNT='"+ str(LNT) +"', METHOD='"+ METHOD +"', OFFSET='"+ str(OFFSET) +"', ADDRESS='"+ ADDRESS.replace("'","''") +"', TIMEZONE='"+ TIMEZONE +"'  Where ID = 1 "
+            sql = "Update SETTINGS SET speaker='"+ SPEAKER.replace("'", "''") +"', LAT='"+ str(LAT)+ "', LNT='"+ str(LNT) +"', METHOD='"+ METHOD +"', OFFSET='"+ str(OFFSET) +"', ADDRESS='"+ ADDRESS.replace("'","''") +"', TIMEZONE='"+ TIMEZONE +"', ASR='" + ASR + "'  Where ID = 1 "
             self.conn.execute(sql)
             self.conn.commit()
             self.conn.close()

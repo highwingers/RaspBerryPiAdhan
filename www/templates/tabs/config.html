@@ -97,32 +97,46 @@
             <option value="Pacific/Tongatapu">(GMT+13:00) Nuku'alofa</option>
         </select>
         <div id="offset"></div>
-    </span>
-    <br />
-    <div>
-        <div class="field-label">Choose Speaker:</div>
-        <select id="speaker" name="speaker" class="form-control">
-            <option value="">Loading Speakers...</option>
-        </select>
-        <span id="speaker_label"></span>
-    </div>
-    <br />
-    <div>
-        <div class="field-label">Choose Method</div>
-        <select id="method" name="method" class="form-control">
-            <option value="ISNA">Islamic Society of North America</option>
-            <option value="MUSLIM_WORLD_LEAGUE">Muslim World League</option>
-            <option value="EGYPT">Egyptian General Authority of Survey</option>
-            <option value="MAKKAH">Umm al-Qura University, Makkah</option>
-            <option value="KARACHI">University of Islamic Sciences, Karachi</option>
-            <option value="TEHRAN">Institude of Geophysics, University of Tehran</option>
-            <option value="SHIA">Shia Ithna Ashari, Leva Research Institute, Qum</option>
-            <!--<option value="ASR_STANDARD">Shafi'i, Maliki, Ja'fari, and Hanbali</option>
+        </span>
+        <br />
+        <div>
+            <div class="field-label">Choose Speaker:</div>
+            <select id="speaker" name="speaker" class="form-control">
+                <option value="">Loading Speakers...</option>
+            </select>
+            <span id="speaker_label"></span>
+        </div>
+        <br />
+        <div>
+            <div class="field-label">Choose Method</div>
+            <select id="method" name="method" class="form-control">
+                <option value="ISNA">Islamic Society of North America</option>
+                <option value="MUSLIM_WORLD_LEAGUE">Muslim World League</option>
+                <option value="EGYPT">Egyptian General Authority of Survey</option>
+                <option value="MAKKAH">Umm al-Qura University, Makkah</option>
+                <option value="KARACHI">University of Islamic Sciences, Karachi</option>
+                <option value="TEHRAN">Institude of Geophysics, University of Tehran</option>
+                <option value="SHIA">Shia Ithna Ashari, Leva Research Institute, Qum</option>
+                <!--<option value="ASR_STANDARD">Shafi'i, Maliki, Ja'fari, and Hanbali</option>
             <option value="ASR_HANAFI">Hanafi</option>-->
-        </select>
-    </div>
-    <br />
-    <button type="button" id="save" class="btn btn-primary btn-lg btn-block" data-title="Save Settings" data-loading-title="Saving...">Save Settings</button>
+            </select>
+        </div>
+        <br />
+        <div>
+            <div class="field-label">Asr Method:</div>
+            <div>
+                <label class="radio-inline">
+                    <input class="form-control" type="radio" checked value="ASR_STANDARD" name="asrradio">ASR STANDARD
+                </label>
+                &nbsp;
+                <label class="radio-inline">
+                    <input class="form-control" type="radio" value="ASR_HANAFI" name="asrradio">ASR HANAFI
+                </label>
+                &nbsp;
+            </div>
+        </div>
+        <br />
+        <button type="button" id="save" class="btn btn-primary btn-lg btn-block" data-title="Save Settings" data-loading-title="Saving...">Save Settings</button>
 
 
 
@@ -165,7 +179,7 @@
         s.scanSpeakers("speaker");
 
         $("#save").click(function (e) {           
-            s.updateSettings('/api/configureDevice', $("#address").val(), $("#speaker").val(), $("#method").val(), $("#timezone").val(), this.id, function () {
+            s.updateSettings('/api/configureDevice', $("#address").val(), $("#speaker").val(), $("#method").val(),$("input[name='asrradio']:checked").val(), $("#timezone").val(), this.id, function () {
                 loadData();                
             });
         })
@@ -211,13 +225,14 @@
                 return;
             }
             d = jQuery.parseJSON(d)
-            //console.log(d)
-            if (d[7].length > 0) {
-                $("#address").val(d[7])
+          
+            if (d[1].length > 0) {
+                $("#address").val(d[8])
                 $("#method").val(d[4]);
-                $("#timezone").val(d[6]);
+                $("#timezone").val(d[7]);
                 $("#speaker_label").html('Currently Selected: ' + d[1]);
-                $("#offset").html('Offset: ' + d[5]);
+                $("#offset").html('Offset: ' + d[6]);
+                $('input[name=asrradio][value=' + d[5] + ']').prop('checked',true)
             }
 
         })

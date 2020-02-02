@@ -5,11 +5,12 @@ from adhan.methods import ISNA, ASR_STANDARD,MUSLIM_WORLD_LEAGUE ,EGYPT ,MAKKAH 
 
 class PrayerData:
 
-    def __init__(self,lat, lng, method, timezone_offset=0):	
+    def __init__(self,lat, lng, method,asr, timezone_offset=0):	
         self.timezone_offset = timezone_offset
         self.lat = lat
         self.lng = lng
         self.method = method
+        self.asr = asr
 
 
     def getTimes(self):
@@ -17,7 +18,7 @@ class PrayerData:
         try:
             params = {}
             params.update(eval(self.method))
-            params.update(ASR_STANDARD)         
+            params.update(eval(self.asr))         
 
 
             adhan_times = adhan(

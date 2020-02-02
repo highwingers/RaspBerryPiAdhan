@@ -14,6 +14,7 @@ conn.execute('''CREATE TABLE SETTINGS
          LAT            FLOAT     NOT NULL,
          LNT        FLOAT,
          METHOD TEXT,
+         ASR TEXT,
          OFFSET INTEGER,
          TIMEZONE TEXT,
          ADDRESS TEXT);''')
@@ -39,7 +40,7 @@ conn.execute('''CREATE TABLE SCHEDULE
 
 
 
-conn.execute("INSERT INTO SETTINGS (ID, SPEAKER,LAT,LNT,ADDRESS, METHOD, OFFSET,TIMEZONE)  VALUES (NULL, '','','','','', 0,'' )");
+conn.execute("INSERT INTO SETTINGS (ID, SPEAKER,LAT,LNT,ADDRESS, METHOD,ASR, OFFSET,TIMEZONE)  VALUES (NULL, '','','','','','', 0,'' )");
 
 
 conn.execute("INSERT INTO ADHANSETTINGS (ID, ConfigID,AdhanID,AdhanName,AdhanMedia, AdhanStatus)  VALUES (NULL,1,1,'FAJR','/static/media/fajr1.mp3',1)");

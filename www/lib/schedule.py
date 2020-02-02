@@ -14,11 +14,12 @@ class schedule:
             lat = data[2]
             lng = data[3]
             method = data[4]
+            asr = data[5]
            
 
 
             if len(speaker) > 0 :
-                self.__adhan(lat, lng, method,  speaker, playerPath )
+                self.__adhan(lat, lng, method, asr,  speaker, playerPath )
         
             return True
         except Exception as e:
@@ -91,10 +92,10 @@ class schedule:
 
 
 
-    def __adhan(self, lat, lng, method, mediaPlayer, playerPath ):
+    def __adhan(self, lat, lng, method, asr, mediaPlayer, playerPath ):
 
         timezoneOffset =  shellcmd().getZoneOffset()
-        pTimes = PrayerData(lat, lng, method, timezoneOffset).getTimes()
+        pTimes = PrayerData(lat, lng, method, asr, timezoneOffset).getTimes()
         #print(pTimes)
         cron = CronTab(user='pi')
         _data = Dal().GetAdhanSettings(1)
@@ -111,7 +112,8 @@ class schedule:
             pTime = pTimes[prayer]
             job_id="prayer_" + prayer
             cron.remove_all(comment=job_id)      
-            
+            Dal().DeleteSchedule(job_id)
+
             if prayer=="shuruq":
                 continue
 
@@ -144,7 +146,7 @@ class schedule:
 
             #DB Write
             #print("============================" + str(pTime))
-            Dal().DeleteSchedule(job_id)
+            
             Dal().AddSchedule(job_id,str(pTime),7,mediaPlayer)
 
 

@@ -102,6 +102,7 @@ def configureDevice():
         speaker = request.form["speaker"]
         method = request.form["method"]
         timezone = request.form["timezone"]
+        asr = request.form["asr"]
     
         shellcmd().setTimeZone(timezone)
         timezoneOffset =  shellcmd().getZoneOffset()
@@ -114,7 +115,7 @@ def configureDevice():
 
         #return _add.address
 
-        result = Dal().UpdateSettings(1, speaker,_add.lat, _add.lng, _add.address, method, timezoneOffset, timezone)
+        result = Dal().UpdateSettings(1, speaker,_add.lat, _add.lng, _add.address, method, asr , timezoneOffset, timezone)
         if result is not True:
              return result
         #Below Call with Schedule Adhans for Today

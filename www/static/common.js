@@ -94,7 +94,7 @@ var s = (function () {
             });
 
         },
-        updateSettings: function (url, address, speaker, method, timezone, btn, callback) {
+        updateSettings: function (url, address, speaker, method,asr, timezone, btn, callback) {
             //$('#' + btn).prop('disabled', true)
             setBtnValue(btn, "loading-title")
             var r = validation(address, speaker)
@@ -107,7 +107,7 @@ var s = (function () {
                 url: url,
                 dataType: 'text',
                 method: 'POST',
-                data: { 'address': address, 'speaker': speaker, 'method': method, 'timezone': timezone },
+                data: { 'address': address, 'speaker': speaker, 'method': method,'asr':asr, 'timezone': timezone },
                 success: function (d) {
                     if (d == "Success") { // All Went Well
                         bootbox.alert({
