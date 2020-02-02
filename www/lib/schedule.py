@@ -147,7 +147,7 @@ class schedule:
             #DB Write
             #print("============================" + str(pTime))
             
-            Dal().AddSchedule(job_id,str(pTime),7,mediaPlayer)
+            Dal().AddSchedule(job_id,str(pTime),9,mediaPlayer)
 
 
         cron.write()
