@@ -55,6 +55,16 @@ def settings():
     }
     return render_template('tabs/settings.html', **data)
 
+@app.route('/history')
+def history():
+    _jobs = schedule().queryJobs()
+    data= {
+    'Jobs': _jobs
+    }
+    return render_template('tabs/history.html', **data)
+
+
+
 @app.route('/api/getData')
 def getSettings():
         id = request.args.get("id")

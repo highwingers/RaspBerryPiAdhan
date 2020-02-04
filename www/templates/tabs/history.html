@@ -1,0 +1,6 @@
+﻿<div class="row justify-content-center m-3 green">
+    <h3>Schedule History</h3>
+</div>
+{% for item in Jobs %}
+{{ item["nextFireDate"] }} # <b>{{item["title"]}}</b><br />
+{% endfor %}

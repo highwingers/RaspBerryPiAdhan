@@ -2,10 +2,15 @@
 class shellcmd:
     def __init__(self):
         pass
-    def command(self, cmd):
+    def command(self, cmd, removeNewLine=True):
         result = subprocess.run([cmd], stdout=subprocess.PIPE, shell=True)
         r =  result.stdout
-        r = r.decode("utf-8").replace('\n',' ').strip()
+        
+        if removeNewLine:
+            r = r.decode("utf-8").replace('\n',' ').strip()
+        else: 
+            r = r.decode("utf-8").strip()
+        
         return r
 
     def setTimeZone(self,timezone):

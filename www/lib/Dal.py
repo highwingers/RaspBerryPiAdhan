@@ -18,7 +18,7 @@ class Dal:
             TITLE = TITLE.replace("'","''")
             SPEAKER = SPEAKER.replace("'","''")
             self.conn.execute("INSERT INTO SCHEDULE (ID,TITLE, RUNAT, CATEGORY, SPEAKER)  VALUES (NULL, '" + TITLE + "', '" + RUNAT + "', '"+ str(CATEGORY) +"',  '"+ SPEAKER +"' )");
-            print("Record Added")
+            #print("Record Added")
             self.conn.commit()
             self.conn.close()
         except Exception as e :

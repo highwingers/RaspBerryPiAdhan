@@ -1,4 +1,6 @@
 ﻿import datetime
+from datetime import datetime
+from croniter import croniter
 from .PrayerPy import PrayerData
 from .shellcmds import shellcmd
 from crontab import CronTab
@@ -156,4 +158,28 @@ class schedule:
 
         
         return "Scheduled"
+
+
+    def queryJobs(self) :
+        cmd = 'crontab -l -u pi | grep -E "^@|^\*|^[0-9]" | sort -n -k2 -k1 | awk -F"#" \'{split($1,a," "); print a[1] " " a[2] " " a[3] " " a[4] " " a[5] "|"   $2}\' '
+        c = shellcmd().command(cmd, False)
+        lines = c.splitlines()
+        base = datetime.now()
+        dates=[]
+        for line in lines:
+            fullline = line.split("|")
+            _month = fullline[0].split(" ")[3]
+            _date = fullline[0].split(" ")[2]
+
+            iter = croniter(fullline[0], base, False)  # every 5 minutes
+            _nextdate = iter.get_next(datetime)             
+
+            obj = {'nextFireDate': _nextdate, 'title': fullline[1]}
+            if _nextdate.year==datetime.today().year: 
+                dates.append(obj)
+
+        a = sorted(dates, key=lambda x: x['nextFireDate'])   
+        return a
+
+
         
