@@ -171,7 +171,7 @@ class schedule:
             _month = fullline[0].split(" ")[3]
             _date = fullline[0].split(" ")[2]
 
-            iter = croniter(fullline[0], base, False)  # every 5 minutes
+            iter = croniter(fullline[0], base)  # every 5 minutes
             _nextdate = iter.get_next(datetime)             
 
             obj = {'nextFireDate': _nextdate, 'title': fullline[1]}
@@ -180,6 +180,14 @@ class schedule:
 
         a = sorted(dates, key=lambda x: x['nextFireDate'])   
         return a
+
+    def deleteJob(self, title):
+        cron = CronTab(user='pi')
+        cron.remove_all(comment=title)   
+        cron.write()
+        Dal().DeleteSchedule(title)
+        return True
+
 
 
         

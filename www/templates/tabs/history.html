@@ -6,26 +6,40 @@
 
 
 {% for item in Jobs %}
-{{ item["nextFireDate"].strftime('%B, %a %d %Y AT %I:%M %p')  }} # <b>{{item["title"]}}</b> <span data-then='{{item["nextFireDate"]}}' class="difference"></span> [Delete]<hr />
+<div class="p-3 mb-2 bg-light text-dark">
+{{ item["nextFireDate"].strftime('%B, %a %d %Y AT %I:%M %p')  }} # <b>{{item["title"] | upper}}</b> <span data-then='{{item["nextFireDate"]}}' class="difference"></span> 
+    <a href="#" data-title="{{item["title"]}}" class="delJob">[Delete]</a>
+</div>
+<hr />
 {% endfor %}
 
 
 
 <script>
 
-    $().ready(function() {
-    
+    $().ready(function() {    
         difference();
-
     })
     function difference() {
-
             $( ".difference" ).each(function() {
                 then =  $( this ).data("then")
                 $(this).html(' ---- <strong>' + moment(then).fromNow() + '</strong>')
 
-            });
-
-        
+            });       
     }
+
+    $(".delJob").click(function () {
+        jobID = $(this).data("title")
+        s.execCommand('/api/deleteJob', { 'jobid': jobID }, 'POST', function (d) {
+            bootbox.alert({
+                size: "small",
+                title: "Schedule Removed",
+                message: "Removed Successfully.",
+                callback: function () { }
+            })
+            $('#setting-tab').tab('show');
+        });
+        return false;
+    })
+
 </script>

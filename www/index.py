@@ -76,6 +76,15 @@ def getAdhanSettings():
         _data = Dal().GetAdhanSettings(id)
         return jsonify( _data )
 
+
+@app.route('/api/deleteJob', methods=['POST'])
+def deleteJob():
+    _param = json.loads(request.data)
+    _jobid = _param["jobid"].strip()
+    print(_jobid)
+    r = schedule().deleteJob(_jobid)
+    return jsonify( r )
+
 @app.route('/api/updateAdhanSettings',methods=['POST'])
 def updateAdhanSettings():
     try:

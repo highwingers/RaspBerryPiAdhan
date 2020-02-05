@@ -94,7 +94,7 @@ var s = (function () {
             });
 
         },
-        updateSettings: function (url, address, speaker, method,asr, timezone, btn, callback) {
+        updateSettings: function (url, address, speaker, method, asr, timezone, btn, callback) {
             //$('#' + btn).prop('disabled', true)
             setBtnValue(btn, "loading-title")
             var r = validation(address, speaker)
@@ -107,7 +107,7 @@ var s = (function () {
                 url: url,
                 dataType: 'text',
                 method: 'POST',
-                data: { 'address': address, 'speaker': speaker, 'method': method,'asr':asr, 'timezone': timezone },
+                data: { 'address': address, 'speaker': speaker, 'method': method, 'asr': asr, 'timezone': timezone },
                 success: function (d) {
                     if (d == "Success") { // All Went Well
                         bootbox.alert({
@@ -123,7 +123,7 @@ var s = (function () {
                         bootbox.alert({
                             size: "small",
                             title: "Error Occured",
-                            message: "Please Try Again!("+ d +")",
+                            message: "Please Try Again!(" + d + ")",
                             callback: function () { }
                         })
                     }
@@ -139,7 +139,7 @@ var s = (function () {
             });
 
         },
-        updateAdhanSettings: function(url,s, btn) {            
+        updateAdhanSettings: function (url, s, btn) {
             setBtnValue(btn, "loading-title")
             $.ajax({
                 url: url,
@@ -151,15 +151,15 @@ var s = (function () {
                     setBtnValue(btn, "title")
 
                     bootbox.alert({
-                    size: "small",
-                    title: 'Adhan Settings',
-                    message: 'Settings Updated.',
-                    callback: function () {  }
-                        });
+                        size: "small",
+                        title: 'Adhan Settings',
+                        message: 'Settings Updated.',
+                        callback: function () { }
+                    });
                 },
                 error: function (request, textStatus, errorThrown) {
                     setBtnValue(btn, "title")
-                     //alert(textStatus);
+                    //alert(textStatus);
                 },
                 complete: function (request, textStatus) { //for additional info
                     //alert(request.responseText);
@@ -195,8 +195,8 @@ var s = (function () {
             });
         },
         dbConfigCheck: function (dbVal) {
-     
-            if ( dbVal=='') {
+
+            if (dbVal == '') {
 
                 bootbox.alert({
                     size: "small",
@@ -204,18 +204,31 @@ var s = (function () {
                     message: 'Please select a speaker from configuration tab.',
                     callback: function () { $('#home-tab').tab('show'); }
                 });
-                
+
             }
         },
         scanSpeakers: function (ele) {
             scanSpeakers(ele);
         },
-        is_date:  function(input) {
-          if ( Object.prototype.toString.call(input) === "[object Date]" ) 
-            return true;
-          return false;   
-            }
-
+        is_date: function (input) {
+            if (Object.prototype.toString.call(input) === "[object Date]")
+                return true;
+            return false;
+        },
+        execCommand: function (url,param, method, callback) {
+            $.ajax({
+                url: url,
+                contentType: 'application/json; charset=utf-8',
+                method: method,
+                data: JSON.stringify(param),
+                success: function (d) {
+                    callback(d);
+                },
+                error: function (jqXHR, exception) {
+                    alert(jqXHR.status)
+                }
+            });
+        }
     }
 
 

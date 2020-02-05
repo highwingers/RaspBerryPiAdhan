@@ -2,8 +2,8 @@
 
 class Dal:
 
-    connectionString =  os.path.abspath(os.path.join('', '..')) + "/www/data/adhan.db"
-    print(connectionString)
+    connectionString =  os.path.abspath(os.path.join(os.path.dirname( __file__ ), '..')) + "/data/adhan.db"
+    #print(connectionString)
     def __init__(self):
         self.conn = sqlite3.connect(Dal.connectionString)
 
@@ -15,7 +15,7 @@ class Dal:
 
     def AddSchedule(self, TITLE, RUNAT, CATEGORY, SPEAKER):
         try:
-            TITLE = TITLE.replace("'","''")
+            TITLE = TITLE.replace("'","''").strip()
             SPEAKER = SPEAKER.replace("'","''")
             self.conn.execute("INSERT INTO SCHEDULE (ID,TITLE, RUNAT, CATEGORY, SPEAKER)  VALUES (NULL, '" + TITLE + "', '" + RUNAT + "', '"+ str(CATEGORY) +"',  '"+ SPEAKER +"' )");
             #print("Record Added")
@@ -26,8 +26,9 @@ class Dal:
 
     def DeleteSchedule(self, TITLE):
         try:
-            self.conn.execute("DELETE FROM SCHEDULE WHERE TITLE='"+ TITLE + "'");
-            #print("Record deleted")
+            _sql="DELETE FROM SCHEDULE WHERE TITLE='"+ TITLE.replace("'","''") + "'"
+            self.conn.execute(_sql);
+            print(_sql)
             self.conn.commit()
             self.conn.close()
         except Exception as e :

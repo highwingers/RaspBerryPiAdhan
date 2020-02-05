@@ -6,4 +6,15 @@ from lib.schedule import schedule
 
 #print(os.path.abspath(os.path.join(os.path.dirname( __file__ ), '..')))
 
-scheduleAdhan = schedule().scheduleAdhans(1,os.path.abspath('player.py'))
+
+
+
+currentDirectory = os.path.dirname(os.path.realpath(__file__))
+playerPath = currentDirectory + '/player.py'
+
+#f = open("demofile2.txt", "a")
+#f.write(playerPath)
+#f.close()
+
+
+scheduleAdhan = schedule().scheduleAdhans(1,playerPath)
