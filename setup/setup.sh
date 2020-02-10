@@ -1,3 +1,4 @@
+chown -R pi:pi  ${PWD%/*}/.git
 
 bash ./flaskserver.service
 
