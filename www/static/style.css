@@ -11,3 +11,6 @@ body {
 .field-label{
     font-weight:bold;
 }
+.nav-link{
+    padding: 6px;
+}

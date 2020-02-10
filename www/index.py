@@ -54,6 +54,9 @@ def settings():
     'settings': _settings
     }
     return render_template('tabs/settings.html', **data)
+@app.route('/support')
+def support():
+    return render_template('tabs/support.html')
 
 @app.route('/history')
 def history():
@@ -69,6 +72,10 @@ def history():
 def getSettings():
         id = request.args.get("id")
         return jsonify(getConfigSettings(1)  )
+
+@app.route('/api/updateSoftware', methods=['POST'])
+def updateSoftware():
+        return jsonify(True)
 
 @app.route('/api/getAdhanSettings')
 def getAdhanSettings():
