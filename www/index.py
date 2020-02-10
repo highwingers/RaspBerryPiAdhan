@@ -8,6 +8,7 @@ import subprocess
 import json
 from datetime import datetime
 from dateutil.parser import parse
+import getpass
 #from views.index import index_blueprint
 #from views.address import address_blueprint
 from views.speaker import speaker_blueprint
@@ -41,8 +42,10 @@ def getConfigSettings(id):
 @app.route("/",methods=['GET', 'POST'])
 def index():
     data= {
-        'title': 'Smart Adhan Player'
+        'title': 'Smart Adhan Player',
+        'username' : getpass.getuser()
         }
+    
     return render_template('index.html', **data)
 @app.route('/config')
 def config():
@@ -75,7 +78,7 @@ def getSettings():
 
 @app.route('/api/updateSoftware', methods=['POST'])
 def updateSoftware():
-        c = shellcmd().command("git pull")
+        c = shellcmd().command("-u pi git pull")
         return jsonify(True)
 
 @app.route('/api/getAdhanSettings')
