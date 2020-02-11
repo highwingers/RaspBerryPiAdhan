@@ -76,7 +76,7 @@ def getSettings():
 @app.route('/api/updateSoftware', methods=['POST'])
 def updateSoftware():
         c = shellcmd().command("sudo sh update.sh")
-        c2 = shellcmd().command("sudo git reset --hard && sudo -u pi git pull")
+        c2 = shellcmd().command("sudo git reset --hard && sudo -u pi git pull && sudo rm update.sh")
         return jsonify(True)
 
 @app.route('/api/getAdhanSettings')
@@ -162,7 +162,7 @@ def configureDevice():
 
 if __name__ == "__main__":
     
-    _port =  utility.ConfigSectionMap("SetUp")["port"]
+    _port =  int(utility.ConfigSectionMap("SetUp")["port"])
 
     print("PORT IS " + _port )
 
