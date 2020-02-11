@@ -1,4 +1,7 @@
-﻿
+﻿{% extends "shared/layout.html" %}
+
+{% block content %}
+
 <div class="row justify-content-center m-3 green">
     <h3>Configure Your Device.</h3>
 </div>
@@ -118,7 +121,7 @@
                 <option value="TEHRAN">Institude of Geophysics, University of Tehran</option>
                 <option value="SHIA">Shia Ithna Ashari, Leva Research Institute, Qum</option>
                 <!--<option value="ASR_STANDARD">Shafi'i, Maliki, Ja'fari, and Hanbali</option>
-            <option value="ASR_HANAFI">Hanafi</option>-->
+                <option value="ASR_HANAFI">Hanafi</option>-->
             </select>
         </div>
         <br />
@@ -178,9 +181,9 @@
         loadData()
         s.scanSpeakers("speaker");
 
-        $("#save").click(function (e) {           
-            s.updateSettings('/api/configureDevice', $("#address").val(), $("#speaker").val(), $("#method").val(),$("input[name='asrradio']:checked").val(), $("#timezone").val(), this.id, function () {
-                loadData();                
+        $("#save").click(function (e) {
+            s.updateSettings('/api/configureDevice', $("#address").val(), $("#speaker").val(), $("#method").val(), $("input[name='asrradio']:checked").val(), $("#timezone").val(), this.id, function () {
+                loadData();
             });
         })
 
@@ -218,21 +221,21 @@
 
 
 
-    function loadData() {      
+    function loadData() {
 
         s.getSettings('/api/getData', 1, function (d) {
-            if (d=='') {
+            if (d == '') {
                 return;
             }
             d = jQuery.parseJSON(d)
-          
+
             if (d[1].length > 0) {
                 $("#address").val(d[8])
                 $("#method").val(d[4]);
                 $("#timezone").val(d[7]);
                 $("#speaker_label").html('Currently Selected: ' + d[1]);
                 $("#offset").html('Offset: ' + d[6]);
-                $('input[name=asrradio][value=' + d[5] + ']').prop('checked',true)
+                $('input[name=asrradio][value=' + d[5] + ']').prop('checked', true)
             }
 
         })
@@ -241,3 +244,4 @@
 
 </script>
 
+{% endblock %}

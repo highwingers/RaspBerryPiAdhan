@@ -1,4 +1,8 @@
-﻿<div class="container">
+﻿{% extends "shared/layout.html" %}
+
+{% block content %}
+
+<div class="container">
 
     <div class="row justify-content-center m-3 green">
         <h3>Adhan Settings</h3>
@@ -167,37 +171,37 @@
 <div class="row p-3">
     <div class="col-xs-12">
         <b>Frequency</b><br />
-                        <label class="radio-inline">
-                            <input checked type="radio" value="7" name="optradio">Everyday
-                            <input type="radio" value="8" data-format="MM/DD/YYYY hh:mm A" name="optradio">Once
-                        </label><br />
+        <label class="radio-inline">
+            <input checked type="radio" value="7" name="optradio">Everyday
+            <input type="radio" value="8" data-format="MM/DD/YYYY hh:mm A" name="optradio">Once
+        </label><br />
         <b>Every: </b>
         <label class="radio-inline">
-            <input  type="radio" value="6" name="optradio">SAT
+            <input type="radio" value="6" name="optradio">SAT
         </label>
         &nbsp;
         <label class="radio-inline">
-            <input  type="radio" value="0" name="optradio">SUN
+            <input type="radio" value="0" name="optradio">SUN
         </label>
         &nbsp;
         <label class="radio-inline">
-            <input  type="radio" value="1" name="optradio">MON
+            <input type="radio" value="1" name="optradio">MON
         </label>
         &nbsp;
         <label class="radio-inline">
-            <input  type="radio" value="2" name="optradio">TUE
+            <input type="radio" value="2" name="optradio">TUE
         </label>
         &nbsp;
         <label class="radio-inline">
-            <input  type="radio" value="3" name="optradio">WED
+            <input type="radio" value="3" name="optradio">WED
         </label>
         &nbsp;
         <label class="radio-inline">
-            <input  type="radio" value="4" name="optradio">THU
+            <input type="radio" value="4" name="optradio">THU
         </label>
         &nbsp;
         <label class="radio-inline">
-            <input  type="radio" value="5" name="optradio">FRI
+            <input type="radio" value="5" name="optradio">FRI
         </label>
         &nbsp;
 
@@ -286,7 +290,7 @@
             })
             return false;
         }
- 
+
 
 
         var settings = { 'surah': $("#surah").val(), 'title': $("#surah option:selected").text(), 'datetime': $("#txtSchedule").val(), 'frequency': $("input[name='optradio']:checked").val(), 'speaker': $('#speaker2').val() }
@@ -301,6 +305,9 @@
                 return;
             }
             d = jQuery.parseJSON(d)
+            if (d==null) {
+                return;
+            }
             for (var i = 0; i < d.length; i++) {
                 _adhan = d[i][3].toUpperCase()
                 $('#' + _adhan).val(d[i][4])
@@ -319,3 +326,6 @@
 
 
 </script>
+
+
+{% endblock %}

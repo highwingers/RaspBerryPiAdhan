@@ -202,7 +202,10 @@ var s = (function () {
                     size: "small",
                     title: 'No Speaker Selected',
                     message: 'Please select a speaker from configuration tab.',
-                    callback: function () { $('#home-tab').tab('show'); }
+                    callback: function () {
+                        //$('#home-tab').tab('show');
+                        window.location.href = '/config'
+                    }
                 });
 
             }
