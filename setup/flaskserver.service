@@ -12,6 +12,7 @@ After=network-online.target
 WorkingDirectory=$dir/www
 ExecStart=/usr/bin/python3 $dir/www/index.py
 
+
 [Install]
 WantedBy=multi-user.target
 " >> /etc/systemd/system/flask_server1.service

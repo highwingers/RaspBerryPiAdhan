@@ -78,7 +78,7 @@ def getSettings():
 
 @app.route('/api/updateSoftware', methods=['POST'])
 def updateSoftware():
-        c = shellcmd().command("-u pi git pull")
+        c = shellcmd().command("sudo -u pi git pull")
         return jsonify(True)
 
 @app.route('/api/getAdhanSettings')
