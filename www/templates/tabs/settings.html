@@ -220,10 +220,11 @@
     $().ready(function () {
 
 
-
-        s.scanSpeakers("speaker2");
         s.dbConfigCheck('{{settings[1]}}')
         loadData()
+        s.scanSpeakers("speaker2");
+        
+        
 
 
         $('#id_0').datetimepicker({
