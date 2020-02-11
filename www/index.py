@@ -164,7 +164,7 @@ if __name__ == "__main__":
     
     _port =  int(utility.ConfigSectionMap("SetUp")["port"])
 
-    print("PORT IS " + _port )
+    #print("PORT IS " + _port )
 
     app.run(host='0.0.0.0', port=_port, debug=True)
 
