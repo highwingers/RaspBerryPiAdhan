@@ -2,6 +2,7 @@
 from pychromecast.controllers.youtube import YouTubeController
 from urllib.parse import urlparse,parse_qs
 from .shellcmds import shellcmd
+from .utility import utility
 
 class chromecast:
         
@@ -31,7 +32,8 @@ class chromecast:
             return self.chromecastPlayYoutube(deviceName, media)
         elif  not media.startswith("http"): 
             ip = shellcmd().command("hostname -I")
-            media = 'http://'+ ip + media
+            _port =  ':' + utility.ConfigSectionMap("SetUp")["port"]
+            media = 'http://'+ ip + _port + media
 
         return self.chromecastPlay(deviceName, media)
 
