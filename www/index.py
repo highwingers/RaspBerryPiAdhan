@@ -9,16 +9,14 @@ import json
 from datetime import datetime
 from dateutil.parser import parse
 import getpass
-#from views.index import index_blueprint
-#from views.address import address_blueprint
+
 from views.speaker import speaker_blueprint
-#from views.adhanvoice import adhanvoice_blueprint
 from lib.Dal import Dal
 from lib.shellcmds import shellcmd
 from lib.PrayerPy import PrayerData
 from lib.GeoPy import GeoData
 from lib.schedule import schedule
-
+from lib.utility import utility
 
 app = Flask(__name__)
 
@@ -44,8 +42,7 @@ def index():
     data= {
         'title': 'Smart Adhan Player',
         'username' : getpass.getuser()
-        }
-    
+        }    
     return render_template('index.html', **data)
 @app.route('/config')
 def config():
@@ -163,7 +160,10 @@ def configureDevice():
 
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=80, debug=True)
+    
+    _port =  utility.ConfigSectionMap("SetUp")["port"]
+
+    app.run(host='0.0.0.0', _port=80, debug=True)
 
 
    
