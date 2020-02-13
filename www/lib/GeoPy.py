@@ -19,3 +19,4 @@ class GeoData:
             self.lng = 0
             self.address = ""
             self.status=0
+            print(print(str(e)))

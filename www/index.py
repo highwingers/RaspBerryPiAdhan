@@ -61,8 +61,12 @@ def support():
 @app.route('/history')
 def history():
     _jobs = schedule().queryJobs()
+    _time = shellcmd().command("date")
+
     data= {
-    'Jobs': _jobs
+    'Jobs': _jobs,
+    'shellTime': _time,
+    'pythonTime': datetime.now()
     }
     return render_template('tabs/history.html', **data)
 
@@ -138,7 +142,7 @@ def configureDevice():
         shellcmd().setTimeZone(timezone)
         timezoneOffset =  shellcmd().getZoneOffset()
 
-        _add = GeoData(address, "adhan_player")
+        _add = GeoData(address, "adhan_player_piZero")
         coords = _add.getCoords()
 
         if _add.status==0:
