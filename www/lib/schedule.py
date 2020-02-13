@@ -123,7 +123,7 @@ class schedule:
                 media_url = _prayDb["FAJR"]["media"]
                 if _prayDb["FAJR"]["status"]==0:
                     continue   
-            if prayer=="zuhr" :
+            if prayer=="dhuhr" :
                 media_url = _prayDb["DUHUR"]["media"]
                 if _prayDb["DUHUR"]["status"]==0:
                     continue
