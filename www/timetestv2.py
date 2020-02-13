@@ -9,7 +9,7 @@ lng = data[3]
 method = data[4]
 asr = data[5]
 
-prayTimes = PrayerData(lat, lng, method, asr, 5).getTimes()
+prayTimes = PrayerData(lat, lng, 'Karachi', asr, 5).getTimes()
 
 
 #-------------------------- Test Code --------------------------
