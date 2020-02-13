@@ -228,7 +228,7 @@ var s = (function () {
                     callback(d);
                 },
                 error: function (jqXHR, exception) {
-                    alert(jqXHR.status)
+                    alert(jqXHR.responseText)
                 }
             });
         }
