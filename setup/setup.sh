@@ -1,5 +1,8 @@
 chown -R pi:pi  ${PWD%/*}/.git
 
+
+git clone https://github.com/jasbur/RaspiWiFi.git
+
 bash ./flaskserver.service
 
 sh ./dailycron.sh
@@ -9,6 +12,7 @@ sh ./avahi.sh
 sh ./db.sh
 
 apt-get  install  python3-pip 
+apt-get install python3-gpiozero
 
 pip3 install --timeout 1000 -r ../requirements.txt 
 
