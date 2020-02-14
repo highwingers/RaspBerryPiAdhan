@@ -1,8 +1,5 @@
 chown -R pi:pi  ${PWD%/*}/.git
 
-
-git clone https://github.com/jasbur/RaspiWiFi.git
-
 bash ./flaskserver.service
 
 sh ./dailycron.sh
@@ -21,6 +18,8 @@ pip3 uninstall zeroconf
 pip3 install --timeout 1000 zeroconf==0.24.3
 
 #sh ./apache.sh
+
+sed -i -e '$i \python3 /home/pi/RaspBerryPiAdhan/www/commands/resetbtn.py &\n' /etc/rc.local
 
 
 python3 ${PWD%/*}/www/index.py
