@@ -21,6 +21,9 @@ pip3 install --timeout 1000 zeroconf==0.24.3
 
 sed -i -e '$i \python3 ${PWD%/*}/www/commands/resetbtn.py &\n' /etc/rc.local
 
+sed -i 's/BT WLAN/ADHAN/g'  /etc/nymea/nymea-networkmanager.conf
+systemctl restart nymea-networkmanager
+
 
 python3 ${PWD%/*}/www/index.py
 
