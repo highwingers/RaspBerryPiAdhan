@@ -2,10 +2,14 @@ from gpiozero import Button
 from subprocess import check_call
 from signal import pause
 import os
+import pathlib
+
+
+currentPhysicalDirectory = str((pathlib.Path(__file__).parent)) + '/nmcli.sh'
 
 def shutdown():
     print("Down")
-    os.system('bash ./nmcli.sh')
+    os.system('sudo bash '+currentPhysicalDirectory)
     #with open("/home/pi/RaspBerryPiAdhan/www/commands/test.txt", "a") as myfile:
         #myfile.write("Device Reset.")
 
