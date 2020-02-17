@@ -7,18 +7,19 @@ import pathlib
 
 def reset():
     print("Reseting")
-    codeDirectory = str(os.getcwd()) + '/RaspBerryPiAdhan'
 
-    os.system("sudo rm -r " + codeDirectory)
-    os.system("git clone https://github.com/highwingers/RaspBerryPiAdhan.git")
+    os.system("sudo rm -r RaspBerryPiAdhan")
+    os.system("sudo cp -R orignal_firmware RaspBerryPiAdhan")
+    os.system("sudo chown pi:pi -R RaspBerryPiAdhan")
 
     print("Reseting Network")
 
     netWorkReset = str((pathlib.Path(__file__).parent)) + '/nmcli.sh'
+    os.system('sudo bash '+netWorkReset)
 
 def shutdown():
     reset()
-    #os.system('sudo bash '+netWorkReset)
+    
     #with open("/home/pi/RaspBerryPiAdhan/www/commands/test.txt", "a") as myfile:
         #myfile.write("Device Reset.")
 
