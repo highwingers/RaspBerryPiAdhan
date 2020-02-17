@@ -16,6 +16,7 @@ def reset():
 
     netWorkReset = str((pathlib.Path(__file__).parent)) + '/nmcli.sh'
     os.system('sudo bash '+netWorkReset)
+    os.system("sudo reboot")
 
 def shutdown():
     reset()
