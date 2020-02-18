@@ -9,7 +9,7 @@ def reset():
     print("Reseting")
     currentWork = os.getcwd()
 
-    os.system("sudo rm -r " + currentWork)
+    os.system("sudo rm -r " + currentWork + "/RaspBerryPiAdhan")
     os.system("sudo cp -R " + currentWork + "/orignal_firmware " + currentWork + "/RaspBerryPiAdhan")
     os.system("sudo chown pi:pi -R " + currentWork + "/RaspBerryPiAdhan")
     os.system("sudo python3  "+ currentWork +"/RaspBerryPiAdhan/www/commands/resetbtn.py")
