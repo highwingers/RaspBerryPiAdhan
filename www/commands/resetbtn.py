@@ -10,9 +10,10 @@ def reset():
     currentWork = os.getcwd()
 
     os.system("sudo rm -r " + currentWork + "/RaspBerryPiAdhan")
-    os.system("sudo cp -R " + currentWork + "/orignal_firmware " + currentWork + "/RaspBerryPiAdhan")
-    os.system("sudo chown pi:pi -R " + currentWork + "/RaspBerryPiAdhan")
-    os.system("sudo python3  "+ currentWork +"/RaspBerryPiAdhan/www/commands/resetbtn.py")
+    os.system("sudo -u pi cp -R " + currentWork + "/orignal_firmware " + currentWork + "/RaspBerryPiAdhan")
+    #os.system("sudo chown pi:pi -R " + currentWork + "/RaspBerryPiAdhan")
+    os.system("sudo python3  "+ currentWork +"/RaspBerryPiAdhan/www/index.py")
+    
     print("Reseting Network")
 
     netWorkReset = str((pathlib.Path(__file__).parent)) + '/nmcli.sh'
