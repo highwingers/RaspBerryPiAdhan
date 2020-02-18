@@ -1,6 +1,6 @@
 updir=${PWD%/*}
 
-chown -R pi:pi  ${PWD%/*}/.git
+#chown -R pi:pi  ${PWD%/*}/.git
 
 bash ./flaskserver.service
 
