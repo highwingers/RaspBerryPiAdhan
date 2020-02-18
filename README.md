@@ -1,5 +1,6 @@
 # RaspBerryPiAdhan
 
-install noted:
+install notes:
 
-wget -O - https://raw.githubusercontent.com/highwingers/RaspBerryPiAdhan/master/install.sh | sudo sh
+wget  https://raw.githubusercontent.com/highwingers/RaspBerryPiAdhan/master/install.sh && sudo sh install.sh
+
