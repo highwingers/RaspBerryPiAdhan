@@ -12,13 +12,13 @@ def reset():
     os.system("sudo rm -r " + currentWork + "/RaspBerryPiAdhan")
     os.system("sudo -u pi cp -R " + currentWork + "/orignal_firmware " + currentWork + "/RaspBerryPiAdhan")
     #os.system("sudo chown pi:pi -R " + currentWork + "/RaspBerryPiAdhan")
-    os.system("sudo python3  "+ currentWork +"/RaspBerryPiAdhan/www/index.py")
+    #os.system("sudo python3  "+ currentWork +"/RaspBerryPiAdhan/www/index.py")
     
     print("Reseting Network")
 
     netWorkReset = str((pathlib.Path(__file__).parent)) + '/nmcli.sh'
-    #os.system('sudo bash '+netWorkReset)
-    #os.system("sudo reboot")
+    os.system('sudo bash '+netWorkReset)
+    os.system("sudo reboot")
 
 def shutdown():
     reset()
