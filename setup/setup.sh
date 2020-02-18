@@ -21,7 +21,7 @@ pip3 install --timeout 1000 zeroconf==0.24.3
 
 #sh ./apache.sh
 
-grep -q resetbtn.py /etc/rc.local  || sudo sed -i  -e "\$i \sudo python3 $updir/www/commands/resetbtn.py &\n"  /etc/rc.local
+grep -q resetbtn.py /etc/rc.local  || sudo sed -i  -e "\$i \sudo python3 ${updir}/www/commands/resetbtn.py &\n"  /etc/rc.local
 
 
 
