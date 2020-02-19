@@ -21,8 +21,8 @@ def reset():
     os.system("sudo rm -r " + currentWork + "/RaspBerryPiAdhan")
     os.system("sudo -u pi cp -R " + currentWork + "/orignal_firmware " + currentWork + "/RaspBerryPiAdhan")
 
-    os.system("rm -f " + currentWork + "/RaspBerryPiAdhan/www/data/adhan.db")
-    os.system("sh " + currentWork + "/RaspBerryPiAdhan/setup/db.sh")
+    #os.system("rm -f " + currentWork + "/RaspBerryPiAdhan/www/data/adhan.db")
+    #os.system("sh " + currentWork + "/RaspBerryPiAdhan/setup/db.sh")
 
     print("Reseting Network")
 
