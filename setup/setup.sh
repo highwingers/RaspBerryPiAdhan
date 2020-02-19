@@ -28,6 +28,7 @@ grep -q resetbtn.py /etc/rc.local  || sudo sed -i  -e "\$i \sudo python3 ${updir
 sed -i 's/BT WLAN/ADHAN/g'  /etc/nymea/nymea-networkmanager.conf
 systemctl restart nymea-networkmanager
 
+update-ca-certificates -f
 
 python3 ${PWD%/*}/www/index.py
 
