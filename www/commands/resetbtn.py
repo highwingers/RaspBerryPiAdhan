@@ -9,7 +9,7 @@ import pathlib
 def reset():
     print("Reseting")
 
-    _file=open("/home/pi/resetlog.txt", "w+")
+    _file=open("/home/pi/resetlog.txt", "a+")
 
 
 
