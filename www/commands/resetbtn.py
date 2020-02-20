@@ -10,15 +10,18 @@ currentWork = str(Path(__file__).parents[3])
 _file=open(currentWork + "/resetlog.txt", "a+")
 
 def reset_software():
-    
+
+    global currentWork
+    global _file
+
     print("Reseting Started")    
 
     
     _file.write(currentWork + "\n")
 
 
-    os.system("sudo rm -r " + currentWork + "/RaspBerryPiAdhan")
-    os.system("sudo -u pi cp -R " + currentWork + "/orignal_firmware " + currentWork + "/RaspBerryPiAdhan")
+    os.system("sudo rm -rf " + currentWork + "/RaspBerryPiAdhan")
+    os.system("sudo -u pi cp -Rf " + currentWork + "/orignal_firmware " + currentWork + "/RaspBerryPiAdhan")
     os.system("sudo -u pi crontab -r")
     _file.write("Done Restoring \n")
 
