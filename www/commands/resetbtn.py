@@ -20,16 +20,19 @@ def reset():
 
     os.system("sudo rm -r " + currentWork + "/RaspBerryPiAdhan")
     os.system("sudo -u pi cp -R " + currentWork + "/orignal_firmware " + currentWork + "/RaspBerryPiAdhan")
+    os.system("sudo -u pi crontab -r")
+    _file.write("Done Reseting \n")
 
     #os.system("rm -f " + currentWork + "/RaspBerryPiAdhan/www/data/adhan.db")
     #os.system("sh " + currentWork + "/RaspBerryPiAdhan/setup/db.sh")
 
-    print("Reseting Network")
+    #print("Reseting Network")
 
     os.system("sudo shutdown -r +1")
 
-    netWorkReset = str((pathlib.Path(__file__).parent)) + '/nmcli.sh'
-    os.system('sudo bash '+netWorkReset)
+    #netWorkReset = str((pathlib.Path(__file__).parent)) + '/nmcli.sh'
+    #os.system('sudo bash '+netWorkReset)
+    #_file.write("Networks Reseted")
 
 
 def shutdown():
@@ -43,3 +46,4 @@ shutdown_btn = Button(3, hold_time=3)
 shutdown_btn.when_held = shutdown
 
 pause()
+
