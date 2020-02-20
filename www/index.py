@@ -43,7 +43,7 @@ def index():
         'title': 'Smart Adhan Player',
         'username' : getpass.getuser()
         }    
-    return render_template('index.html', **data)
+    return render_template('tabs/config.html', **data)
 @app.route('/config')
 def config():
     return render_template('tabs/config.html')
