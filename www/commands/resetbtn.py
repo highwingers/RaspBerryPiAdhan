@@ -6,15 +6,14 @@ from pathlib import Path
 import pathlib
 
 
-currentWork = str(Path(__file__).parents[3])
-_file=open(currentWork + "/resetlog.txt", "a+")
-_file.write("onLoad: " + currentWork + "/RaspBerryPiAdhan \n")
+
 
 
 def reset_software():
 
-    global currentWork
-    global _file
+    currentWork =  "/home/pi" #str(Path(__file__).parents[3])
+    _file=open(currentWork + "/resetlog.txt", "a+")
+    _file.write("Path: " + currentWork + "/RaspBerryPiAdhan \n")
 
     print("Reseting Started")    
 
@@ -34,6 +33,7 @@ def reset_software():
 
     os.system("sudo shutdown -r +1")
     _file.write("Shutdown Schedule \n")
+    _file.close()
 
     #netWorkReset = str((pathlib.Path(__file__).parent)) + '/nmcli.sh'
     #os.system('sudo bash '+netWorkReset)
@@ -57,9 +57,12 @@ def resetInstructions():
         _file.write("** Reset Completed ** \n\n")
         held_for = 0.0
     elif (held_for > 5.0):
+        currentWork =  "/home/pi" #str(Path(__file__).parents[3])
+        _file=open(currentWork + "/resetlog.txt", "a+")
         print("Restarting Bluetooth Service after 5 Seconds")
         os.system("sudo systemctl restart nymea-networkmanager.service")
         _file.write(" ** Resrtarted Bluetooth Service**  \n\n")
+        _file.close()
         held_for = 0.0
     else:
         print("Nothing to do")
