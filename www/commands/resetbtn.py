@@ -8,6 +8,8 @@ import pathlib
 
 currentWork = str(Path(__file__).parents[3])
 _file=open(currentWork + "/resetlog.txt", "a+")
+_file.write("onLoad: " + currentWork + "/RaspBerryPiAdhan \n")
+
 
 def reset_software():
 
@@ -59,10 +61,8 @@ def resetInstructions():
         os.system("sudo systemctl restart nymea-networkmanager.service")
         _file.write(" ** Resrtarted Bluetooth Service**  \n\n")
         held_for = 0.0
-
-
     else:
-        print("I'm not going to do anything now …" + str(held_for))
+        print("Nothing to do")
         held_for = 0.0
 
 def hld():
