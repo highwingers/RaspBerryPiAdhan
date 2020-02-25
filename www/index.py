@@ -9,6 +9,7 @@ import json
 from datetime import datetime
 from dateutil.parser import parse
 import getpass
+from pathlib import Path
 
 from views.speaker import speaker_blueprint
 from lib.Dal import Dal
@@ -28,6 +29,7 @@ app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
 app.register_blueprint(speaker_blueprint)
 #app.register_blueprint(adhanvoice_blueprint)
 #app.register_blueprint(index_blueprint)
+_rootPath = os.path.abspath(os.path.dirname( __file__ ))
 
 def getConfigSettings(id):
         _settings = Dal().GetSettings(id)
@@ -56,7 +58,8 @@ def settings():
     return render_template('tabs/settings.html', **data)
 @app.route('/support')
 def support():
-    return render_template('tabs/support.html')
+    data= {'username' : getpass.getuser()}
+    return render_template('tabs/support.html', **data)
 
 @app.route('/history')
 def history():
@@ -106,7 +109,7 @@ def updateAdhanSettings():
     try:
         _settings = json.loads(request.form["AdhanSettings"])
         _update = Dal().updateAdhanSettings(_settings)
-        schedule().scheduleAdhans(1,os.path.abspath('commands/player.py'))
+        schedule().scheduleAdhans(1,_rootPath + '/commands/player.py')
         return jsonify(1)
     except Exception as e :
         return 'Error: ' + print(str(e))
@@ -154,7 +157,7 @@ def configureDevice():
         if result is not True:
              return result
         #Below Call with Schedule Adhans for Today
-        scheduleAdhan = schedule().scheduleAdhans(1,os.path.abspath('commands/player.py'))
+        scheduleAdhan = schedule().scheduleAdhans(1,_rootPath + '/commands/player.py')
         
         if not scheduleAdhan:
             return "Could not schedule Adhans " + scheduleAdhan
