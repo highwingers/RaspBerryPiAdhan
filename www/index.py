@@ -166,6 +166,16 @@ def configureDevice():
     except Exception as e:
         return "Something Went Wrong " + str(e)
 
+@app.route("/api/exeCommand",methods=['POST'])
+def exeCommand():
+    content = request.get_json(silent=True)
+    qry = content.get('query')
+    if qry==1:
+        _reboot = shellcmd().command("sudo shutdown -r +1")
+        return "Device is rebooting now. Please Hit 'OK' button and wait for 'APP' to reload. (Approx. 3 minutes)"
+
+    return "Nothing to Execute"
+
 
 
 
