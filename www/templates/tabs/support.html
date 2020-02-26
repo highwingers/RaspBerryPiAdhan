@@ -23,11 +23,11 @@
                 size: "small",
                 title: "Software Update",
                 message: "Updated Successfully.",
-                callback: function () { }
+                callback: function () { window.location.reload(); }
             })
 
             _this.text(_this.data("title"))
-            window.location.reload();
+            
         });
         return false;
 
