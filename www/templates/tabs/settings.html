@@ -210,7 +210,7 @@
 </div>
 
 <div class="row p-2">
-    <button id="btnSaveSurahSchedule" class="btn btn-success btn-lg btn-block" data-title="Save Surah Settings" data-loading-title="Saving...">Save Surah Settings</button>
+    <button id="btnSaveSurahSchedule" class="btn btn-success btn-lg btn-block" data-title="Save Surah Settings" data-loading-title="Saving...">Save Settings</button>
 </div>
 <hr />
 
@@ -253,7 +253,7 @@
                 }
 
         });
-        s.populateSurahs("akdr", "surah", "https://raw.githubusercontent.com/highwingers/RaspBerryPiAdhan/master/www/static/json/surah.json");
+        s.populateSurahs("akdr", "surah", "/static/json/surah.json");
         $("input[name='mediaType']").change(function () {
             _type = ($(this).val())
             if (_type == 'a') { // Islamic Audios
