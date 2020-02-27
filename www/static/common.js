@@ -187,6 +187,7 @@ var s = (function () {
 
             $.getJSON(_dataUrl, function (data) {
                 var _url;
+                console.log(data)
                 $.each(data, function (key, val) {
                     if (_dataUrl.indexOf("http://") == 0 || _dataUrl.indexOf("https://") == 0) {
                         _url = data[key].url
