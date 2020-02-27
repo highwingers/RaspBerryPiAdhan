@@ -11,7 +11,8 @@ import pathlib
 
 def reset_software():
 
-    currentWork =  "/home/pi" #str(Path(__file__).parents[3])
+    currentWork =  str(os.path.abspath(os.path.join(os.path.dirname( __file__ ), '..','..','..'))) # "/home/pi"   
+
     _file=open(currentWork + "/resetlog.txt", "a+")
     _file.write("Path: " + currentWork + "/RaspBerryPiAdhan \n")
 
