@@ -257,9 +257,9 @@
         $("input[name='mediaType']").change(function () {
             _type = ($(this).val())
             if (_type == 'a') { // Islamic Audios
-                s.populateIslamicAudios("surah", "https://raw.githubusercontent.com/highwingers/RaspBerryPiAdhan/master/www/static/json/islamic_audios.json");
+                s.populateIslamicAudios("surah", "/static/json/islamic_audios.json");
             } else { // Surahs
-                s.populateSurahs("akdr", "surah", "https://raw.githubusercontent.com/highwingers/RaspBerryPiAdhan/master/www/static/json/surah.json");
+                s.populateSurahs("akdr", "surah", "/static/json/surah.json");
             }
         });
 
