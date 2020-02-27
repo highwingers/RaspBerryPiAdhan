@@ -181,14 +181,20 @@ var s = (function () {
                 }
             });
         },
-        populateSurahs: function (molvi, selector) {
+        populateSurahs: function (molvi, selector, _dataUrl) {
 
             url = 'https://server6.mp3quran.net/{molvi}/{surah}.mp3';
 
-            $.getJSON("/static/json/surah.json", function (data) {
-                var items = [];
+            $.getJSON(_dataUrl, function (data) {
+                var _url;
                 $.each(data, function (key, val) {
-                    _url = url.replace('{molvi}', molvi).replace('{surah}', data[key].index);
+                    if (_dataUrl.indexOf("http://") == 0 || _dataUrl.indexOf("https://") == 0) {
+                        _url = data[key].url
+                    } else {
+                        _url = url.replace('{molvi}', molvi).replace('{surah}', data[key].index);
+                    }
+                    console.log(_url)
+                 
                     $('#' + selector).append('<option value="' + _url + '">' + data[key].title + ' - [Verses ' + data[key].count + '] </option>');
                 });
 
