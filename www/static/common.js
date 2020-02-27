@@ -181,22 +181,26 @@ var s = (function () {
                 }
             });
         },
-        populateSurahs: function (molvi, selector, _dataUrl) {
-
+        populateSurahs: function (molvi, selector) {
+            $("#" + selector).empty()
             url = 'https://server6.mp3quran.net/{molvi}/{surah}.mp3';
 
+            $.getJSON("/static/json/surah.json", function (data) {
+                var items = [];
+                $.each(data, function (key, val) {
+                    _url = url.replace('{molvi}', molvi).replace('{surah}', data[key].index);
+                    $('#' + selector).append('<option value="' + _url + '">' + data[key].title + ' - [Verses ' + data[key].count + '] </option>');
+                });
+
+            });
+        },
+        populateIslamicAudios: function (selector, _dataUrl) {
+            $("#" + selector).empty()
             $.getJSON(_dataUrl, function (data) {
                 var _url;
-                console.log(data)
                 $.each(data, function (key, val) {
-                    if (_dataUrl.indexOf("http://") == 0 || _dataUrl.indexOf("https://") == 0) {
-                        _url = data[key].url
-                    } else {
-                        _url = url.replace('{molvi}', molvi).replace('{surah}', data[key].index);
-                    }
-                    console.log(_url)
-                 
-                    $('#' + selector).append('<option value="' + _url + '">' + data[key].title + ' - [Verses ' + data[key].count + '] </option>');
+                    _url = data[key].url
+                    $('#' + selector).append('<option value="' + _url + '">' + data[key].title + '</option>');
                 });
 
             });

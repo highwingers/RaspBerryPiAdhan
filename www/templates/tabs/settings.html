@@ -128,7 +128,7 @@
 </div>
 
 <p class="p-3 mb-2 bg-info text-white">
-    Select the Surah, then choose the date and time by touching the "Calendar" icon. Choose "Once" if you want to run it at provided date and time, choose "Daily" if you want to run it daily (Date will serve as the START date of surah in this case.). Choose "Play Now" if you just want to play it without scheduling.
+    Select the Surah/Islamic Audio, then choose the date and time by touching the "Calendar" icon. Choose "Once" if you want to run it at provided date and time, choose "Daily" if you want to run it daily (Date will serve as the START date of surah in this case.). Choose "Play Now" if you just want to play it without scheduling.
 </p>
 
 
@@ -253,9 +253,18 @@
                 }
 
         });
+        s.populateSurahs("akdr", "surah", "https://raw.githubusercontent.com/highwingers/RaspBerryPiAdhan/master/www/static/json/surah.json");
+        $("input[name='mediaType']").change(function () {
+            _type = ($(this).val())
+            if (_type == 'a') { // Islamic Audios
+                s.populateIslamicAudios("surah", "https://raw.githubusercontent.com/highwingers/RaspBerryPiAdhan/master/www/static/json/islamic_audios.json");
+            } else { // Surahs
+                s.populateSurahs("akdr", "surah", "https://raw.githubusercontent.com/highwingers/RaspBerryPiAdhan/master/www/static/json/surah.json");
+            }
+        });
 
-        //s.populateSurahs("akdr", "surah", "https://raw.githubusercontent.com/highwingers/RaspBerryPiAdhan/master/www/static/json/surah.json");
-        s.populateSurahs("akdr", "surah", "https://raw.githubusercontent.com/highwingers/RaspBerryPiAdhan/master/www/static/json/islamic_audios.json");
+        
+        
 
 
         $(".playBtn").click(function () {
