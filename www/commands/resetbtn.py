@@ -6,7 +6,12 @@ from pathlib import Path
 import pathlib
 
 
-
+def reset_network():
+	print("Reseting Network")
+	os.system("rm -r /etc/NetworkManager/system-connections/*")
+	os.system("sudo reboot")
+	#os.system("sudo ip link set wlan0 down && sudo ip link set wlan0 up")
+	#os.system("sudo systemctl restart nymea-networkmanager.service")
 
 
 def reset_software():
@@ -55,14 +60,19 @@ def resetInstructions():
     if (held_for > 10.0):
         print("Restoring Data Files From Orignal Firmware")
         reset_software()
-        _file.write("** Reset Completed ** \n\n")
+        _file.write("** Factory Reset Completed ** \n\n")
         held_for = 0.0
     elif (held_for > 5.0):
-        currentWork =  "/home/pi" #str(Path(__file__).parents[3])
-        _file=open(currentWork + "/resetlog.txt", "a+")
-        print("Restarting Bluetooth Service after 5 Seconds")
-        os.system("sudo systemctl restart nymea-networkmanager.service")
-        _file.write(" ** Resrtarted Bluetooth Service**  \n\n")
+
+        reset_network()
+
+	
+        #currentWork =  "/home/pi" #str(Path(__file__).parents[3])
+        #_file=open(currentWork + "/resetlog.txt", "a+")
+        #print("Restarting Bluetooth Service after 5 Seconds")
+        #os.system("sudo systemctl restart nymea-networkmanager.service")
+        _file.write(" ** Reset Network**  \n\n")
+
         _file.close()
         held_for = 0.0
     else:
