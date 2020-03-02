@@ -63,15 +63,19 @@ def support():
 
 @app.route('/history')
 def history():
-    _jobs = schedule().queryJobs()
-    _time = shellcmd().command("date")
+    try:
+        _jobs = schedule().queryJobs()
+        _time = shellcmd().command("date")
 
-    data= {
-    'Jobs': _jobs,
-    'shellTime': _time,
-    'pythonTime': datetime.now()
-    }
-    return render_template('tabs/history.html', **data)
+        data= {
+        'Jobs': _jobs,
+        'shellTime': _time,
+        'pythonTime': datetime.now()
+        }
+        return render_template('tabs/history.html', **data)
+    except Exception as e : 
+        return render_template('tabs/history.html')
+
 
 
 
