@@ -6,7 +6,7 @@ bash ./flaskserver.service
 
 sh ./dailycron.sh
 
-sh ./avahi.sh
+bash ./avahi.sh
 
 sh ./db.sh
 
