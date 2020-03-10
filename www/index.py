@@ -180,6 +180,39 @@ def exeCommand():
 
     return "Nothing to Execute"
 
+@app.route("/api/bluetooth/scan",methods=['GET'])
+def scanbluetooth():
+    _d = shellcmd().command("{   printf 'scan on\n\n';     sleep 10;     printf 'devices\n\n';     printf 'quit\n\n'; } | bluetoothctl | grep ^Device", False)
+    return _d
+@app.route("/api/bluetooth/connect",methods=['GET'])
+def connectbluetooth():
+    # E4:F0:42:51:C7:72 
+    _mac = request.args.get("mac")
+    _d = shellcmd().command("{   printf 'trust "+ _mac +"\n\n';     sleep 5;     printf 'pair E4:F0:42:51:C7:72\n\n';     sleep 5;     printf 'connect E4:F0:42:51:C7:72\n\n';     sleep 5; } | bluetoothctl", False)
+    return _d
+@app.route("/api/bluetooth/disconnect",methods=['GET'])
+def disconnectbluetooth():
+    _mac = request.args.get("mac")
+    _d = shellcmd().command("{   printf 'disconnect "+ _mac +"\n\n';     sleep 5;      } | bluetoothctl", False)
+    return _d
+@app.route("/api/bluetooth/remove",methods=['GET'])
+def removebluetooth():
+    # un pair
+    _mac = request.args.get("mac")
+    _d = shellcmd().command("{   printf 'remove "+ _mac +"\n\n';     sleep 5;      } | bluetoothctl", False)
+    return _d
+@app.route("/api/bluetooth/info",methods=['GET'])
+def infobluetooth():
+    #if returns EMPTY, it was NEVER Paired in past
+    #if returns Connected:no then just use the Connect method and all set
+    #if returns Connected:yes just play media
+    _mac = request.args.get("mac")
+    print("{  printf 'info  "+ _mac +"\n\n';  sleep 2;printf 'quit\n\n';} | bluetoothctl | grep Connected")
+    _d = shellcmd().command("{  printf 'info  "+ _mac +"\n\n';  sleep 2;printf 'quit\n\n';} | bluetoothctl | grep Connected", False)
+    return _d
+
+
+
 
 
 
