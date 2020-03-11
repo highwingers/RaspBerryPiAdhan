@@ -9,7 +9,6 @@ cd orignal_firmware/setup
 sudo sh  ./db.sh
 cd ~
 
-
 #chown pi:pi -R orignal_firmware
 cd RaspBerryPiAdhan/setup
 sh ./setup.sh
