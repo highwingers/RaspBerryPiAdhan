@@ -144,10 +144,27 @@
 </div>
 
 <div class="row p-3">
-    <div class="field-label">Choose Speaker:</div>
+    <div class="field-label">Choose Google Speaker:</div>
     <select id="speaker2" name="speaker2" class="form-control">
         <option value="">Loading Speakers...</option>
     </select>
+    <span id="speaker_label"></span>
+</div>
+<div>
+    <div class="row">
+        <div class="field-label">Choose Bluetooth Speaker:</div>
+    </div>
+
+    <div class="row p-2">
+        <div class="col-xs-6 p-1">
+            <select id="bluspeaker2" name="bluspeaker2" class="form-control">
+                <option value="">Scanning Speakers...</option>
+            </select>
+        </div>
+        <div class="col-xs-6 p-1"><button id="bluConnect" disabled class=" btn btn-success btn-md">Connect</button></div>
+        <div class="col-xs-6 p-1"><button id="bluPlay" disabled class=" btn btn-primary btn-md">Play Now</button></div>
+    </div>
+
     <span id="speaker_label"></span>
 </div>
 
@@ -224,8 +241,47 @@
         s.dbConfigCheck('{{settings[1]}}')
         loadData()
         s.scanSpeakers("speaker2");
-        
-        
+        bluScan("bluspeaker2")
+
+
+        function bluScan(element) {
+            var count = 0;
+            s.getBluetoothDevice('/api/bluetooth/scan', function (device) {
+                if (count==0) {
+                    $('#' + element).empty();
+                    $("#bluConnect").prop("disabled",false);
+                }
+                count++;
+                $('#' + element).append(`<option value="${device.mac}">
+                                       ${device.name}
+                                  </option>`);
+            })
+        }
+
+        $("#bluConnect").click(function () {
+            _this = $(this)
+            _this.text('Connecting...')
+            v=$("#bluspeaker2").val()
+            s.connectBlueToothDevice("/api/bluetooth/connect", {mac:v}, "POST", function (r) {
+            msg='';
+            if(r.indexOf('not available') > 0 ) {
+                    msg = '<h3>There was problem connecting to your device.</h3><br><div>'+ r +'</div>';
+            }
+            else if (r.indexOf('AuthenticationFailed') > 0) {
+                    msg = '<h3>There was problem connecting to your device. Authentication Failed</h3>. <br><div>' + r + '</div>';
+            }
+            else {
+                    msg = '<h3>Successfully Connected</h3>. <br><div>' + r + '</div>';
+            }
+            
+            bootbox.alert({
+                size: "small",
+                title: "Bluetooth",
+                message: msg,
+                callback: function () { _this.text('Connect') }
+            })
+            })
+        })
 
 
         $('#id_0').datetimepicker({
@@ -263,8 +319,8 @@
             }
         });
 
-        
-        
+
+
 
 
         $(".playBtn").click(function () {

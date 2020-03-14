@@ -18,6 +18,7 @@ from lib.PrayerPy import PrayerData
 from lib.GeoPy import GeoData
 from lib.schedule import schedule
 from lib.utility import utility
+from lib.poco.BlueToothDevice import BlueToothDevice
 
 app = Flask(__name__)
 
@@ -183,12 +184,21 @@ def exeCommand():
 @app.route("/api/bluetooth/scan",methods=['GET'])
 def scanbluetooth():
     _d = shellcmd().command("{   printf 'scan on\n\n';     sleep 10;     printf 'devices\n\n';     printf 'quit\n\n'; } | bluetoothctl | grep ^Device", False)
-    return _d
-@app.route("/api/bluetooth/connect",methods=['GET'])
+    list = []  
+    for line in _d.splitlines():
+        _arr = line.split(None, 2)
+        _mac = _arr[1]
+        _devicename = _arr[2]
+        list.append( BlueToothDevice(_mac, _devicename).__dict__) 
+
+    return json.dumps(list)
+@app.route("/api/bluetooth/connect",methods=['POST'])
 def connectbluetooth():
     # E4:F0:42:51:C7:72 
-    _mac = request.args.get("mac")
-    _d = shellcmd().command("{   printf 'trust "+ _mac +"\n\n';     sleep 5;     printf 'pair E4:F0:42:51:C7:72\n\n';     sleep 5;     printf 'connect E4:F0:42:51:C7:72\n\n';     sleep 5; } | bluetoothctl", False)
+    #_mac = request.args.get("mac")
+    content = request.get_json(silent=True)
+    _mac = content.get('mac')
+    _d = shellcmd().command("{   printf 'trust "+ _mac +"\n\n';     sleep 5;     printf 'pair "+ _mac +"\n\n';     sleep 5;     printf 'connect "+ _mac +"\n\n';     sleep 5; } | bluetoothctl", False)
     return _d
 @app.route("/api/bluetooth/disconnect",methods=['GET'])
 def disconnectbluetooth():

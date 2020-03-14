@@ -74,6 +74,19 @@ var s = (function () {
             });
 
         },
+        getBluetoothDevice: function (url, result) {
+            $.getJSON(url, function (data) {
+
+                $.each(data, function (key, val) {
+                    result(val)
+                });
+
+
+            });
+        },
+        connectBlueToothDevice: function (url,mac,method,callback) {
+            this.execCommand(url, mac, method, callback)
+        },
         playMedia: function (url, device, mediaUrl, result) {
 
             $.ajax({
