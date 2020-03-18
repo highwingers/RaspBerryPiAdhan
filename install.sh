@@ -7,7 +7,7 @@ sudo -u pi cp -R RaspBerryPiAdhan orignal_firmware
 sudo rm orignal_firmware/www/data/adhan.db
 cd orignal_firmware/setup
 sudo sh  ./db.sh
-cd ~pi
+cd ../..
 
 #chown pi:pi -R orignal_firmware
 cd RaspBerryPiAdhan/setup
