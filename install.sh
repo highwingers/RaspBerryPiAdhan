@@ -1,6 +1,6 @@
 apt update
 apt install git
-sudo -u pi git clone https://github.com/highwingers/RaspBerryPiAdhan.git
+sudo -u pi git clone --single-branch --branch bluetooth https://github.com/highwingers/RaspBerryPiAdhan.git
 #chown pi:pi -R RaspBerryPiAdhan
 sudo -u pi cp -R RaspBerryPiAdhan orignal_firmware
 
