@@ -142,7 +142,7 @@
         &nbsp;<button data-target="surah" class="playBtn btn btn-primary btn-md">Play Now</button>
     </div>
 </div>
-
+<!--
 <div class="row p-3">
     <div class="field-label">Choose Google Speaker:</div>
     <select id="speaker2" name="speaker2" class="form-control">
@@ -150,6 +150,7 @@
     </select>
     <span id="speaker_label"></span>
 </div>
+    -->
 <!--
 <div>
     <div class="row">
@@ -241,8 +242,8 @@
 
         s.dbConfigCheck('{{settings[1]}}')
         loadData()
-        s.scanSpeakers("speaker2");
-        bluScan("bluspeaker2")
+        //s.scanSpeakers("speaker2");
+        //bluScan("bluspeaker2")
 
 
         function bluScan(element) {
@@ -350,7 +351,8 @@
 
 
     $("#btnSaveSurahSchedule").click(function () {
-        if ($("#txtSchedule").val() == '' || $("#speaker").val() == '') {
+  
+        if ($("#txtSchedule").val() == '' ) {
             bootbox.alert({
                 size: "small",
                 title: "Schedule",
@@ -362,7 +364,7 @@
 
 
 
-        var settings = { 'surah': $("#surah").val(), 'title': $("#surah option:selected").text(), 'datetime': $("#txtSchedule").val(), 'frequency': $("input[name='optradio']:checked").val(), 'speaker': $('#speaker2').val() }
+        var settings = { 'surah': $("#surah").val(), 'title': $("#surah option:selected").text(), 'datetime': $("#txtSchedule").val(), 'frequency': $("input[name='optradio']:checked").val(), 'speaker': '{{settings[1]}}' }
         s.updateAdhanSettings('/api/addCustomSchedule', settings, this.id)
     })
 

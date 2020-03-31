@@ -46,6 +46,7 @@ def index():
         'title': 'Smart Adhan Player',
         'username' : getpass.getuser()
         }    
+    
     return render_template('tabs/config.html', **data)
 @app.route('/config')
 def config():
@@ -146,9 +147,12 @@ def configureDevice():
         method = request.form["method"]
         timezone = request.form["timezone"]
         asr = request.form["asr"]
-    
+        isBluetooth = len(speaker.split(':'))
         shellcmd().setTimeZone(timezone)
         timezoneOffset =  shellcmd().getZoneOffset()
+
+        if isBluetooth > 5:
+            shellcmd().setBluetoothSpeaker(speaker)
 
         _add = GeoData(address, "adhan_player_piZero")
         coords = _add.getCoords()
@@ -183,7 +187,7 @@ def exeCommand():
 
 @app.route("/api/bluetooth/scan",methods=['GET'])
 def scanbluetooth():
-    _d = shellcmd().command("{   printf 'scan on\n\n';     sleep 10;     printf 'devices\n\n';     printf 'quit\n\n'; } | bluetoothctl | grep ^Device", False)
+    _d = shellcmd().command("{   printf 'scan on\n\n';     sleep 15;     printf 'devices\n\n';     printf 'quit\n\n'; } | bluetoothctl | grep ^Device", False)
     list = []  
     for line in _d.splitlines():
         _arr = line.split(None, 2)
