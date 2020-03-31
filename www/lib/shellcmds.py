@@ -26,11 +26,11 @@ class shellcmd:
         print(result)
 
     def playBlueToothMedia(self, mac, media):
-        
-        _mediapath = str(Path(__file__).parent.parent) + media
-        print(_mediapath)
+        _mediapath=media
+        if not media.startswith("http"):
+            _mediapath = str(Path(__file__).parent.parent) + media
         _connect = shellcmd().command("{   printf 'trust "+ mac +"\n\n';     sleep 5;     printf 'pair "+ mac +"\n\n';     sleep 5;     printf 'connect "+ mac +"\n\n';     sleep 5; } | bluetoothctl", False)
-        print(media)
+        self.command("pkill mplayer")
         _play = self.command("sudo -u pi mplayer '"+ _mediapath +"' -ao alsa:device=bluealsa")
         return _play
 

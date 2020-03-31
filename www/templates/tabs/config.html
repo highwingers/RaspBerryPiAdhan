@@ -230,7 +230,10 @@
 
         $("#save").click(function (e) {
             s.updateSettings('/api/configureDevice', $("#address").val(), $("#speaker-output-device").val(), $("#method").val(), $("input[name='asrradio']:checked").val(), $("#timezone").val(), this.id, function () {
-                loadData();
+                //loadData();
+                setTimeout(function () {
+                    document.location.reload();
+                }, 2000);
             });
         })
 
