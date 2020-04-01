@@ -194,7 +194,7 @@ def exeCommand():
 
 @app.route("/api/bluetooth/scan",methods=['GET'])
 def scanbluetooth():
-    _d = shellcmd().command("{   printf 'scan on\n\n';     sleep 15;     printf 'devices\n\n';     printf 'quit\n\n'; } | bluetoothctl | grep ^Device", False)
+    _d = shellcmd().command("{   printf 'scan on\n\n';     sleep 10;     printf 'devices\n\n';     printf 'quit\n\n'; } | bluetoothctl | grep ^Device", False)
     list = []  
     for line in _d.splitlines():
         _arr = line.split(None, 2)
