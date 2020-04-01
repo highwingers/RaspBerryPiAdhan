@@ -6,6 +6,10 @@
         background-color: aqua;
         cursor: pointer;
     }
+    .selected-label{
+        font-weight:bold;
+        color:burlywood;
+    }
 
 </style>
 <div class="row justify-content-center m-3 green">
@@ -115,19 +119,23 @@
                 </div>
             </div>
             <br />
-            <div class="row" >
+            <div class="row">
                 <div class="col-sm-6 mb-3 mb-md-0">
                     <div class="card speaker-card">
                         <div class="card-body">
-                            <h5 class="card-title green">
-                                <input name="rd-speaker" value="chromecast" type="radio" />
-                            Google Home/Chromecast</h5>
+
+                            <div class="custom-control custom-radio">
+                                <input type="radio" class="custom-control-input" id="rd-speaker" name="rd-speaker" value="chromecast">
+                                <label class="custom-control-label green" for="defaultUnchecked">Google Home/Chromecast</label>
+                            </div>
+
+
                             <p class="card-text">Google Home/ Nest/ Shield/ Chromecast Speaker</p>
 
                             <select id="speaker" name="speaker" class="form-control output-menu">
                                 <option value="">Loading Speakers...</option>
                             </select>
-                            <span id="speaker_label"></span>
+                            <span id="speaker_label" class="selected-label"></span><br />
 
                         </div>
                     </div>
@@ -136,24 +144,24 @@
                 <div class="col-sm-6">
                     <div class="card speaker-card">
                         <div class="card-body">
-                            <h5 class="card-title green">
-                                <input name="rd-speaker" value="bluetooth" type="radio" />
-                                Bluetooth Speakers
-                            </h5>
+                            <div class="custom-control custom-radio">
+                                <input type="radio" class="custom-control-input" id="rd-speaker" name="rd-speaker" value="bluetooth">
+                                <label class="custom-control-label green" for="defaultUnchecked">Bluetooth Speakers</label>
+                            </div>
                             <p class="card-text">Any Compatiable Device with Bluetooth Support</p>
 
                             <select id="bluspeaker2" name="bluspeaker2" class="form-control output-menu">
                                 <option value="">Scanning Speakers...</option>
                             </select>
-                            <span id="bluspeaker_label"></span>
+                            <span id="bluspeaker_label" class="selected-label"></span>
 
                         </div>
                     </div>
                 </div>
             </div>
 
-            <input type="hidden" name="speaker-output-device" id="speaker-output-device" />
-
+            <input type="hidden" name="speaker-output-device" id="speaker-output-device" /><br />
+            <button type="button" class="btn btn-secondary  btn-sm btn-block" onclick="document.location.reload()">ReScan Devices</button>
         </div>
         <br />
         <div>
@@ -230,9 +238,9 @@
 
         $("#save").click(function (e) {
             s.updateSettings('/api/configureDevice', $("#address").val(), $("#speaker-output-device").val(), $("#method").val(), $("input[name='asrradio']:checked").val(), $("#timezone").val(), this.id, function () {
-                //loadData();
+                loadData();
                 setTimeout(function () {
-                    document.location.reload();
+                    //document.location.reload();
                 }, 2000);
             });
         })
@@ -250,7 +258,10 @@
 
         $(".speaker-card").click(function () {
             var chk = $(this).find('input:radio');
-            chk.prop('checked', true)
+            chk.prop('checked', true);
+
+            _val = $(this).find('select').val()
+            $("#speaker-output-device").val(_val)
         })
 
         $(".output-menu").change(function () {
@@ -291,6 +302,7 @@
 
                 $("#bluspeaker_label").html('');
                 $("#speaker_label").html('')
+                $("#speaker-output-device").val(d[1])
 
                 isBuetooth = (d[1].split(':').length > 4) ? 1 : 0;
                 if (isBuetooth) {

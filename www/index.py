@@ -50,17 +50,21 @@ def index():
     return render_template('tabs/config.html', **data)
 @app.route('/config')
 def config():
-    return render_template('tabs/config.html')
+    data={'title': 'Configure Device'}
+    return render_template('tabs/config.html', **data)
 @app.route('/settings')
 def settings():
     _settings = getConfigSettings(1) 
     data= {
-    'settings': _settings
+    'settings': _settings,
+    'title': 'Settings'
     }
     return render_template('tabs/settings.html', **data)
 @app.route('/support')
 def support():
-    data= {'username' : getpass.getuser()}
+    data= {'username' : getpass.getuser(),
+           'title': 'Support'
+           }
     return render_template('tabs/support.html', **data)
 
 @app.route('/history')
@@ -72,7 +76,8 @@ def history():
         data= {
         'Jobs': _jobs,
         'shellTime': _time,
-        'pythonTime': datetime.now()
+        'pythonTime': datetime.now(),
+        'title': 'History'
         }
         return render_template('tabs/history.html', **data)
     except Exception as e : 
@@ -90,7 +95,7 @@ def getSettings():
 def updateSoftware():
         #c = shellcmd().command("sudo sh update.sh")
         c2 = shellcmd().command("sudo -u pi git reset --hard && sudo -u pi git pull")
-        c3 = shellcmd().command("sudo sh update.sh")
+        #c3 = shellcmd().command("sudo sh update.sh")
 
 
         return jsonify(True)
@@ -153,6 +158,8 @@ def configureDevice():
 
         if isBluetooth > 5:
             shellcmd().setBluetoothSpeaker(speaker)
+        else:
+            shellcmd().command("rm ~pi/.asoundrc")
 
         _add = GeoData(address, "adhan_player_piZero")
         coords = _add.getCoords()
