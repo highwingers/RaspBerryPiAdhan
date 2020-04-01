@@ -29,7 +29,7 @@ class shellcmd:
         _mediapath=media
         if not media.startswith("http"):
             _mediapath = str(Path(__file__).parent.parent) + media
-        self.command("whoami > ./whoami.txt",False)
+        #self.command("whoami > ./whoami.txt",False)
         _connect = shellcmd().command("{   printf 'trust "+ mac +"\n\n';     sleep 5;     printf 'pair "+ mac +"\n\n';     sleep 5;     printf 'connect "+ mac +"\n\n';     sleep 5; } |  sudo bluetoothctl", False)
         self.command("pkill mplayer")
         _play = self.command("sudo -u pi mplayer '"+ _mediapath +"' -ao alsa:device=bluealsa")
