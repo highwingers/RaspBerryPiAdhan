@@ -17,7 +17,9 @@ conn.execute('''CREATE TABLE SETTINGS
          ASR TEXT,
          OFFSET INTEGER,
          TIMEZONE TEXT,
-         ADDRESS TEXT);''')
+         ADDRESS TEXT,
+         SPEAKER_NAME TEXT
+         );''')
 
 conn.execute('''CREATE TABLE ADHANSETTINGS
          (ID INTEGER PRIMARY KEY ,
@@ -37,6 +39,17 @@ conn.execute('''CREATE TABLE SCHEDULE
          SPEAKER TEXT,
          STATUS TEXT     TEXT
          );''')
+
+conn.execute('''CREATE TABLE LOGS
+         (ID INTEGER PRIMARY KEY ,
+         Speaker TEXT NOT NULL,
+         Media   TEXT NOT NULL,
+         STAMP  DATETIME DEFAULT (datetime('now','localtime')),
+         Message
+         );''')
+
+
+
 
 
 

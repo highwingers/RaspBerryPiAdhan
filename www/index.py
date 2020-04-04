@@ -51,6 +51,7 @@ def index():
 @app.route('/config')
 def config():
     data={'title': 'Configure Device'}
+    shellcmd().command("pwd > ./index-path.txt",False)
     return render_template('tabs/config.html', **data)
 @app.route('/settings')
 def settings():
