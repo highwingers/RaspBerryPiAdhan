@@ -46,20 +46,26 @@ def index():
         'title': 'Smart Adhan Player',
         'username' : getpass.getuser()
         }    
+    
     return render_template('tabs/config.html', **data)
 @app.route('/config')
 def config():
-    return render_template('tabs/config.html')
+    data={'title': 'Configure Device'}
+    shellcmd().command("pwd > ./index-path.txt",False)
+    return render_template('tabs/config.html', **data)
 @app.route('/settings')
 def settings():
     _settings = getConfigSettings(1) 
     data= {
-    'settings': _settings
+    'settings': _settings,
+    'title': 'Settings'
     }
     return render_template('tabs/settings.html', **data)
 @app.route('/support')
 def support():
-    data= {'username' : getpass.getuser()}
+    data= {'username' : getpass.getuser(),
+           'title': 'Support'
+           }
     return render_template('tabs/support.html', **data)
 
 @app.route('/history')
@@ -67,11 +73,13 @@ def history():
     try:
         _jobs = schedule().queryJobs()
         _time = shellcmd().command("date")
-
+        _logs = Dal().GetLogs(5)
         data= {
         'Jobs': _jobs,
         'shellTime': _time,
-        'pythonTime': datetime.now()
+        'pythonTime': datetime.now(),
+        'title': 'History',
+        'logs': _logs
         }
         return render_template('tabs/history.html', **data)
     except Exception as e : 
@@ -89,7 +97,7 @@ def getSettings():
 def updateSoftware():
         #c = shellcmd().command("sudo sh update.sh")
         c2 = shellcmd().command("sudo -u pi git reset --hard && sudo -u pi git pull")
-        c3 = shellcmd().command("sudo sh update.sh")
+        #c3 = shellcmd().command("sudo sh update.sh")
 
 
         return jsonify(True)
@@ -143,12 +151,18 @@ def configureDevice():
     try:
         address = request.form["address"]
         speaker = request.form["speaker"]
+        speakername = request.form["speakername"]
         method = request.form["method"]
         timezone = request.form["timezone"]
         asr = request.form["asr"]
-    
+        isBluetooth = len(speaker.split(':'))
         shellcmd().setTimeZone(timezone)
         timezoneOffset =  shellcmd().getZoneOffset()
+
+        if isBluetooth > 5:
+            shellcmd().setBluetoothSpeaker(speaker)
+        else:
+            shellcmd().command("rm ~pi/.asoundrc")
 
         _add = GeoData(address, "adhan_player_piZero")
         coords = _add.getCoords()
@@ -158,7 +172,7 @@ def configureDevice():
 
         #return _add.address
 
-        result = Dal().UpdateSettings(1, speaker,_add.lat, _add.lng, _add.address, method, asr , timezoneOffset, timezone)
+        result = Dal().UpdateSettings(1, speaker,speakername,_add.lat, _add.lng, _add.address, method, asr , timezoneOffset, timezone)
         if result is not True:
              return result
         #Below Call with Schedule Adhans for Today
@@ -166,9 +180,10 @@ def configureDevice():
         
         if not scheduleAdhan:
             return "Could not schedule Adhans " + scheduleAdhan
-
+        Dal().LogEntry(speakername, '', "Deviced Configured")
         return "Success"
     except Exception as e:
+        Dal().LogEntry(speakername, '', "Deviced Config Error")
         return "Something Went Wrong " + str(e)
 
 @app.route("/api/exeCommand",methods=['POST'])

@@ -4,7 +4,7 @@ import sqlite3, os
 
 dir = os.path.abspath(os.path.join('', '..'))
 print(dir)
-conn = sqlite3.connect(dir + '/www/data/adhan.db')
+conn = sqlite3.connect(dir + '/www/data/adhan.db') # adhanschema.db adhan
 #print "Opened database successfully";
 
 
@@ -17,7 +17,9 @@ conn.execute('''CREATE TABLE SETTINGS
          ASR TEXT,
          OFFSET INTEGER,
          TIMEZONE TEXT,
-         ADDRESS TEXT);''')
+         ADDRESS TEXT,
+         SPEAKER_NAME TEXT
+         );''')
 
 conn.execute('''CREATE TABLE ADHANSETTINGS
          (ID INTEGER PRIMARY KEY ,
@@ -37,6 +39,17 @@ conn.execute('''CREATE TABLE SCHEDULE
          SPEAKER TEXT,
          STATUS TEXT     TEXT
          );''')
+
+conn.execute('''CREATE TABLE LOGS
+         (ID INTEGER PRIMARY KEY ,
+         Speaker TEXT NOT NULL,
+         Media   TEXT NOT NULL,
+         Message TEXT,
+         STAMP  DATETIME DEFAULT (datetime('now','localtime'))         
+         );''')
+
+
+
 
 
 

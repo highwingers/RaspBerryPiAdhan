@@ -2,125 +2,182 @@
 
 {% block content %}
 
+
+<style>
+
+    .astrodivider {
+        margin: 64px auto;
+        width: 400px;
+        max-width: 100%;
+        position: relative;
+    }
+
+    .astrodividermask {
+        overflow: hidden;
+        height: 20px;
+    }
+
+        .astrodividermask:after {
+            content: '';
+            display: block;
+            margin: -25px auto 0;
+            width: 100%;
+            height: 25px;
+            border-radius: 125px / 12px;
+            box-shadow: 0 0 8px #049372;
+        }
+
+    .astrodivider span {
+        width: 50px;
+        height: 50px;
+        position: absolute;
+        bottom: 100%;
+        margin-bottom: -25px;
+        left: 50%;
+        margin-left: -25px;
+        border-radius: 100%;
+        box-shadow: 0 2px 4px #4fb39c;
+        background: #fff;
+    }
+
+    .astrodivider i {
+        position: absolute;
+        top: 4px;
+        bottom: 4px;
+        left: 4px;
+        right: 4px;
+        border-radius: 100%;
+        border: 1px dashed #68beaa;
+        text-align: center;
+        line-height: 40px;
+        font-style: normal;
+        color: #049372;
+    }
+
+</style>
 <div class="container">
 
-    <div class="row justify-content-center m-3 green">
-        <h3>Adhan Settings</h3>
+    <div>
+  
+        <div class="row justify-content-center m-3 green">
+            <h3>Adhan Settings</h3>
+        </div>
+        <p class="p-3 mb-2 bg-info text-white">
+            Uncheck the Adhan if you need to disable it. Select a different Adhan if needed and then press the "Save Adhan Settings" button.
+        </p>
+
+        <div class="row ">
+            <div class="col-xs-6">
+                <div class="custom-control custom-checkbox text-center">
+                    <input type="checkbox" class="custom-control-input" id="chk_FAJR">
+                    <label class="custom-control-label" for="chk_FAJR">Fajr Adhan</label>
+                </div>
+                <div class="input-group">
+                    <span class="input-group-btn">
+                        <select name="fajr" id="FAJR" class="form-control">
+                            <option selected value="/static/media/fajr1.mp3">Adhan 1</option>
+                            <option value="/static/media/fajr2.mp3">Adhan 2</option>
+                        </select>
+                    </span>
+                    &nbsp; <button data-target="FAJR" class="playBtn btn btn-primary btn-md">Play</button>&nbsp;
+                </div>
+            </div>
+            <div class="col-xs-6">
+                <div class="custom-control custom-checkbox text-center">
+                    <input type="checkbox" class="custom-control-input" id="chk_DUHUR" name="chduhur">
+                    <label class="custom-control-label" for="chk_DUHUR">Duhur Adhan</label>
+                </div>
+                <div class="input-group">
+                    <span class="input-group-btn">
+                        <select name="Dhuhr" id="DUHUR" class="form-control">
+                            <option value="/static/media/azan1.mp3">Adhan 1</option>
+                            <option value="/static/media/azan2.mp3">Adhan 2</option>
+                            <option value="/static/media/azan3.mp3">Adhan 3</option>
+                            <option value="/static/media/azan4.mp3">Adhan 4</option>
+                            <option value="/static/media/azan5.mp3">Adhan 5</option>
+                            <option value="/static/media/azan6.mp3">Adhan 6</option>
+                            <option value="/static/media/azan7.mp3">Adhan 7</option>
+                            <option value="/static/media/azan8.mp3">Adhan 8</option>
+                        </select>
+                    </span>
+                    &nbsp; <button data-target="DUHUR" class="playBtn btn btn-primary btn-md">Play</button>&nbsp;
+                </div>
+            </div>
+
+            <div class="col-xs-6">
+                <div class="custom-control custom-checkbox text-center">
+                    <input type="checkbox" class="custom-control-input" id="chk_ASR" name="chkasr">
+                    <label class="custom-control-label" for="chk_ASR">Asr Adhan</label>
+                </div>
+                <div class="input-group">
+                    <span class="input-group-btn">
+                        <select name="Asr" id="ASR" class="form-control">
+                            <option value="/static/media/azan1.mp3">Adhan 1</option>
+                            <option value="/static/media/azan2.mp3">Adhan 2</option>
+                            <option value="/static/media/azan3.mp3">Adhan 3</option>
+                            <option value="/static/media/azan4.mp3">Adhan 4</option>
+                            <option value="/static/media/azan5.mp3">Adhan 5</option>
+                            <option value="/static/media/azan6.mp3">Adhan 6</option>
+                            <option value="/static/media/azan7.mp3">Adhan 7</option>
+                            <option value="/static/media/azan8.mp3">Adhan 8</option>
+                        </select>
+                    </span>
+                    &nbsp; <button data-target="ASR" class="playBtn btn btn-primary btn-md">Play</button>&nbsp;
+                </div>
+            </div>
+            <div class="col-xs-6">
+                <div class="custom-control custom-checkbox text-center">
+                    <input type="checkbox" class="custom-control-input" id="chk_MAGRIB" name="chmagrib">
+                    <label class="custom-control-label" for="chk_MAGRIB">Magrib Adhan</label>
+                </div>
+                <div class="input-group">
+                    <span class="input-group-btn">
+                        <select name="Magrib" id="MAGRIB" class="form-control">
+                            <option value="/static/media/azan1.mp3">Adhan 1</option>
+                            <option selected value="/static/media/azan2.mp3">Adhan 2</option>
+                            <option value="/static/media/azan3.mp3">Adhan 3</option>
+                            <option value="/static/media/azan4.mp3">Adhan 4</option>
+                            <option value="/static/media/azan5.mp3">Adhan 5</option>
+                            <option value="/static/media/azan6.mp3">Adhan 6</option>
+                            <option value="/static/media/azan7.mp3">Adhan 7</option>
+                            <option value="/static/media/azan8.mp3">Adhan 8</option>
+                        </select>
+                    </span>
+                    &nbsp; <button data-target="MAGRIB" class="playBtn btn btn-primary btn-md">Play</button>
+                </div>
+            </div>
+            <div class="col-xs-6">
+                <div class="custom-control custom-checkbox text-center">
+                    <input type="checkbox" class="custom-control-input" id="chk_ISHA" name="chkIsha">
+                    <label class="custom-control-label" for="chk_ISHA">Isha Adhan</label>
+                </div>
+                <div class="input-group">
+                    <span class="input-group-btn">
+                        <select name="Isha" id="ISHA" class="form-control">
+                            <option value="/static/media/azan1.mp3">Adhan 1</option>
+                            <option value="/static/media/azan2.mp3">Adhan 2</option>
+                            <option value="/static/media/azan3.mp3">Adhan 3</option>
+                            <option value="/static/media/azan4.mp3">Adhan 4</option>
+                            <option value="/static/media/azan5.mp3">Adhan 5</option>
+                            <option value="/static/media/azan6.mp3">Adhan 6</option>
+                            <option value="/static/media/azan7.mp3">Adhan 7</option>
+                            <option value="/static/media/azan8.mp3">Adhan 8</option>
+                        </select>
+                    </span>
+                    &nbsp; <button data-target="ISHA" class="playBtn btn btn-primary btn-md">Play</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="row p-3">
+            <button id="btnSaveSettings" class="btn btn-success btn-lg btn-block" data-title="Save Adhan Settings" data-loading-title="Saving...">Save Adhan Settings</button>
+        </div>
+
+        <div class="p-3"></div>
+
     </div>
-    <p class="p-3 mb-2 bg-info text-white">
-        Uncheck the Adhan if you need to disable it. Select a different Adhan if needed and then press the "Save Adhan Settings" button.
-    </p>
 
-    <div class="row">
-        <div class="col-xs-6">
-            <div class="custom-control custom-checkbox text-center">
-                <input type="checkbox" class="custom-control-input" id="chk_FAJR">
-                <label class="custom-control-label" for="chk_FAJR">Fajr Adhan</label>
-            </div>
-            <div class="input-group">
-                <span class="input-group-btn">
-                    <select name="fajr" id="FAJR" class="form-control">
-                        <option selected value="/static/media/fajr1.mp3">Adhan 1</option>
-                        <option value="/static/media/fajr2.mp3">Adhan 2</option>
-                    </select>
-                </span>
-                &nbsp; <button data-target="FAJR" class="playBtn btn btn-primary btn-md">Play</button>&nbsp;
-            </div>
-        </div>
-        <div class="col-xs-6">
-            <div class="custom-control custom-checkbox text-center">
-                <input type="checkbox" class="custom-control-input" id="chk_DUHUR" name="chduhur">
-                <label class="custom-control-label" for="chk_DUHUR">Duhur Adhan</label>
-            </div>
-            <div class="input-group">
-                <span class="input-group-btn">
-                    <select name="Dhuhr" id="DUHUR" class="form-control">
-                        <option value="/static/media/azan1.mp3">Adhan 1</option>
-                        <option value="/static/media/azan2.mp3">Adhan 2</option>
-                        <option value="/static/media/azan3.mp3">Adhan 3</option>
-                        <option value="/static/media/azan4.mp3">Adhan 4</option>
-                        <option value="/static/media/azan5.mp3">Adhan 5</option>
-                        <option value="/static/media/azan6.mp3">Adhan 6</option>
-                        <option value="/static/media/azan7.mp3">Adhan 7</option>
-                        <option value="/static/media/azan8.mp3">Adhan 8</option>
-                    </select>
-                </span>
-                &nbsp; <button data-target="DUHUR" class="playBtn btn btn-primary btn-md">Play</button>&nbsp;
-            </div>
-        </div>
-
-        <div class="col-xs-6">
-            <div class="custom-control custom-checkbox text-center">
-                <input type="checkbox" class="custom-control-input" id="chk_ASR" name="chkasr">
-                <label class="custom-control-label" for="chk_ASR">Asr Adhan</label>
-            </div>
-            <div class="input-group">
-                <span class="input-group-btn">
-                    <select name="Asr" id="ASR" class="form-control">
-                        <option value="/static/media/azan1.mp3">Adhan 1</option>
-                        <option value="/static/media/azan2.mp3">Adhan 2</option>
-                        <option value="/static/media/azan3.mp3">Adhan 3</option>
-                        <option value="/static/media/azan4.mp3">Adhan 4</option>
-                        <option value="/static/media/azan5.mp3">Adhan 5</option>
-                        <option value="/static/media/azan6.mp3">Adhan 6</option>
-                        <option value="/static/media/azan7.mp3">Adhan 7</option>
-                        <option value="/static/media/azan8.mp3">Adhan 8</option>
-                    </select>
-                </span>
-                &nbsp; <button data-target="ASR" class="playBtn btn btn-primary btn-md">Play</button>&nbsp;
-            </div>
-        </div>
-        <div class="col-xs-6">
-            <div class="custom-control custom-checkbox text-center">
-                <input type="checkbox" class="custom-control-input" id="chk_MAGRIB" name="chmagrib">
-                <label class="custom-control-label" for="chk_MAGRIB">Magrib Adhan</label>
-            </div>
-            <div class="input-group">
-                <span class="input-group-btn">
-                    <select name="Magrib" id="MAGRIB" class="form-control">
-                        <option value="/static/media/azan1.mp3">Adhan 1</option>
-                        <option selected value="/static/media/azan2.mp3">Adhan 2</option>
-                        <option value="/static/media/azan3.mp3">Adhan 3</option>
-                        <option value="/static/media/azan4.mp3">Adhan 4</option>
-                        <option value="/static/media/azan5.mp3">Adhan 5</option>
-                        <option value="/static/media/azan6.mp3">Adhan 6</option>
-                        <option value="/static/media/azan7.mp3">Adhan 7</option>
-                        <option value="/static/media/azan8.mp3">Adhan 8</option>
-                    </select>
-                </span>
-                &nbsp; <button data-target="MAGRIB" class="playBtn btn btn-primary btn-md">Play</button>
-            </div>
-        </div>
-        <div class="col-xs-6">
-            <div class="custom-control custom-checkbox text-center">
-                <input type="checkbox" class="custom-control-input" id="chk_ISHA" name="chkIsha">
-                <label class="custom-control-label" for="chk_ISHA">Isha Adhan</label>
-            </div>
-            <div class="input-group">
-                <span class="input-group-btn">
-                    <select name="Isha" id="ISHA" class="form-control">
-                        <option value="/static/media/azan1.mp3">Adhan 1</option>
-                        <option value="/static/media/azan2.mp3">Adhan 2</option>
-                        <option value="/static/media/azan3.mp3">Adhan 3</option>
-                        <option value="/static/media/azan4.mp3">Adhan 4</option>
-                        <option value="/static/media/azan5.mp3">Adhan 5</option>
-                        <option value="/static/media/azan6.mp3">Adhan 6</option>
-                        <option value="/static/media/azan7.mp3">Adhan 7</option>
-                        <option value="/static/media/azan8.mp3">Adhan 8</option>
-                    </select>
-                </span>
-                &nbsp; <button data-target="ISHA" class="playBtn btn btn-primary btn-md">Play</button>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="row p-3">
-    <button id="btnSaveSettings" class="btn btn-success btn-lg btn-block" data-title="Save Adhan Settings" data-loading-title="Saving...">Save Adhan Settings</button>
-</div>
-
-<div class="p-3"></div>
-
-<hr />
+    <div class="astrodivider"><div class="astrodividermask"></div><span><i>&#10038;</i></span></div>
 
 
 <div class="row justify-content-center m-3 green">
@@ -142,7 +199,7 @@
         &nbsp;<button data-target="surah" class="playBtn btn btn-primary btn-md">Play Now</button>
     </div>
 </div>
-
+<!--
 <div class="row p-3">
     <div class="field-label">Choose Google Speaker:</div>
     <select id="speaker2" name="speaker2" class="form-control">
@@ -150,6 +207,7 @@
     </select>
     <span id="speaker_label"></span>
 </div>
+    -->
 <!--
 <div>
     <div class="row">
@@ -232,7 +290,7 @@
 </div>
 <hr />
 
-
+</div>
 
 <script>
 
@@ -241,8 +299,8 @@
 
         s.dbConfigCheck('{{settings[1]}}')
         loadData()
-        s.scanSpeakers("speaker2");
-        bluScan("bluspeaker2")
+        //s.scanSpeakers("speaker2");
+        //bluScan("bluspeaker2")
 
 
         function bluScan(element) {
@@ -350,7 +408,8 @@
 
 
     $("#btnSaveSurahSchedule").click(function () {
-        if ($("#txtSchedule").val() == '' || $("#speaker").val() == '') {
+  
+        if ($("#txtSchedule").val() == '' ) {
             bootbox.alert({
                 size: "small",
                 title: "Schedule",
@@ -362,7 +421,7 @@
 
 
 
-        var settings = { 'surah': $("#surah").val(), 'title': $("#surah option:selected").text(), 'datetime': $("#txtSchedule").val(), 'frequency': $("input[name='optradio']:checked").val(), 'speaker': $('#speaker2').val() }
+        var settings = { 'surah': $("#surah").val(), 'title': $("#surah option:selected").text(), 'datetime': $("#txtSchedule").val(), 'frequency': $("input[name='optradio']:checked").val(), 'speaker': '{{settings[1]}}' }
         s.updateAdhanSettings('/api/addCustomSchedule', settings, this.id)
     })
 

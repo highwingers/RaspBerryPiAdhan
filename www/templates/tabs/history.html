@@ -9,13 +9,25 @@
 <div>Current Time: <b>{{shellTime}}</b></div>
 
 
-
+<h3 class="text-center">Prayer/Surah History</h3>
 {% for item in Jobs %}
 <div class="p-3 mb-2 bg-light text-dark">
     {{ item["nextFireDate"].strftime('%B, %a %d %Y AT %I:%M %p')  }} # <b>{{item["title"] | upper}}</b> <span data-then='{{item["nextFireDate"]}}' class="difference"></span>
     <a href="#" data-title="{{item["title"]}}" class="delJob">[Delete]</a>
 </div>
 <hr />
+{% endfor %}
+
+
+<hr />
+
+<h3 class="text-center">Logs</h3>
+{% for item in logs %}
+<div class="p-3 mb-2 bg-light text-dark">
+    {{ item[1]  }} - <b> {{item[3] }}</b> - {{item[4] }}
+</div>
+<hr />
+
 {% endfor %}
 
 

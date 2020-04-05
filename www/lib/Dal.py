@@ -67,15 +67,36 @@ class Dal:
 
 
 
-    def UpdateSettings(self, ID, SPEAKER,LAT,LNT,ADDRESS, METHOD, ASR, OFFSET, TIMEZONE):
+    def UpdateSettings(self, ID, SPEAKER,SPEAKER_NAME,LAT,LNT,ADDRESS, METHOD, ASR, OFFSET, TIMEZONE):
         try:
-            sql = "Update SETTINGS SET speaker='"+ SPEAKER.replace("'", "''") +"', LAT='"+ str(LAT)+ "', LNT='"+ str(LNT) +"', METHOD='"+ METHOD +"', OFFSET='"+ str(OFFSET) +"', ADDRESS='"+ ADDRESS.replace("'","''") +"', TIMEZONE='"+ TIMEZONE +"', ASR='" + ASR + "'  Where ID = 1 "
+            sql = "Update SETTINGS SET speaker='"+ SPEAKER.replace("'", "''") +"',SPEAKER_NAME='"+ SPEAKER_NAME.replace("'", "''") +"', LAT='"+ str(LAT)+ "', LNT='"+ str(LNT) +"', METHOD='"+ METHOD +"', OFFSET='"+ str(OFFSET) +"', ADDRESS='"+ ADDRESS.replace("'","''") +"', TIMEZONE='"+ TIMEZONE +"', ASR='" + ASR + "'  Where ID = 1 "
             self.conn.execute(sql)
             self.conn.commit()
             self.conn.close()
             return True
         except Exception as e:
             return str(e)
+
+    def LogEntry(self, Speaker, Media, Message):
+        try:
+            Media = Media.replace("'","''").strip()
+            Speaker = Speaker.replace("'","''").strip()
+            Message = Message.replace("'","''").strip()
+
+
+            self.conn.execute("INSERT INTO LOGS (ID,Speaker, Media, Message)  VALUES (NULL, '" + Speaker + "', '" + Media + "', '"+ Message +"' )");
+            self.conn.commit()
+            self.conn.close()
+        except Exception as e :
+            self.conn.execute("INSERT INTO LOGS (ID,Message)  VALUES (NULL, '"+ str(e) +"' )");
+
+    def GetLogs(self, Limit):
+        try:
+            cursor = self.conn.execute("SELECT * from LOGS")
+            # get data by index d[0], d[1] etc etc
+            return cursor.fetchall()
+        except :
+            return None
 
 
 
