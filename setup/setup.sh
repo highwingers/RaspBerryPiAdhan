@@ -12,6 +12,8 @@ sh ./db.sh
 
 apt-get  install  python3-pip 
 apt-get install python3-gpiozero
+apt-get install espeak
+
 
 pip3 install --timeout 1000 -r ../requirements.txt 
 

@@ -91,13 +91,14 @@ class Dal:
             self.conn.execute("INSERT INTO LOGS (ID,Message)  VALUES (NULL, '"+ str(e) +"' )");
 
     def GetLogs(self, Limit):
-        try:
-            cursor = self.conn.execute("SELECT * from LOGS")
+            qry = "SELECT * from LOGS order by stamp DESC LIMIT '" +  str(Limit) + "'"
+            cursor = self.conn.execute(qry)
             # get data by index d[0], d[1] etc etc
             return cursor.fetchall()
-        except :
-            return None
 
+    def DeleteLogs(self):
+            qry = "Delete  from LOGS Where STAMP <= DATE('now','-1 day')'"
+            self.conn.commit()
 
 
 #Dal().AddSetting('speaker', 'lat', 'lng', '20 ave')

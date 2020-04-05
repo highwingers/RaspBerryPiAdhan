@@ -3,7 +3,7 @@
 import os, sys
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname( __file__ ), '..')))
 from lib.schedule import schedule
-
+from lib.Dal import Dal
 #print(os.path.abspath(os.path.join(os.path.dirname( __file__ ), '..')))
 
 
@@ -18,3 +18,5 @@ playerPath = currentDirectory + '/player.py'
 
 
 scheduleAdhan = schedule().scheduleAdhans(1,playerPath)
+Dal().LogEntry("", "", "Prayers Schedule For Today")
+Dal().DeleteLogs()

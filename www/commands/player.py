@@ -5,6 +5,7 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname( __file__ ), '..'))
 from datetime import datetime
 from lib.chromecast import chromecast
 from lib.shellcmds import shellcmd
+from lib.Dal import Dal
 
 
 
@@ -17,6 +18,8 @@ if isBluetooth > 5:
     shellcmd().playBlueToothMedia(caster,mediaUrl)
 else: 
     mediaStatus = chromecast().play(caster, mediaUrl)
+
+Dal().LogEntry(caster, mediaUrl, "Played")
 
 #myFile = open('.logs/errors.txt', 'a') 
 #myFile.write(mediaUrl + ' ' + caster + '/n')

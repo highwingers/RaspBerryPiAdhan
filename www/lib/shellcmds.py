@@ -1,5 +1,6 @@
 ﻿import subprocess
 from pathlib import Path
+from .Dal import Dal
 class shellcmd:
     def __init__(self):
         pass
@@ -23,13 +24,12 @@ class shellcmd:
         _cmd  = "sudo -u pi sh " +  str(Path(__file__).parent.parent.parent) + "/setup/set-speaker.sh " + mac
         result = self.command(_cmd)
         #_pair = shellcmd().command("{   printf 'trust "+ mac +"\n\n';     sleep 5;     printf 'pair "+ mac +"\n\n';     sleep 5; } |  sudo bluetoothctl", False)
-        print(result)
+        Dal().LogEntry(mac, '', "Bluetooth Speaker SET")
 
     def playBlueToothMedia(self, mac, media):
         _mediapath=media
         if not media.startswith("http"):
             _mediapath = str(Path(__file__).parent.parent) + media
-        self.command("pwd > libpathV2.txt",False)
         _connect = shellcmd().command("{   printf 'trust "+ mac +"\n\n';     sleep 5;     printf 'pair "+ mac +"\n\n';     sleep 5;     printf 'connect "+ mac +"\n\n';     sleep 5; } |  sudo bluetoothctl", False)
         self.command("pkill mplayer")
         _play = self.command("sudo -u pi mplayer '"+ _mediapath +"' -ao alsa:device=bluealsa")

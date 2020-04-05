@@ -73,7 +73,7 @@ def history():
     try:
         _jobs = schedule().queryJobs()
         _time = shellcmd().command("date")
-        _logs = Dal().GetLogs(5)
+        _logs = Dal().GetLogs(50)
         data= {
         'Jobs': _jobs,
         'shellTime': _time,
@@ -113,7 +113,6 @@ def getAdhanSettings():
 def deleteJob():
     _param = json.loads(request.data)
     _jobid = _param["jobid"].strip()
-    print(_jobid)
     r = schedule().deleteJob(_jobid)
     return jsonify( r )
 
