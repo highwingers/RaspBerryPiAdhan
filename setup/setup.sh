@@ -1,3 +1,6 @@
+touch /boot/ssh
+
+
 BASEDIR=$(dirname "$0")
 cd "$BASEDIR"
 
