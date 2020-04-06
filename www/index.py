@@ -97,7 +97,7 @@ def getSettings():
 def updateSoftware():
         #c = shellcmd().command("sudo sh update.sh")
         c2 = shellcmd().command("sudo -u pi git reset --hard && sudo -u pi git pull")
-        #c3 = shellcmd().command("sudo sh update.sh")
+        c3 = shellcmd().command("sudo sh  ../setup/setup.sh")
 
 
         return jsonify(True)
@@ -247,7 +247,7 @@ if __name__ == "__main__":
 
     #print("PORT IS " + _port )
 
-    app.run(host='0.0.0.0', port=_port, debug=False)
+    app.run(host='0.0.0.0', port=_port, debug=True)
 
 
    
