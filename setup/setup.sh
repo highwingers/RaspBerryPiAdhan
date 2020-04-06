@@ -1,7 +1,5 @@
 updir=${PWD%/*}
 
-#chown -R pi:pi  ${PWD%/*}/.git
-
 bash ./flaskserver.service
 
 sh ./dailycron.sh
@@ -18,11 +16,11 @@ apt-get install espeak
 service bluealsa start
 
 
-pip3 install --timeout 1000 -r ../requirements.txt 
+yes | pip3 install --timeout 1000 -r ../requirements.txt 
 
 
-pip3 uninstall zeroconf
-pip3 install --timeout 1000 zeroconf==0.24.3
+#pip3 uninstall zeroconf --yes
+#yes | pip3 install --timeout 1000 zeroconf==0.24.4
 
 #sh ./apache.sh
 
@@ -35,6 +33,7 @@ systemctl restart nymea-networkmanager
 
 update-ca-certificates -f
 
+kill $(ps aux | grep [w]ww/index.py | awk '{print $2}')
 python3 ${PWD%/*}/www/index.py
 
 

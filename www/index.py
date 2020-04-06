@@ -247,7 +247,7 @@ if __name__ == "__main__":
 
     #print("PORT IS " + _port )
 
-    app.run(host='0.0.0.0', port=_port, debug=True)
+    app.run(host='0.0.0.0', port=_port, debug=False)
 
 
    
