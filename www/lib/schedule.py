@@ -41,7 +41,7 @@ class schedule:
 
         try:
          
-            cron = CronTab(user='pi')
+            cron = CronTab(user='root')
             job = cron.new(command='/usr/bin/python3 '+ playerPath +' "'+ media_url +'" "'+ speaker +'" >> .error.log  2>&1', comment=title)
 
             if frequency=='8':
@@ -99,7 +99,7 @@ class schedule:
         timezoneOffset =  shellcmd().getZoneOffset()
         pTimes = PrayerData(lat, lng, method, asr, timezoneOffset).getTimes()
         #print(pTimes)
-        cron = CronTab(user='pi')
+        cron = CronTab(user='root')
         _data = Dal().GetAdhanSettings(1)
 
         _prayDb = {}
@@ -161,7 +161,7 @@ class schedule:
 
 
     def queryJobs(self) :
-        cmd = 'crontab -l -u pi | grep -E "^@|^\*|^[0-9]" | sort -n -k2 -k1 | awk -F"#" \'{split($1,a," "); print a[1] " " a[2] " " a[3] " " a[4] " " a[5] "|"   $2}\' '
+        cmd = 'crontab -l -u root | grep -E "^@|^\*|^[0-9]" | sort -n -k2 -k1 | awk -F"#" \'{split($1,a," "); print a[1] " " a[2] " " a[3] " " a[4] " " a[5] "|"   $2}\' '
         c = shellcmd().command(cmd, False)
         lines = c.splitlines()
         base = datetime.now()
@@ -182,7 +182,7 @@ class schedule:
         return a
 
     def deleteJob(self, title):
-        cron = CronTab(user='pi')
+        cron = CronTab(user='root')
         cron.remove_all(comment=title)   
         cron.write()
         Dal().DeleteSchedule(title)

@@ -4,9 +4,14 @@
     "title": "Durood Sharif",
     "url": "/static/media/islamic_audios/Durood Sharif.mp3"
   },
-    {
-        "Notes": "",
-        "title": "Asma-ul-Husna (99 Names of Allah)",
-        "url": "/static/media/islamic_audios/Asma-ul-Husna (99 Names of Allah).mp3"
-    }
+  {
+    "Notes": "",
+    "title": "Asma-ul-Husna (99 Names of Allah)",
+    "url": "/static/media/islamic_audios/Asma-ul-Husna (99 Names of Allah).mp3"
+  },
+  {
+    "Notes": "",
+    "title": "Test Media",
+    "url": "/static/media/islamic_audios/Test.mp3"
+  }
 ]
