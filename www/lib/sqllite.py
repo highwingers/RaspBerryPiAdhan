@@ -96,7 +96,7 @@ class SqlLiteSchema:
         try:
             connOld.execute('ALTER TABLE SETTINGS ADD COLUMN SPEAKER_NAME;')
             connOld.executescript("""ATTACH DATABASE '"""+ NewDataBaseFile +"""' AS NewDataBaseFile;
-                                    Update SETTINGS Set SPEAKER_NAME = (Select SPEAKER_NAME From NewDataBaseFile Limit 1)
+                                    Update SETTINGS Set SPEAKER_NAME = (Select SPEAKER From NewDataBaseFile Limit 1)
             """)
         except:
             pass # handle the error
