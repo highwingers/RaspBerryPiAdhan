@@ -252,7 +252,8 @@ var s = (function () {
                     callback(d);
                 },
                 error: function (jqXHR, exception) {
-                    alert(jqXHR.responseText)
+                    jsonValue = jQuery.parseJSON(jqXHR.responseText);
+                    alert(jsonValue.Messag)
                 }
             });
         }
