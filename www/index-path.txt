@@ -1,1 +1,1 @@
-/home/pi/adhan/RaspBerryPiAdhan/www
+/home/pi/RaspBerryPiAdhan/www

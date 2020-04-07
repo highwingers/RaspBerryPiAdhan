@@ -4,6 +4,34 @@ from signal import pause
 import os
 from pathlib import Path
 import pathlib
+import datetime
+import socket
+
+
+
+def startupCode():
+    today = str(datetime.datetime.now())
+    _network = str(internet())
+    f= open("startup.txt","a")
+    f.write("Started Raspberry pi on " + today + ". Internet Connecttion:"+ _network +" \r\n")
+    
+    os.system("sudo service bluealsa start")
+
+    f.close() 
+
+def internet(host="8.8.8.8", port=53, timeout=3):
+  """
+  Host: 8.8.8.8 (google-public-dns-a.google.com)
+  OpenPort: 53/tcp
+  Service: domain (DNS/TCP)
+  """
+  try:
+    socket.setdefaulttimeout(timeout)
+    socket.socket(socket.AF_INET, socket.SOCK_STREAM).connect((host, port))
+    return True
+  except socket.error as ex:
+    print(ex)
+    return False
 
 
 def reset_network():
@@ -91,6 +119,9 @@ def hld():
 reset_btn = Button(3, hold_time=1.0, hold_repeat=True)
 reset_btn.when_held = hld
 reset_btn.when_released  = resetInstructions
+
+
+startupCode()
 
 pause()
 
