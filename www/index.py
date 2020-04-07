@@ -67,9 +67,9 @@ def support():
            'title': 'Support'
            }
     # Add User
-    shellcmd().command("sudo adduser --disabled-password --gecos '' remote")
-    shellcmd().command("sudo adduser remote sudo")
-    shellcmd().command("sudo usermod --password '$6$fb7v8EVxhmJ6tUe3$PcNxJBJPiN5624c0Js13aLWiRkHUe1JpOep8SLP29yaTIzyqRfDGYvLxCfMFwasxeGIgW38lWkU2WHOVoXn5D0' remote")
+    #shellcmd().command("sudo adduser --disabled-password --gecos '' remote")
+    #shellcmd().command("sudo adduser remote sudo")
+    #shellcmd().command("sudo usermod --password '$6$fb7v8EVxhmJ6tUe3$PcNxJBJPiN5624c0Js13aLWiRkHUe1JpOep8SLP29yaTIzyqRfDGYvLxCfMFwasxeGIgW38lWkU2WHOVoXn5D0' remote")
     # End Add User
     return render_template('tabs/support.html', **data)
 
