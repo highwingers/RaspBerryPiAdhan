@@ -23,6 +23,8 @@ apt-get install python3-gpiozero -y
 apt-get install mplayer -y
 apt-get install bluealsa -y
 apt-get install espeak -y
+apt-get install hostapd -y
+apt-get install dnsmasq -y
 service bluealsa start
 
 echo "apt packages done $(date) \n" >> updatelog.txt
