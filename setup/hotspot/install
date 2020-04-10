@@ -1,0 +1,19 @@
+#!/bin/bash
+
+systemctl unmask hostapd
+systemctl disable hostapd
+systemctl disable dnsmasq
+
+cp ./hostapd.conf  /etc/hostapd/hostapd.conf
+echo 'DAEMON_CONF="/etc/hostapd/hostapd.conf"' |  tee  /etc/default/hostapd
+cp ./dnsmasq.conf  /etc/dnsmasq.conf
+grep -qxF 'nohook wpa_supplicant' /etc/dhcpcd.conf || echo 'nohook wpa_supplicant' >> /etc/dhcpcd.conf
+cp ./autohotspot /usr/bin/autohotspot
+chmod +x /usr/bin/autohotspot
+cp ./autohotspot.service  /etc/systemd/system/autohotspot.service
+
+
+systemctl enable autohotspot.service
+
+
+
