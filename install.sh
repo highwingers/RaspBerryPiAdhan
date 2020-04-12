@@ -1,5 +1,5 @@
 apt update
-apt install git
+apt install git -y
 sudo -u pi git clone https://github.com/highwingers/RaspBerryPiAdhan.git
 #chown pi:pi -R RaspBerryPiAdhan
 sudo -u pi cp -R RaspBerryPiAdhan orignal_firmware
