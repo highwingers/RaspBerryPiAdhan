@@ -7,5 +7,7 @@ ip = shellcmd().command("hostname -I")
 url = 'http://'+ip+'/static/media/demo.mp3'
 chromecast().chromecastPlay('Office Ustairs speaker', url)
 
+#play test
+
 
 
