@@ -25,6 +25,7 @@ apt-get install bluealsa -y
 apt-get install espeak -y
 apt-get install hostapd -y
 apt-get install dnsmasq -y
+apt-get install dos2unix  -y 
 service bluealsa start
 
 echo "apt packages done $(date) \n" >> updatelog.txt
@@ -47,9 +48,13 @@ echo "restarted network manager $(date) \n" >> updatelog.txt
 update-ca-certificates -f
 
 #kill $(ps aux | grep [w]ww/index.py | awk '{print $2}')
-python3 ${PWD%/*}/www/index.py
+#python3 ${PWD%/*}/www/index.py
+
+bash ./hotspot/install
 
 echo "Update Finished $(date) \n" >> updatelog.txt
+
+reboot
 
 
 
