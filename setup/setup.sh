@@ -50,7 +50,7 @@ update-ca-certificates -f
 #kill $(ps aux | grep [w]ww/index.py | awk '{print $2}')
 #python3 ${PWD%/*}/www/index.py
 
-cd hotspoth
+cd hotspot
 bash ./install
 cd ..
 
