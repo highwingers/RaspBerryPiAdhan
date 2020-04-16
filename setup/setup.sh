@@ -42,9 +42,10 @@ grep -q resetbtn.py /etc/rc.local  || sudo sed -i  -e "\$i \sudo python3 ${updir
 
 
 
-sed -i 's/BT WLAN/ADHAN/g'  /etc/nymea/nymea-networkmanager.conf
-systemctl restart nymea-networkmanager
-echo "restarted network manager $(date) \n" >> updatelog.txt
+#sed -i 's/BT WLAN/ADHAN/g'  /etc/nymea/nymea-networkmanager.conf
+#systemctl restart nymea-networkmanager
+#echo "restarted network manager $(date) \n" >> updatelog.txt
+
 update-ca-certificates -f
 
 #kill $(ps aux | grep [w]ww/index.py | awk '{print $2}')
