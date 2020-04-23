@@ -19,6 +19,7 @@ from lib.GeoPy import GeoData
 from lib.schedule import schedule
 from lib.utility import utility
 from lib.poco.BlueToothDevice import BlueToothDevice
+from lib.wifiUtility import wifiUtility
 
 from lib.test import test
 
@@ -95,6 +96,32 @@ def history():
         return render_template('tabs/history.html', **data)
     except Exception as e : 
         return render_template('tabs/history.html')
+
+@app.route('/wifi')
+def wifi():
+    _networks = wifiUtility().scan_wifi_networks()
+    print(wifiUtility().ChkWifiUp())
+    data= {
+        'networks': _networks ,
+        'title': 'Configure Wifi Settings'
+    }
+    return render_template('tabs/wifi.html', **data)
+
+@app.route('/wifi-save',methods=['POST'])
+def wifisave():
+    ssid = request.form['ssid']
+    wifi_key = request.form['wifi_key']
+    country = request.form['country']
+    # create wifi file
+    wifiUtility().create_wpa_supplicant(ssid, wifi_key,country)
+
+    #check wifi connection
+    wifiUtility().ChkWifiUp()
+
+    #Turn on Client Mode
+    shellcmd().command("sudo /usr/bin/autohotspot")
+
+    return render_template('tabs/wifi-save.html', ssid=ssid, title='Settings Saved')
 
 
 
