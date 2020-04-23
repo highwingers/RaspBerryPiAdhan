@@ -20,6 +20,9 @@ from lib.schedule import schedule
 from lib.utility import utility
 from lib.poco.BlueToothDevice import BlueToothDevice
 
+from lib.test import test
+
+
 app = Flask(__name__)
 
 app.secret_key = 'abc123$'
@@ -40,12 +43,15 @@ def getConfigSettings(id):
             return _settings
 
 
+
+
 @app.route("/",methods=['GET', 'POST'])
 def index():
     data= {
         'title': 'Smart Adhan Player',
         'username' : getpass.getuser()
-        }    
+        }
+    test()
     
     return render_template('tabs/config.html', **data)
 @app.route('/config')
@@ -144,7 +150,7 @@ def addCustomSchedule():
 
         #print(_datetime)
 
-        schedule().AddSchedule(1, _datetime ,_settings["title"],os.path.abspath('commands/player.py'),_settings["surah"], _settings["frequency"],_settings["speaker"])
+        schedule().AddSchedule(1, _datetime ,_settings["title"],os.path.abspath('player.py'),_settings["surah"], _settings["frequency"],_settings["speaker"])
         return jsonify(1)
     except Exception as e :
             return 'Error: ' + str(e)

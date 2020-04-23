@@ -1,4 +1,5 @@
 ﻿import pychromecast
+import time
 from pychromecast.controllers.youtube import YouTubeController
 from urllib.parse import urlparse,parse_qs
 from .shellcmds import shellcmd
@@ -31,7 +32,7 @@ class chromecast:
         if "youtube.com" in media:
             return self.chromecastPlayYoutube(deviceName, media)
         elif  not media.startswith("http"): 
-            ip = shellcmd().command("hostname -I")
+            ip = shellcmd().command("ip -f inet addr show wlan0 | grep -Po 'inet \K[\d.]+'")
             _port =  ':' + utility.ConfigSectionMap("SetUp")["port"]
             media = 'http://'+ ip + _port + media
 
@@ -44,10 +45,14 @@ class chromecast:
         url = mediaUrl
         chromecasts = pychromecast.get_chromecasts()
         cast = next(cc for cc in chromecasts if cc.device.friendly_name == deviceName)
-        cast.wait()
+        cast.wait()    
+        #cast.quit_app()
         mc = cast.media_controller
         mc.play_media(url, 'audio/mp4')
         mc.block_until_active()
+        #print(mc.status)
+        mc.pause()
+        time.sleep(2)
         mc.play()
 
         return "Playing Media"

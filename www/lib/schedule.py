@@ -42,7 +42,7 @@ class schedule:
         try:
          
             cron = CronTab(user='root')
-            job = cron.new(command='/usr/bin/python3 '+ playerPath +' "'+ media_url +'" "'+ speaker +'" >> .error.log  2>&1', comment=title)
+            job = cron.new(command='/usr/bin/python3 '+ playerPath +' "'+ media_url +'" "'+ speaker + '" "'+ title + '"'  , comment=title)
 
             if frequency=='8':
                 job.minute.on(_date.minute)
@@ -140,7 +140,7 @@ class schedule:
                 if _prayDb["ISHA"]["status"]==0:
                     continue
 
-            job = cron.new(command='/usr/bin/python3 '+ playerPath +' "'+ media_url +'" "'+ mediaPlayer +'"', comment=job_id)
+            job = cron.new(command='/usr/bin/python3 '+ playerPath +' "'+ media_url +'" "'+ mediaPlayer +'" >> /tmp/cron-adhan-error.txt 2>&1 "'+ prayer +'" ', comment=job_id)
             job.minute.on(pTime.minute)
             job.hour.on(pTime.hour)
             job.month.on(pTime.month)

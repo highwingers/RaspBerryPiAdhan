@@ -68,3 +68,4 @@ DELETE FROM SCHEDULE WHERE TITLE='prayer_dhuhr'
 DELETE FROM SCHEDULE WHERE TITLE='prayer_asr'
 DELETE FROM SCHEDULE WHERE TITLE='prayer_maghrib'
 DELETE FROM SCHEDULE WHERE TITLE='prayer_isha'
+/usr/bin/python3: can't open file '/home/pi/adhan/RaspBerryPiAdhan/www/commands/daily.py': [Errno 2] No such file or directory
