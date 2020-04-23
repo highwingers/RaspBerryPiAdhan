@@ -160,7 +160,7 @@ def updateAdhanSettings():
     try:
         _settings = json.loads(request.form["AdhanSettings"])
         _update = Dal().updateAdhanSettings(_settings)
-        schedule().scheduleAdhans(1,_rootPath + '/commands/player.py')
+        schedule().scheduleAdhans(1,_rootPath + '/player.py')
         return jsonify(1)
     except Exception as e :
         return 'Error: ' + print(str(e))
@@ -214,7 +214,7 @@ def configureDevice():
         if result is not True:
              return result
         #Below Call with Schedule Adhans for Today
-        scheduleAdhan = schedule().scheduleAdhans(1,_rootPath + '/commands/player.py')
+        scheduleAdhan = schedule().scheduleAdhans(1,_rootPath + '/player.py')
         
         if not scheduleAdhan:
             return "Could not schedule Adhans " + scheduleAdhan
