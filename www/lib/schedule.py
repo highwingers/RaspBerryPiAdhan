@@ -1,5 +1,5 @@
 ﻿import datetime
-from datetime import datetime
+from datetime import datetime,timedelta    
 from croniter import croniter
 from .PrayerPy import PrayerData
 from .shellcmds import shellcmd
@@ -95,7 +95,7 @@ class schedule:
 
 
     def __adhan(self, lat, lng, method, asr, mediaPlayer, playerPath ):
-
+        print("go")
         timezoneOffset =  shellcmd().getZoneOffset()
         pTimes = PrayerData(lat, lng, method, asr, timezoneOffset).getTimes()
         #print(pTimes)
@@ -145,12 +145,11 @@ class schedule:
             job.hour.on(pTime.hour)
             job.month.on(pTime.month)
             job.day.on(pTime.day)
-
-            #DB Write
-            #print("============================" + str(pTime))
             
             Dal().AddSchedule(job_id,str(pTime),9,mediaPlayer)
 
+            # Add Reminder Logic
+            self.adhanReminders(job_id + "_reminder", cron, playerPath, "/static/media/reminder.mp3", mediaPlayer,prayer, (pTime- timedelta(minutes=15)))
 
         cron.write()
 
@@ -158,6 +157,20 @@ class schedule:
 
         
         return "Scheduled"
+
+    def adhanReminders(self, job_id, cron, playerPath, media_url, mediaPlayer,prayer, pTime):
+        try:
+            cron.remove_all(comment=job_id)      
+            Dal().DeleteSchedule(job_id)
+        
+            job = cron.new(command='/usr/bin/python3 '+ playerPath +' "'+ media_url +'" "'+ mediaPlayer +'" >> /tmp/cron-adhan-error.txt 2>&1 "'+ prayer +'" ', comment=job_id)
+            job.minute.on(pTime.minute)
+            job.hour.on(pTime.hour)
+            job.month.on(pTime.month)
+            job.day.on(pTime.day)            
+            Dal().AddSchedule(job_id,str(pTime),9,mediaPlayer)
+        except Exception as e :
+            print(str(e))
 
 
     def queryJobs(self) :
