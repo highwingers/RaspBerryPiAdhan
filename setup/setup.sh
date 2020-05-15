@@ -51,9 +51,9 @@ update-ca-certificates -f
 #kill $(ps aux | grep [w]ww/index.py | awk '{print $2}')
 #python3 ${PWD%/*}/www/index.py
 
-cd hotspot
-bash ./install
-cd ..
+#cd hotspot
+#bash ./install
+#cd ..
 
 echo "Update Finished $(date) \n" >> updatelog.txt
 
