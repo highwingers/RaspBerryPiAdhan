@@ -32,7 +32,7 @@ class chromecast:
         if "youtube.com" in media:
             return self.chromecastPlayYoutube(deviceName, media)
         elif  not media.startswith("http"): 
-            ip = shellcmd().command("ip -f inet addr show wlan0 | grep -Po 'inet \K[\d.]+'")
+            ip = shellcmd().command("ip -f inet addr show eth0 | grep -Po 'inet \K[\d.]+'")
             _port =  ':' + utility.ConfigSectionMap("SetUp")["port"]
             media = 'http://'+ ip + _port + media
 

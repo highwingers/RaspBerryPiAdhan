@@ -4,6 +4,7 @@ import sqlite3, os
 import os
 from os import path
 from pathlib import Path
+from os.path import dirname, abspath
 import sys
 
 class SqlLiteSchema:
@@ -151,7 +152,7 @@ class SqlLiteSchema:
 
 def readParam():
     _dbFlag=False
-        _path = dirname(os.path.abspath(".")) + '/data'
+    _path = dirname(os.path.abspath(".")) + '/data'        
     if sys.argv[1]=='True':
         _dbFlag = True
     else:
