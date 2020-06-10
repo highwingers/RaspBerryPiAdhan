@@ -151,7 +151,7 @@ class SqlLiteSchema:
 
 def readParam():
     _dbFlag=False
-    _path = str(Path(__file__).parent.parent) + '/data'
+        _path = dirname(os.path.abspath(".")) + '/data'
     if sys.argv[1]=='True':
         _dbFlag = True
     else:
