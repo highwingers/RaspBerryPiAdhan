@@ -1,7 +1,7 @@
 Flask
 adhan
 geopy
-PyChromecast
+PyChromecast==6.0.0
 python-crontab
 croniter
 configparser
