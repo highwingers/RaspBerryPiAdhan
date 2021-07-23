@@ -1,6 +1,6 @@
 apt update
 apt install git -y
-sudo -u pi git clone https://github.com/highwingers/RaspBerryPiAdhan.git
+git clone https://github.com/highwingers/RaspBerryPiAdhan.git
 
 #chown pi:pi -R RaspBerryPiAdhan
 
