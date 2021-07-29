@@ -2,11 +2,13 @@
 dir=${PWD%/*}
 file=$dir/www/data/adhan.db
 
+python3 /home/pi/RaspBerryPiAdhan/www/lib/sqllite.py False
+
 if [ -f "$file" ]
 then
 	echo "$file found."
-	python3 $dir/www/lib/sqllite.py True
+	#python3 $dir/www/lib/sqllite.py True
 else
-	python3 $dir/www/lib/sqllite.py False
+	#python3 $dir/www/lib/sqllite.py False
 fi
 
