@@ -26,7 +26,7 @@ class SqlLiteSchema:
             print("File "+ dbFile +" Already Exists!.")
             return False
 
-        conn = sqlite3.connect(dbFile)
+        conn = sqlite3.connect("../www/data/adhan.db")
         conn.execute('''CREATE TABLE SETTINGS
                  (ID INTEGER PRIMARY KEY ,
                  SPEAKER           TEXT    NOT NULL,
