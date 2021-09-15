@@ -13,5 +13,7 @@ git clone https://github.com/highwingers/RaspBerryPiAdhan.git
 
 #chown pi:pi -R orignal_firmware
 
+chmod 777 -R RaspBerryPiAdhan
+
 cd RaspBerryPiAdhan/setup
 sh ./setup.sh
