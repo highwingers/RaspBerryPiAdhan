@@ -57,7 +57,7 @@ update-ca-certificates -f
 
 echo "Update Finished $(date) \n" >> updatelog.txt
 
-reboot
+#reboot
 
 
 
