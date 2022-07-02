@@ -44,8 +44,8 @@ class chromecast:
     def chromecastPlay(self, deviceName, mediaUrl):
 
         url = mediaUrl
-        chromecasts = pychromecast.get_chromecasts()
-        cast = next(cc for cc in chromecasts if cc.device.friendly_name == deviceName)
+        chromecasts, browser = pychromecast.get_listed_chromecasts(friendly_names=[deviceName])
+        cast = chromecasts[0]
         cast.wait()    
         #cast.quit_app()
         mc = cast.media_controller
