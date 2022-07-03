@@ -69,8 +69,8 @@ class chromecast:
         VIDEO_ID = query["v"][0]
         print(VIDEO_ID)
 
-        chromecasts = pychromecast.get_chromecasts()
-        cast = next(cc for cc in chromecasts if cc.device.friendly_name == deviceName)
+        chromecasts, browser = pychromecast.get_listed_chromecasts(friendly_names=[deviceName])
+        cast = chromecasts[0]
         cast.wait()
         yt = YouTubeController()
         cast.register_handler(yt)
